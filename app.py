@@ -138,6 +138,7 @@ def e_button9(id):
     st.write("Connection Established")
     if option=="Create":
         st.subheader("Create a Record")
+        st.text('Question one preparate')
         name=st.text_input("Enter Name")
         email=st.text_input("Enter Email")
         if st.button("Create"):

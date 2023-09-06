@@ -13,12 +13,21 @@ from packageKPS import *
 from packageCharts import *
 from html_shortcuts import *
 from PIL import Image
+import mysql.connector
 
+def init_connection():
+    return mysql.connector.connect(**st.secrets["mysql"])
+
+def run_query(conn,query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        columnsnames=cur.column_names
+        return cur.fetchall(),columnsnames
 
 
 def main():
  
-
+    conn = init_connection()
     
     #st.write(home())
     st.set_page_config(
@@ -76,8 +85,8 @@ def main():
     with st.sidebar:
 
         selected_option1 = option_menu("Μενού", ["Συνεταιριστές","Εργαζόμενοι", "Ώρες Απασχόλησης", "Ετήσιες Μονάδες Εργασίας","Κύκλοι εργασιών", 
-                                                 "Διαχρονική (%) μεταβολή Κύκλων Εργασιών", "Κατανομή πλήθους με βάση το καθαρό εισόδημα","Αναλυτικός Πίνακας Δεικτών"],
-                            icons=['people', 'person-gear','clock-history','person-workspace','cash-stack','graph-up-arrow','piggy-bank','table'],
+                                                 "Διαχρονική (%) μεταβολή Κύκλων Εργασιών", "Κατανομή πλήθους με βάση το καθαρό εισόδημα","Αναλυτικός Πίνακας Δεικτών","Business Plan"],
+                            icons=['people', 'person-gear','clock-history','person-workspace','cash-stack','graph-up-arrow','piggy-bank','table','table'],
                             menu_icon="cast", default_index=1,
                             
                             styles={
@@ -113,8 +122,37 @@ def main():
     elif selected_option1=="Κατανομή πλήθους με βάση το καθαρό εισόδημα":
         e_button7(id,kpdf,js_code,css_code)    
     elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
-        e_button8(id,kpdf,js_code,css_code)  
-        
+        e_button8(id,kpdf,js_code,css_code) 
+    elif selected_option1=="Business Plan":
+        e_button9(id)
+
+def e_button9(id):
+    ####################################################################
+    ############ADMINISTRATION PART EDIT ##############################
+
+    st.title("Edit Days off")
+    # id=st.number_input("Enter ID",userid)
+    # total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)
+
+
+
+
+
+    # fig = px.pie(dfgroup, values='duration', names='name',
+    #             title='% Διάρκεια ανα Project επί του Συνόλου  ',
+    #             hover_data=['duration'], labels={'duration':'duration'})
+    #             fig.update_traces(textposition='inside', textinfo='percent+label')
+    #             st.plotly_chart(fig)
+
+    if st.button("Update"):
+        st.write("button click update")
+        # sql="update kimai2_daysoff  set kimai2_daysoff.total_daysoff=%s where kimai2_daysoff.user_id=%s"
+        # val=(total_days,id)
+        # with conn.cursor() as cur:
+        #     cur.execute(sql,val)
+        #     conn.commit()
+        #     st.success("Record Updated Successfully")
+        #     st.experimental_rerun()
 
 def ad_button1(id,kpdf,js_code):
     st.subheader("Συνεταιριστές")

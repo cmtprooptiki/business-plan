@@ -133,7 +133,19 @@ def e_button9(id):
     st.title("Edit Days off")
     # id=st.number_input("Enter ID",userid)
     # total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)
-
+    option=st.sidebar.selectbox("Select an Operation",("Create","Read","Update","Delete"))
+    mycursor=conn.cursor()
+    st.write("Connection Established")
+    if option=="Create":
+        st.subheader("Create a Record")
+        name=st.text_input("Enter Name")
+        email=st.text_input("Enter Email")
+        if st.button("Create"):
+            sql= "insert into users(name,email) values(%s,%s)"
+            val= (name,email)
+            mycursor.execute(sql,val)
+            conn.commit()
+            st.success("Record Created Successfully!!!")
 
 
 

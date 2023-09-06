@@ -3,6 +3,5 @@ pandas
 plotly
 requests
 mysql-connector-python
-
 pillow
 streamlit-option-menu

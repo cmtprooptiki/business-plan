@@ -276,8 +276,11 @@ def e_button9(id):
 
     if st.button("Update"):
         st.write("button click update")
-        # sql="update kimai2_daysoff  set kimai2_daysoff.total_daysoff=%s where kimai2_daysoff.user_id=%s"
-        # val=(total_days,id)
+        sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s where id=%s"
+        val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,str(selected_id_value))
+        mycursor.execute(sql,val)
+        conn.commit()
+        st.success("Record Update Successfully!!!")
         # with conn.cursor() as cur:
         #     cur.execute(sql,val)
         #     conn.commit()

@@ -234,6 +234,23 @@ def e_button9(id):
         # Display the selected date and its corresponding ID
          st.write(f"Selected Date: {selected_id}")
          st.write(f"Corresponding ID: {selected_id_value}")
+#show form fields for editing
+         if selected_id!=None:
+            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+selected_id+"")
+            result = mycursor.fetchall()
+            for row in result:
+                st.write(row)
+
+        #  st.write("Selected Year",year)
+        #  st.subheader("Στόχοι")
+        #  st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
+        #  q1_text=st.text_input(q1_text,key="q1text")
+
+        #  q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
+        #  ["1", "2", "3","4","5"])
+        #  st.title("Περιγραφή της Επιχείρησης")
+
+         
 
          
 

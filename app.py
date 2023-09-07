@@ -141,19 +141,19 @@ def e_button9(id):
         st.subheader("Create a Record")
         st.subheader("Στόχοι")
         st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
-        q1=st.text_input("Γράψε ελεύθερο κείμενο")
+        q1_text=st.text_input("Γράψε ελεύθερο κείμενο")
 
-        q1_answer = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
+        q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
         ["1", "2", "3","4","5"])
 
        
-        st.write('You selected ',q1_answer)
+        st.write('You selected ',q1_ans_radio)
    
         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
-            sql= "insert into users(name,email) values(%s,%s)"
-            val= (name,email)
+            sql= "insert into forms(koispe_id,q1_text,q1_ans_radio) values(%s,%s)"
+            val= (str(id),q1_text,q1_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")

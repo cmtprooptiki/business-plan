@@ -190,6 +190,16 @@ def e_button9(id):
         result = mycursor.fetchall()
         for row in result:
             st.write(row)
+            st.write(row[0])
+            st.write(row[1])
+
+    if option=="Update":
+         st.subheader("Edit Submitted Forms")
+         st.write("Select Form for editing")
+         #getAllformsId
+
+         option=st.selectbox("Select an Operation",("1","2","3"))
+
 
 
 

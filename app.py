@@ -145,15 +145,22 @@ def e_button9(id):
 
         q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
         ["1", "2", "3","4","5"])
+        st.title("Περιγραφή της Επιχείρησης")
 
-       
-        st.write('You selected ',q1_ans_radio)
+        st.text('Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.')
+        q2_text=st.text_input("Γράψε ελεύθερο κείμενο")
+        q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",
+        ["1", "2", "3","4","5"])
+        st.write('You selected ',q2_1_ans_radio)
+        q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",
+        ["1", "2", "3","4","5"])
+        st.write('You selected ',q2_2_ans_radio)
    
         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
-            sql= "insert into forms(koispe_id,q1_text,q1_ans_radio) values(%s,%s,%s)"
-            val= (str(id),q1_text,q1_ans_radio)
+            sql= "insert into forms(koispe_id,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio) values(%s,%s,%s,%s,%s,%s)"
+            val= (str(id),q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")

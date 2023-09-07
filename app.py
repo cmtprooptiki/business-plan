@@ -179,12 +179,23 @@ def e_button9(id):
         q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",
         ["1", "2", "3","4","5"])
         st.write('You selected ',q2_2_ans_radio)
+
+        st.subheader("Nομική οντότητα")
+        st.text("""Αναφέρετε αν η επιχείρησή σας είναι μια εταιρεία μεμονωμένης ιδιοκτησίας, εταιρεία (τύπου) ή συνεργασία. Εάν χρειάζεται, ορίστε τον τύπο επιχείρησης (όπως είναι η βιομηχανία, το εμπόριο ή οι υπηρεσίες). 
+Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
+Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
+        
+        q3_text=st.text_input("Γράψε ελεύθερο κείμενο",key="q3text")
+        q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",
+        ["1", "2", "3","4","5"])
+        st.write('You selected ',q3_ans_radio)
+
    
         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
-            sql= "insert into forms(koispe_id,creation_date,year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio) values(%s,now(),%s,%s,%s,%s,%s,%s)"
-            val= (str(id),year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
+            sql= "insert into forms(koispe_id,creation_date,year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio) values(%s,now(),%s,%s,%s,%s,%s,%s,%s,%s)"
+            val= (str(id),year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")

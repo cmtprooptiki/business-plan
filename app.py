@@ -208,7 +208,8 @@ def e_button9(id):
          return_ids = [row[0] for row in result]
          #getAllformsId
          st.write(str(return_ids))
-         option=st.selectbox("Select an Operation",str(return_ids[0]))
+         option=st.selectbox("Select an Operation",str(return_ids))
+         st.write("You choose",option)
 
 
 

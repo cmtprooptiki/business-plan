@@ -184,6 +184,12 @@ def e_button9(id):
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")
+    if option=="Read":
+        st.subheader("Read all Submitted Forms")
+        mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+        result = mycursor.fetchall()
+        for row in result:
+            st.write(row)
 
 
 

@@ -249,8 +249,8 @@ def e_button9(id):
             # default_value=row[4]
             # st.write(default_value)
             q1_text = st.text_input("Enter Text:", value=row[4], key="q1edit_text")
-
-            # q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",["1", "2", "3","4","5"],default_option_index = int(row[5])+1)
+            st.write(row[5])
+            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",["1", "2", "3","4","5"],default_option_index = int(row[5]))
             st.title("Περιγραφή της Επιχείρησης")
 
          else:

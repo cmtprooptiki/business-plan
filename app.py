@@ -212,7 +212,7 @@ def e_button9(id):
          return_ids = [row[0] for row in result]
          return_creation_date=[row[2] for row in result]
          return_year=[row[3] for row in result]
-         return_identifierform=[row[3]+row[2].strftime("%Y-%m-%d %H:%M:%S") for row in result]
+         return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
          st.write(return_identifierform)
          #getAllformsId
          st.write(str(return_ids))

@@ -152,7 +152,7 @@ def e_button9(id):
         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
-            sql= "insert into forms(koispe_id,q1_text,q1_ans_radio) values(%s,%s)"
+            sql= "insert into forms(koispe_id,q1_text,q1_ans_radio) values(%s,%s,%s)"
             val= (str(id),q1_text,q1_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()

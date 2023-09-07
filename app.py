@@ -202,40 +202,40 @@ def e_button9(id):
         st.write(str(return_ids))
 
     if option=="Update":
-         st.subheader("Edit Submitted Forms")
-         st.write("Select Form for editing")
-         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
-         result = mycursor.fetchall()
-         for row in result:
+        st.subheader("Edit Submitted Forms")
+        st.write("Select Form for editing")
+        mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+        result = mycursor.fetchall()
+        for row in result:
             st.write(row)
             # Extract values from the "return_id" column and store them in a list
-         return_ids = [row[0] for row in result]
-         return_creation_date=[row[2] for row in result]
-         return_year=[row[3] for row in result]
-         return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
-         st.write(return_identifierform)
+        return_ids = [row[0] for row in result]
+        return_creation_date=[row[2] for row in result]
+        return_year=[row[3] for row in result]
+        return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        st.write(return_identifierform)
          #getAllformsId
-         st.write(str(return_ids))
-         st.write(str(return_creation_date))
-         # Convert the list of datetime objects to a list of strings
-         date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
+        st.write(str(return_ids))
+        st.write(str(return_creation_date))
+        # Convert the list of datetime objects to a list of strings
+        date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
 
-         st.write(date_str_list)
-         st.write(str(return_year))
+        st.write(date_str_list)
+        st.write(str(return_year))
 
-        #  option=st.selectbox("Select an Form",date_str_list)
+        #option=st.selectbox("Select an Form",date_str_list)
 
-        #  st.write("You choose",str(option))
+        #st.write("You choose",str(option))
 
-         selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
-         selected_id_index = return_identifierform.index(selected_id)
-         selected_id_value = return_ids[selected_id_index]
+        selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+        selected_id_index = return_identifierform.index(selected_id)
+        selected_id_value = return_ids[selected_id_index]
 
         # Display the selected date and its corresponding ID
-         st.write(f"Selected Date: {selected_id}")
-         st.write(f"Corresponding ID: {selected_id_value}")
+        st.write(f"Selected Date: {selected_id}")
+        st.write(f"Corresponding ID: {selected_id_value}")
 #show form fields for editing
-         if selected_id:
+        if selected_id:
             mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
             result = mycursor.fetchall()
             for row in result:
@@ -253,30 +253,26 @@ def e_button9(id):
             options = ["1", "2", "3", "4", "5"]
 
 # Default option index (5 corresponds to the default value "5")
-            default_option_index = options.index(str(row[5]))
-            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_index)
+            default_option_indexq1 = options.index(str(row[5]))
+            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_indexq1)
             st.title("Περιγραφή της Επιχείρησης")
+            
+            st.text("""Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
+            Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.""")
+            
+            q2_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[6],key="q2text")
 
-         else:
+            default_option_indexq2_1=option.index(str(row[7]))
+            q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",options, default_option_indexq2_1)
+            st.write('You selected ',q2_1_ans_radio)
+            
+            default_option_indexq2_2=option.index(str(row[8]))
+            q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",options, default_option_indexq2_2)
+            st.write('You selected ',q2_2_ans_radio)
+
+        else:
             st.write("Choose Form for editing")
 
-
-
-
-
-         
-
-         
-
-
-
-
-
-    # fig = px.pie(dfgroup, values='duration', names='name',
-    #             title='% Διάρκεια ανα Project επί του Συνόλου  ',
-    #             hover_data=['duration'], labels={'duration':'duration'})
-    #             fig.update_traces(textposition='inside', textinfo='percent+label')
-    #             st.plotly_chart(fig)
 
     if st.button("Update"):
         st.write("button click update")

@@ -215,7 +215,7 @@ def e_button9(id):
          #getAllformsId
          st.write(str(return_ids))
          st.write(str(return_creation_date))
-         st.write(str(year))
+         st.write(str(return_year))
          option=st.selectbox("Select an Operation",return_ids)
 
          st.write("You choose",str(option))

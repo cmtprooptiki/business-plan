@@ -87,7 +87,7 @@ def main():
 
             selected_option1 = option_menu("Μενού", ["Business Plan"],
                                 icons=['table'],
-                                menu_icon="cast", default_index=1,
+                                menu_icon="cast", default_index=0,
                                 
                                 styles={
                                     "menu-title":{"display":"none"},

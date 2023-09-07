@@ -236,7 +236,7 @@ def e_button9(id):
          st.write(f"Corresponding ID: {selected_id_value}")
 #show form fields for editing
          if selected_id:
-            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+selected_id+"")
+            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+selected_id_value+"")
             result = mycursor.fetchall()
             for row in result:
                 st.write(row)

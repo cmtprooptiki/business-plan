@@ -202,7 +202,7 @@ def e_button9(id):
          st.write("Select Form for editing")
          #getAllformsId
 
-         option=st.selectbox("Select an Operation",[str(return_ids[0])])
+         option=st.selectbox("Select an Operation",str(return_ids[0]))
 
 
 

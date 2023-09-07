@@ -210,8 +210,10 @@ def e_button9(id):
             st.write(row)
             # Extract values from the "return_id" column and store them in a list
          return_ids = [row[0] for row in result]
+         return_creation_date=[row[1] for row in result]
          #getAllformsId
          st.write(str(return_ids))
+         st.write(str(return_creation_date))
          option=st.selectbox("Select an Operation",return_ids)
 
          st.write("You choose",str(option))

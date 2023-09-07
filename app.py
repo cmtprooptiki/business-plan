@@ -200,6 +200,12 @@ def e_button9(id):
     if option=="Update":
          st.subheader("Edit Submitted Forms")
          st.write("Select Form for editing")
+         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+         result = mycursor.fetchall()
+         for row in result:
+            st.write(row)
+            # Extract values from the "return_id" column and store them in a list
+         return_ids = [row[0] for row in result]
          #getAllformsId
          st.write(str(return_ids))
          option=st.selectbox("Select an Operation",str(return_ids[0]))

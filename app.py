@@ -190,9 +190,12 @@ def e_button9(id):
         result = mycursor.fetchall()
         for row in result:
             st.write(row)
-        st.write(row[0])
-        st.write(row[1])
-        st.write(row[0][0])
+            # Extract values from the "return_id" column and store them in a list
+        return_ids = [row[0] for row in result]
+
+        # Display the list of return_ids
+        st.write(return_ids)
+
 
     if option=="Update":
          st.subheader("Edit Submitted Forms")

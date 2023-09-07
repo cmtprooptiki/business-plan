@@ -139,9 +139,21 @@ def e_button9(id):
     st.write("Connection Established")
     if option=="Create":
         st.subheader("Create a Record")
-        st.text('Question one preparate')
-        name=st.text_input("Enter Name")
-        email=st.text_input("Enter Email")
+        st.subheader("Στόχοι")
+        st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
+        q1=st.text_input("Γράψε ελεύθερο κείμενο")
+
+        q1_answer = st.radio(
+        "Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
+        ["1", "2", "3","4","5"],
+        captions = ["1", "2", "3","4","5"])
+
+        if q1_answer == '1':
+            st.write('You selected 1')
+        else:
+            st.write("You didn\'t select comedy.")
+        # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
+        # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
             sql= "insert into users(name,email) values(%s,%s)"
             val= (name,email)

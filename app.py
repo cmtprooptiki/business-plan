@@ -4,6 +4,7 @@ from streamlit_option_menu import option_menu
 import json
 import pandas as pd
 import plotly.express as px
+import datetime
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from streamlit.components.v1 import html
@@ -180,7 +181,7 @@ def e_button9(id):
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
             sql= "insert into forms(koispe_id,creation_date,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio) values(%s,NOW(),%s,%s,%s,%s,%s,)"
-            val= (str(id),q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
+            val= (str(id),datetime.now(),q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")

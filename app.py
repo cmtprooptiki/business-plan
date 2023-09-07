@@ -245,7 +245,7 @@ def e_button9(id):
             st.write("Selected Year",row[3])
             st.subheader("Στόχοι")
             st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
-            q1_text=st.text_input(value=row[4],key="q1text")
+            q1_text=st.text_input(value=str(row[4]),key="q1text")
             q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",["1", "2", "3","4","5"],default_option_index = int(row[5])+1)
             st.title("Περιγραφή της Επιχείρησης")
 

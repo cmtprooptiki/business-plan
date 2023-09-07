@@ -220,7 +220,8 @@ def e_button9(id):
 
          st.write(date_str_list)
          st.write(str(return_year))
-         option=st.selectbox("Select an Operation",return_ids)
+         
+         option=st.selectbox("Select an Form",date_str_list)
 
          st.write("You choose",str(option))
 

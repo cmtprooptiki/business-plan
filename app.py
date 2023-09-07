@@ -262,11 +262,11 @@ def e_button9(id):
             
             q2_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[6],key="q2edit_text")
 
-            default_option_indexq2_1=option.index(str(row[7]))
+            default_option_indexq2_1=options.index(str(row[7]))
             q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",options, default_option_indexq2_1)
             st.write('You selected ',q2_1_ans_radio)
             
-            default_option_indexq2_2=option.index(str(row[8]))
+            default_option_indexq2_2=options.index(str(row[8]))
             q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",options, default_option_indexq2_2)
             st.write('You selected ',q2_2_ans_radio)
 

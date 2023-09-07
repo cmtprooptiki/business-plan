@@ -190,8 +190,9 @@ def e_button9(id):
         result = mycursor.fetchall()
         for row in result:
             st.write(row)
-            st.write(row[0])
-            st.write(row[1])
+        st.write(row[0])
+        st.write(row[1])
+        st.write(row[0][0])
 
     if option=="Update":
          st.subheader("Edit Submitted Forms")

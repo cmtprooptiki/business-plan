@@ -253,7 +253,7 @@ def e_button9(id):
             options = ["1", "2", "3", "4", "5"]
 
 # Default option index (5 corresponds to the default value "5")
-            default_option_index = options.index("5")
+            default_option_index = options.index(str(row[5]))
             q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_index)
             st.title("Περιγραφή της Επιχείρησης")
 

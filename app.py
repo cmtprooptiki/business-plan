@@ -181,7 +181,7 @@ def e_button9(id):
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
             sql= "insert into forms(koispe_id,creation_date,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio) values(%s,NOW(),%s,%s,%s,%s,%s,)"
-            val= (str(id),datetime.now(),q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
+            val= (str(id),q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")

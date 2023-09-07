@@ -195,7 +195,7 @@ def e_button9(id):
 
         # Display the list of return_ids
         st.write(return_ids)
-
+        st.write(str(return_ids))
 
     if option=="Update":
          st.subheader("Edit Submitted Forms")

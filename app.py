@@ -215,8 +215,10 @@ def e_button9(id):
          #getAllformsId
          st.write(str(return_ids))
          st.write(str(return_creation_date))
-         date_str = return_creation_date[0].strftime("%Y-%m-%d %H:%M:%S")
-         st.write(date_str)
+         # Convert the list of datetime objects to a list of strings
+         date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
+
+         st.write(date_str_list)
          st.write(str(return_year))
          option=st.selectbox("Select an Operation",return_ids)
 

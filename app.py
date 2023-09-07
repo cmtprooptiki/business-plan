@@ -227,8 +227,8 @@ def e_button9(id):
 
         #  st.write("You choose",str(option))
 
-         selected_id = st.selectbox("Select a Form", options=date_str_list, index=0)
-         selected_id_index = date_str_list.index(selected_id)
+         selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+         selected_id_index = return_identifierform.index(selected_id)
          selected_id_value = return_ids[selected_id_index]
 
         # Display the selected date and its corresponding ID

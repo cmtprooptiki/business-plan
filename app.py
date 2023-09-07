@@ -130,6 +130,7 @@ def e_button9(id):
     ####################################################################
     ############ADMINISTRATION PART EDIT ##############################
     conn = init_connection()
+    st.write("work on MACOS")
     st.title("Edit Days MAC off")
     # id=st.number_input("Enter ID",userid)
     # total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)

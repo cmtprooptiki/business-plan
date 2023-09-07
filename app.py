@@ -220,10 +220,20 @@ def e_button9(id):
 
          st.write(date_str_list)
          st.write(str(return_year))
-         
+
          option=st.selectbox("Select an Form",date_str_list)
 
          st.write("You choose",str(option))
+
+         selected_id = st.selectbox("Select a Date", options=date_str_list, index=0)
+         selected_id_index = date_str_list.index(selected_id)
+         selected_id_value = return_ids[selected_id_index]
+
+        # Display the selected date and its corresponding ID
+         st.write(f"Selected Date: {selected_id}")
+         st.write(f"Corresponding ID: {selected_id_value}")
+
+         
 
 
 

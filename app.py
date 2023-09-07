@@ -143,15 +143,12 @@ def e_button9(id):
         st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
         q1=st.text_input("Γράψε ελεύθερο κείμενο")
 
-        q1_answer = st.radio(
-        "Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
-        ["1", "2", "3","4","5"],
-        captions = ["1", "2", "3","4","5"])
+        q1_answer = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
+        ["1", "2", "3","4","5"])
 
-        if q1_answer == '1':
-            st.write('You selected 1')
-        else:
-            st.write("You didn\'t select comedy.")
+       
+        st.write('You selected ',q1_answer)
+   
         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):

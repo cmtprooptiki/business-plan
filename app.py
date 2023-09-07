@@ -245,7 +245,7 @@ def e_button9(id):
             st.write("Selected Year",row[3])
             st.subheader("Στόχοι")
             st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
-            q1_text=st.text_input(placeholder=row[4],key="q1edit_text")
+            # q1_text=st.text_input(placeholder=row[4],key="q1edit_text")
             default_value=row[4]
             st.write(default_value)
             q1_text = st.text_input("Enter Text:", value=default_value, key="q1edit_text")

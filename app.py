@@ -157,6 +157,9 @@ def e_button9(id):
     st.write("Connection Established")
     if option=="Create":
         st.subheader("Create a Record")
+        
+        year=st.selectbox("Select year",["2021","2022","2023","2024"])
+        st.write("Selected Year",year)
         st.subheader("Στόχοι")
         st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
         q1_text=st.text_input("Γράψε ελεύθερο κείμενο",key="q1text")
@@ -180,8 +183,8 @@ def e_button9(id):
         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
         # q1_answer=st.text_input("Enter Email")
         if st.button("Create"):
-            sql= "insert into forms(koispe_id,creation_date,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio) values(%s,now(),%s,%s,%s,%s,%s)"
-            val= (str(id),q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
+            sql= "insert into forms(koispe_id,creation_date,year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio) values(%s,now(),%s,%s,%s,%s,%s,%s)"
+            val= (str(id),year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio)
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Created Successfully!!!")
@@ -210,6 +213,7 @@ def e_button9(id):
          #getAllformsId
          st.write(str(return_ids))
          option=st.selectbox("Select an Operation",return_ids)
+
          st.write("You choose",str(option))
 
 

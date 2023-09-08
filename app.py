@@ -27,8 +27,17 @@ def generate_pdf_report(form_data):
     for key, value in form_data.items():
         html += f"<p><strong>{key}:</strong> {value}</p>"
 
+     # Create a temporary directory to save the PDF file
+    temp_dir = tempfile.mkdtemp()
+    pdf_file_path = f"{temp_dir}/form_data_report.pdf"
+
+    # Generate the PDF report from the HTML and save it to the specified path
+    pdfkit.from_string(html, pdf_file_path)
+
+    return pdf_file_path
+
     # Generate the PDF report from the HTML
-    pdfkit.from_string(html, 'form_data_report.pdf')
+    # pdfkit.from_string(html, 'form_data_report.pdf')
 
 
 # def generate_pdf_report(form_data):
@@ -397,8 +406,10 @@ def e_button9(id):
         if submit_button_edit:
                         ########PDF CREATE
             # Create a dictionary to store form data
-            generate_pdf_report(form_data)
-            st.markdown("[Download PDF Report](form_data_report.pdf)", unsafe_allow_html=True)
+            pdf_file_path = generate_pdf_report(form_data)
+
+            # Provide a link to download the generated PDF
+            st.markdown(f"[Download PDF Report]({pdf_file_path})", unsafe_allow_html=True)
 
 
             st.write("button click update")

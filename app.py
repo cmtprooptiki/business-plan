@@ -125,7 +125,7 @@ def main():
     if selected_option1=="Business Plan":
         e_button9(id)
 
-def e_button9(id):
+def e_button9(id,kpdf):
     conn = init_connection()
     st.write("work on MACOS")
     st.title("Edit Days MAC off")
@@ -141,6 +141,17 @@ def e_button9(id):
         # Encapsulate the form using st.form
         with st.form(key="create_form"):
             year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
+            colors = ['#618abb','#00235e','#F0894F']
+
+            columns = ['D9', 'D10', 'D11']
+            # kpdf_selected = kpdf[columns]
+            # Create the stacked bar plot using Plotly
+            legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
+            fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+            # Show the plot
+            st.plotly_chart(fig, use_container_width=True)
+
+
             st.write("Selected Year", year)
             st.subheader("Στόχοι")
             st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')

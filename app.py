@@ -48,6 +48,17 @@ def main():
 
     
  
+    st.markdown(
+        """
+        <style>
+        .horizontal-radio .stRadio > label {
+            display: inline-flex;
+            margin-right: 15px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
     with open( "style.css" ) as css:
         st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)

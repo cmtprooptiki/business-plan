@@ -313,6 +313,13 @@ def e_button9(id):
         mycursor.execute(sql,val)
         conn.commit()
         st.success("Record Update Successfully!!!")
+        st.title("Result")
+        st.text("Ποσοστό Ετοιμότητας")
+        result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
+        st.write(result_val)
+        fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+        st.plotly_chart(fig,use_container_width=True)
+        
         # with conn.cursor() as cur:
         #     cur.execute(sql,val)
         #     conn.commit()

@@ -19,6 +19,7 @@ import mysql.connector
 
 # Define the HTML template for the PDF report
 def generate_pdf_report(form_data):
+    st.write("inside function")
     # Create an HTML string containing the form data
     html = f"<h1>Form Data</h1>"
     for key, value in form_data.items():
@@ -388,11 +389,12 @@ def e_button9(id):
             }
             export=st.button("Generate PDF")
             if export:
+                st.write('button clicked')
                 generate_pdf_report(form_data)
-                st.success('PDF report generated successfully. You can download it below.')
+                # st.success('PDF report generated successfully. You can download it below.')
             # Optionally, provide a link to download the generated PDF
-                st.subheader('Download PDF Report')
-                st.markdown("[Download PDF Report](form_data_report.pdf)", unsafe_allow_html=True)
+                # st.subheader('Download PDF Report')
+                # st.markdown("[Download PDF Report](form_data_report.pdf)", unsafe_allow_html=True)
 
 
 

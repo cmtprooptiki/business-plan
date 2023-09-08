@@ -32,6 +32,8 @@ def generate_pdf_report(form_data):
     pdf_file_path = f"{temp_dir}/form_data_report.pdf"
 
     # Generate the PDF report from the HTML and save it to the specified path
+    st.markdown(html,unsafe_allow_html=True)
+    
     pdfkit.from_string(html, pdf_file_path)
 
     return pdf_file_path

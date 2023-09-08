@@ -123,7 +123,7 @@ def main():
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
     #     e_button8(id,kpdf,js_code,css_code) 
     if selected_option1=="Business Plan":
-        e_button9(id)
+        e_button9(id,kpdf)
 
 def e_button9(id,kpdf):
     conn = init_connection()

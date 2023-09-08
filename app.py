@@ -367,6 +367,17 @@ def e_button9(id):
             submit_button_edit = st.form_submit_button("Update")
 
         if submit_button_edit:
+                        ########PDF CREATE
+            # Create a dictionary to store form data
+            form_data = {
+                'Field 1': q1_text,
+                'Field 2': q2_2_ans_radio,
+                # Add more fields here
+            }
+            export=st.button("Generate PDF")
+            if export:
+                st.write('button clicked')
+                generate_pdf_report(form_data)
             st.write("button click update")
             sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
             val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))
@@ -380,21 +391,7 @@ def e_button9(id):
             fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
             st.plotly_chart(fig,use_container_width=True)
 
-            ########PDF CREATE
-            # Create a dictionary to store form data
-            form_data = {
-                'Field 1': q1_text,
-                'Field 2': q2_2_ans_radio,
-                # Add more fields here
-            }
-            export=st.button("Generate PDF")
-            if export:
-                st.write('button clicked')
-                generate_pdf_report(form_data)
-                # st.success('PDF report generated successfully. You can download it below.')
-            # Optionally, provide a link to download the generated PDF
-                # st.subheader('Download PDF Report')
-                # st.markdown("[Download PDF Report](form_data_report.pdf)", unsafe_allow_html=True)
+
 
 
 

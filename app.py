@@ -303,15 +303,15 @@ def e_button9(id):
         return_creation_date=[row[2] for row in result]
         return_year=[row[3] for row in result]
         return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
-        st.write(return_identifierform)
+        # st.write(return_identifierform)
          #getAllformsId
-        st.write(str(return_ids))
-        st.write(str(return_creation_date))
+        # st.write(str(return_ids))
+        # st.write(str(return_creation_date))
         # Convert the list of datetime objects to a list of strings
         date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
 
-        st.write(date_str_list)
-        st.write(str(return_year))
+        # st.write(date_str_list)
+        # st.write(str(return_year))
 
         #option=st.selectbox("Select an Form",date_str_list)
 

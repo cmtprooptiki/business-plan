@@ -20,55 +20,7 @@ import tempfile
 # Define the HTML template for the PDF report
 
 
-# Define the HTML template for the PDF report
-def generate_pdf_report(form_data):
-    # Create an HTML string containing the form data
-    html = f"<h1>Form Data</h1>"
-    for key, value in form_data.items():
-        html += f"<p><strong>{key}:</strong> {value}</p>"
 
-     # Create a temporary directory to save the PDF file
-    temp_dir = tempfile.mkdtemp()
-    pdf_file_path = f"{temp_dir}/form_data_report.pdf"
-
-    # Generate the PDF report from the HTML and save it to the specified path
-    st.markdown(html,unsafe_allow_html=True)
-
-    pdf=pdfkit.from_string(html, pdf_file_path)
-    st.download_button(
-                "⬇️ Παραλαβή πιστοποιητικού",
-                data=pdf,
-                file_name=pdf_file_path,
-                mime="application/octet-stream",
-    )
-    return pdf_file_path
-
-    # Generate the PDF report from the HTML
-    # pdfkit.from_string(html, 'form_data_report.pdf')
-
-
-# def generate_pdf_report(form_data):
-#     st.write("inside function")
-#     st.write(form_data)
-#     # Create an HTML string containing the form data
-#     html = f"<h1>Form Data</h1>"
-#     for key, value in form_data.items():
-#         html += f"<p><strong>{key}:</strong> {value}</p>"
-#     st.markdown(html,unsafe_allow_html= True)
-
-    
-#     # Generate the PDF report from the HTML
-#     pdf=pdfkit.from_string(html, 'form_data_report.pdf')
-#     st.balloons()
-
-    
-
-#     st.download_button(
-#         "⬇️ Download report",
-#         data=pdf,
-#         file_name="report.pdf",
-#         mime="application/octet-stream",
-#     )
 
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
@@ -394,12 +346,12 @@ def e_button9(id):
                 q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3, horizontal=True)
                 st.write('You selected ',q3_ans_radio)
 
-                       # Create a dictionary to store form data
-                form_data = {
-                    'Στόχοι': q1_text,
-                    'Περιγραφή της Επιχείρησης': q2_text,
-                    'Nομική οντότητα': q3_text,
-                }
+                # # Create a dictionary to store form data
+                # form_data = {
+                #     'Στόχοι': q1_text,
+                #     'Περιγραφή της Επιχείρησης': q2_text,
+                #     'Nομική οντότητα': q3_text,
+                # }
 
 
  
@@ -411,12 +363,7 @@ def e_button9(id):
 
 
         if submit_button_edit:
-                        ########PDF CREATE
-            # Create a dictionary to store form data
-            pdf_file_path = generate_pdf_report(form_data)
 
-            # Provide a link to download the generated PDF
-            st.markdown(f"[Download PDF Report]({pdf_file_path})", unsafe_allow_html=True)
 
 
             st.write("button click update")

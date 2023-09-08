@@ -48,18 +48,7 @@ def main():
 
     
  
-    st.markdown(
-        """
-        <style>
-        .horizontal-radio .stRadio > label {
-            display: inline-flex;
-            margin-right: 15px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
+  
     with open( "style.css" ) as css:
         st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
@@ -185,7 +174,7 @@ def e_button9(id):
             st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
             q1_text = st.text_input("Γράψε ελεύθερο κείμενο", key="q1text")
 
-            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;", ["1", "2", "3", "4", "5"], key="horizontal")
+            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;", ["1", "2", "3", "4", "5"], horizontal=True)
             
             st.title("Περιγραφή της Επιχείρησης")
 

@@ -378,31 +378,7 @@ def e_button9(id):
                 q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3, horizontal=True)
                 st.write('You selected ',q3_ans_radio)
 
-                # Create a dictionary to store form data
-                form_data = {
-                    'Στόχοι': q1_text,
-                    'Περιγραφή της Επιχείρησης': q2_text,
-                    'Nομική οντότητα': q3_text,
-                }
-
-                generate=st.button('test')
-                # Provide a way to generate and download the PDF report
-                if generate:
-                    # Save the PDF report to a temporary file
-                    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
-                        generate_pdf_report(form_data)
-                        tmp_file.write(pdfkit.from_file('form_data_report.html', False))
-
-                    st.success('PDF report generated successfully. You can download it below.')
-
-                    # Provide a link to download the generated PDF
-                    st.subheader('Download PDF Report')
-                    st.markdown(f"[Download PDF Report]({tmp_file.name})", unsafe_allow_html=True)
-
-
-                        
-
-
+ 
             else:
                 st.write("Choose Form for editing")
 
@@ -426,6 +402,27 @@ def e_button9(id):
             st.write(result_val)
             fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
             st.plotly_chart(fig,use_container_width=True)
+        
+        # Create a dictionary to store form data
+        form_data = {
+            'Στόχοι': q1_text,
+            'Περιγραφή της Επιχείρησης': q2_text,
+            'Nομική οντότητα': q3_text,
+        }
+
+        generate=st.button('test')
+        # Provide a way to generate and download the PDF report
+        if generate:
+            # Save the PDF report to a temporary file
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
+                generate_pdf_report(form_data)
+                tmp_file.write(pdfkit.from_file('form_data_report.html', False))
+
+            st.success('PDF report generated successfully. You can download it below.')
+
+            # Provide a link to download the generated PDF
+            st.subheader('Download PDF Report')
+            st.markdown(f"[Download PDF Report]({tmp_file.name})", unsafe_allow_html=True)
 
 
 

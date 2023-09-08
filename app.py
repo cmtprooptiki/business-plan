@@ -16,7 +16,7 @@ from html_shortcuts import *
 from PIL import Image
 import pdfkit
 import mysql.connector
-
+import tempfile
 # Define the HTML template for the PDF report
 
 

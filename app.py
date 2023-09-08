@@ -18,28 +18,41 @@ import pdfkit
 import mysql.connector
 
 # Define the HTML template for the PDF report
+
+
+# Define the HTML template for the PDF report
 def generate_pdf_report(form_data):
-    st.write("inside function")
-    st.write(form_data)
     # Create an HTML string containing the form data
     html = f"<h1>Form Data</h1>"
     for key, value in form_data.items():
         html += f"<p><strong>{key}:</strong> {value}</p>"
-    st.markdown(html,unsafe_allow_html= True)
 
-    
     # Generate the PDF report from the HTML
-    pdf=pdfkit.from_string(html, 'form_data_report.pdf')
-    st.balloons()
+    pdfkit.from_string(html, 'form_data_report.pdf')
+
+
+# def generate_pdf_report(form_data):
+#     st.write("inside function")
+#     st.write(form_data)
+#     # Create an HTML string containing the form data
+#     html = f"<h1>Form Data</h1>"
+#     for key, value in form_data.items():
+#         html += f"<p><strong>{key}:</strong> {value}</p>"
+#     st.markdown(html,unsafe_allow_html= True)
+
+    
+#     # Generate the PDF report from the HTML
+#     pdf=pdfkit.from_string(html, 'form_data_report.pdf')
+#     st.balloons()
 
     
 
-    st.download_button(
-        "⬇️ Download report",
-        data=pdf,
-        file_name="report.pdf",
-        mime="application/octet-stream",
-    )
+#     st.download_button(
+#         "⬇️ Download report",
+#         data=pdf,
+#         file_name="report.pdf",
+#         mime="application/octet-stream",
+#     )
 
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
@@ -365,22 +378,40 @@ def e_button9(id):
                 q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3, horizontal=True)
                 st.write('You selected ',q3_ans_radio)
 
+                # Create a dictionary to store form data
+                form_data = {
+                    'Στόχοι': q1_text,
+                    'Περιγραφή της Επιχείρησης': q2_text,
+                    'Nομική οντότητα': q3_text,
+                }
+                # Provide a way to generate and download the PDF report
+                if st.button("Generate PDF Report"):
+                    # Save the PDF report to a temporary file
+                    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
+                        generate_pdf_report(form_data)
+                        tmp_file.write(pdfkit.from_file('form_data_report.html', False))
+
+                    st.success('PDF report generated successfully. You can download it below.')
+
+                    # Provide a link to download the generated PDF
+                    st.subheader('Download PDF Report')
+                    st.markdown(f"[Download PDF Report]({tmp_file.name})", unsafe_allow_html=True)
+
+
+                        
+
 
             else:
                 st.write("Choose Form for editing")
 
             submit_button_edit = st.form_submit_button("Update")
 
+
+
         if submit_button_edit:
                         ########PDF CREATE
             # Create a dictionary to store form data
-            form_data = {
-                'Field 1': q1_text,
-                'Field 2': q2_2_ans_radio,
-                # Add more fields here
-            }
-   
-            generate_pdf_report(form_data)
+
             st.write("button click update")
             sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
             val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))

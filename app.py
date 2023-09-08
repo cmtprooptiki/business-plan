@@ -176,7 +176,7 @@ def e_button9(id):
 
             # q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;", ["1", "2", "3", "4", "5"])
 
-            q1_ans_radio = st.slider('How old are you?', 1, 5, 5)
+            q1_ans_radio = st.slider('How old are you?', 1, 10, 10)
             st.write("Is", q1_ans_radio, '!')
             st.title("Περιγραφή της Επιχείρησης")
 

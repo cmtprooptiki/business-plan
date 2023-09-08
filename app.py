@@ -38,7 +38,7 @@ def generate_pdf_report(form_data):
     st.download_button(
                 "⬇️ Παραλαβή πιστοποιητικού",
                 data=pdf,
-                file_name="diploma.pdf",
+                file_name=pdf_file_path,
                 mime="application/octet-stream",
     )
     return pdf_file_path

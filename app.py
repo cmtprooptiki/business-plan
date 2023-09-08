@@ -384,8 +384,10 @@ def e_button9(id):
                     'Περιγραφή της Επιχείρησης': q2_text,
                     'Nομική οντότητα': q3_text,
                 }
+
+                generate=st.button('test')
                 # Provide a way to generate and download the PDF report
-                if st.button("Generate PDF Report"):
+                if generate:
                     # Save the PDF report to a temporary file
                     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
                         generate_pdf_report(form_data)

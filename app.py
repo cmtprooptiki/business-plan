@@ -33,9 +33,14 @@ def generate_pdf_report(form_data):
 
     # Generate the PDF report from the HTML and save it to the specified path
     st.markdown(html,unsafe_allow_html=True)
-    
-    pdfkit.from_string(html, pdf_file_path)
 
+    pdf=pdfkit.from_string(html, pdf_file_path)
+    st.download_button(
+                "⬇️ Παραλαβή πιστοποιητικού",
+                data=pdf,
+                file_name="diploma.pdf",
+                mime="application/octet-stream",
+    )
     return pdf_file_path
 
     # Generate the PDF report from the HTML

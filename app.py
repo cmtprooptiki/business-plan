@@ -296,8 +296,8 @@ def e_button9(id):
         st.write("Select Form for editing")
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
-        for row in result:
-            st.write(row)
+        # for row in result:
+        #     st.write(row)
             # Extract values from the "return_id" column and store them in a list
         return_ids = [row[0] for row in result]
         return_creation_date=[row[2] for row in result]
@@ -325,71 +325,91 @@ def e_button9(id):
         st.write(f"Selected Date: {selected_id}")
         st.write(f"Corresponding ID: {selected_id_value}")
 #show form fields for editing
-        if selected_id:
-            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
-            result = mycursor.fetchall()
-            for row in result:
-                st.write(row)
+        with st.form(key="edit_form"):
 
-            st.subheader("EDIT FORM")
-            st.write("Selected Year",row[3])
-            st.subheader("Στόχοι")
-            st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
-            # q1_text=st.text_input(placeholder=row[4],key="q1edit_text")
-            # default_value=row[4]
-            # st.write(default_value)
-            q1_text = st.text_input("Enter Text:", value=row[4], key="q1edit_text")
-            st.write(row[5])
-            options = ["1", "2", "3", "4", "5"]
+            if selected_id:
+                mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+                result = mycursor.fetchall()
+                for row in result:
+                    st.write(row)
 
-# Default option index (5 corresponds to the default value "5")
-            default_option_indexq1 = options.index(str(row[5]))
-            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_indexq1, horizontal=True)
-            st.title("Περιγραφή της Επιχείρησης")
-            
-            st.text("""Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
-            Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.""")
-            
-            q2_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[6],key="q2edit_text")
+                st.subheader("EDIT FORM")
+                st.write("Selected Year",row[3])
+                st.subheader("Στόχοι")
+                st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
+                # q1_text=st.text_input(placeholder=row[4],key="q1edit_text")
+                # default_value=row[4]
+                # st.write(default_value)
+                q1_text = st.text_input("Enter Text:", value=row[4], key="q1edit_text")
+                st.write(row[5])
+                options = ["1", "2", "3", "4", "5"]
 
-            default_option_indexq2_1=options.index(str(row[7]))
-            q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",options, default_option_indexq2_1, horizontal=True)
-            st.write('You selected ',q2_1_ans_radio)
-            
-            default_option_indexq2_2=options.index(str(row[8]))
-            q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",options, default_option_indexq2_2, horizontal=True)
-            st.write('You selected ',q2_2_ans_radio)
+                # Default option index (5 corresponds to the default value "5")
+                default_option_indexq1 = options.index(str(row[5]))
+                q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_indexq1, horizontal=True)
+                st.title("Περιγραφή της Επιχείρησης")
+                
+                st.text("""Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
+                Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.""")
+                
+                q2_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[6],key="q2edit_text")
 
-            st.subheader("Nομική οντότητα")
-            st.text("""Αναφέρετε αν η επιχείρησή σας είναι μια εταιρεία μεμονωμένης ιδιοκτησίας, εταιρεία (τύπου) ή συνεργασία. Εάν χρειάζεται, ορίστε τον τύπο επιχείρησης (όπως είναι η βιομηχανία, το εμπόριο ή οι υπηρεσίες). 
-    Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
-    Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
-            
-            q3_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[9],key="q3edit_text")
-            
-            default_option_indexq3=options.index(str(row[10]))
+                default_option_indexq2_1=options.index(str(row[7]))
+                q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",options, default_option_indexq2_1, horizontal=True)
+                st.write('You selected ',q2_1_ans_radio)
+                
+                default_option_indexq2_2=options.index(str(row[8]))
+                q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",options, default_option_indexq2_2, horizontal=True)
+                st.write('You selected ',q2_2_ans_radio)
 
-            q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3, horizontal=True)
-            st.write('You selected ',q3_ans_radio)
+                st.subheader("Nομική οντότητα")
+                st.text("""Αναφέρετε αν η επιχείρησή σας είναι μια εταιρεία μεμονωμένης ιδιοκτησίας, εταιρεία (τύπου) ή συνεργασία. Εάν χρειάζεται, ορίστε τον τύπο επιχείρησης (όπως είναι η βιομηχανία, το εμπόριο ή οι υπηρεσίες). 
+                Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
+                Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
+                
+                q3_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[9],key="q3edit_text")
+                
+                default_option_indexq3=options.index(str(row[10]))
 
-
-        else:
-            st.write("Choose Form for editing")
+                q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3, horizontal=True)
+                st.write('You selected ',q3_ans_radio)
 
 
-    if st.button("Update"):
-        st.write("button click update")
-        sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
-        val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))
-        mycursor.execute(sql,val)
-        conn.commit()
-        st.success("Record Update Successfully!!!")
-        st.title("Result")
-        st.text("Ποσοστό Ετοιμότητας")
-        result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
-        st.write(result_val)
-        fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-        st.plotly_chart(fig,use_container_width=True)
+            else:
+                st.write("Choose Form for editing")
+
+            submit_button_edit = st.form_submit_button("Update")
+
+        if submit_button_edit:
+            st.write("button click update")
+            sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
+            val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))
+            mycursor.execute(sql,val)
+            conn.commit()
+            st.success("Record Update Successfully!!!")
+            st.title("Result")
+            st.text("Ποσοστό Ετοιμότητας")
+            result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
+            st.write(result_val)
+            fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+            st.plotly_chart(fig,use_container_width=True)
+
+
+
+
+        # if st.button("Update"):
+        #     st.write("button click update")
+        #     sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
+        #     val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))
+        #     mycursor.execute(sql,val)
+        #     conn.commit()
+        #     st.success("Record Update Successfully!!!")
+        #     st.title("Result")
+        #     st.text("Ποσοστό Ετοιμότητας")
+        #     result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
+        #     st.write(result_val)
+        #     fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+        #     st.plotly_chart(fig,use_container_width=True)
         
         # with conn.cursor() as cur:
         #     cur.execute(sql,val)

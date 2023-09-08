@@ -25,7 +25,7 @@ def generate_pdf_report(form_data):
     html = f"<h1>Form Data</h1>"
     for key, value in form_data.items():
         html += f"<p><strong>{key}:</strong> {value}</p>"
-
+    st.markdown(html,unsafe_allow_html= True)
     # Generate the PDF report from the HTML
     pdf=pdfkit.from_string(html, 'form_data_report.pdf')
     st.balloons()

@@ -20,6 +20,7 @@ import mysql.connector
 # Define the HTML template for the PDF report
 def generate_pdf_report(form_data):
     st.write("inside function")
+    st.write(form_data)
     # Create an HTML string containing the form data
     html = f"<h1>Form Data</h1>"
     for key, value in form_data.items():

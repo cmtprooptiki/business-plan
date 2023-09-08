@@ -4,7 +4,10 @@
     src: "/fonts/SalmaproMedium-0Wooo.otf"; 
 }
 
-
+.horizontal-radio .stRadio > label {
+    display: inline-flex;
+    margin-right: 15px;
+}
 .css-6qob1r {
     background-color: rgb(211 236 250);
     border-radius: 16px;

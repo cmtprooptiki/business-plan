@@ -25,7 +25,15 @@ def generate_pdf_report(form_data):
         html += f"<p><strong>{key}:</strong> {value}</p>"
 
     # Generate the PDF report from the HTML
-    pdfkit.from_string(html, 'form_data_report.pdf')
+    pdf=pdfkit.from_string(html, 'form_data_report.pdf')
+    st.balloons()
+
+    st.download_button(
+        "⬇️ Download report",
+        data=pdf,
+        file_name="report.pdf",
+        mime="application/octet-stream",
+    )
 
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])

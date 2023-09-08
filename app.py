@@ -374,10 +374,8 @@ def e_button9(id):
                 'Field 2': q2_2_ans_radio,
                 # Add more fields here
             }
-            export=st.button("Generate PDF")
-            if export:
-                st.write('button clicked')
-                generate_pdf_report(form_data)
+   
+            generate_pdf_report(form_data)
             st.write("button click update")
             sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
             val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))

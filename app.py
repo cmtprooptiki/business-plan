@@ -183,9 +183,9 @@ def e_button9(id):
             
             q2_text = st.text_input("Γράψε ελεύθερο κείμενο", key="q2text")
             
-            q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;", ["1", "2", "3", "4", "5"])
+            q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;", ["1", "2", "3", "4", "5"], horizontal=True)
             st.write('You selected ', q2_1_ans_radio)
-            q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;", ["1", "2", "3", "4", "5"])
+            q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;", ["1", "2", "3", "4", "5"], horizontal=True)
             st.write('You selected ', q2_2_ans_radio)
 
             st.subheader("Nομική οντότητα")
@@ -194,7 +194,7 @@ def e_button9(id):
             Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
             
             q3_text = st.text_input("Γράψε ελεύθερο κείμενο", key="q3text")
-            q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;", ["1", "2", "3", "4", "5"])
+            q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;", ["1", "2", "3", "4", "5"], horizontal=True)
             st.write('You selected ', q3_ans_radio)
 
             # Submit button inside the form
@@ -344,7 +344,7 @@ def e_button9(id):
 
 # Default option index (5 corresponds to the default value "5")
             default_option_indexq1 = options.index(str(row[5]))
-            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_indexq1)
+            q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",options, default_option_indexq1, horizontal=True)
             st.title("Περιγραφή της Επιχείρησης")
             
             st.text("""Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
@@ -353,11 +353,11 @@ def e_button9(id):
             q2_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[6],key="q2edit_text")
 
             default_option_indexq2_1=options.index(str(row[7]))
-            q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",options, default_option_indexq2_1)
+            q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",options, default_option_indexq2_1, horizontal=True)
             st.write('You selected ',q2_1_ans_radio)
             
             default_option_indexq2_2=options.index(str(row[8]))
-            q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",options, default_option_indexq2_2)
+            q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",options, default_option_indexq2_2, horizontal=True)
             st.write('You selected ',q2_2_ans_radio)
 
             st.subheader("Nομική οντότητα")
@@ -369,7 +369,7 @@ def e_button9(id):
             
             default_option_indexq3=options.index(str(row[10]))
 
-            q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3)
+            q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",options,default_option_indexq3, horizontal=True)
             st.write('You selected ',q3_ans_radio)
 
 

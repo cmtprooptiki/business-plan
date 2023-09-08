@@ -16,6 +16,7 @@ from html_shortcuts import *
 from PIL import Image
 import pdfkit
 import mysql.connector
+import tempfile
 
 # Define the HTML template for the PDF report
 def generate_pdf_report(form_data):
@@ -26,16 +27,29 @@ def generate_pdf_report(form_data):
     for key, value in form_data.items():
         html += f"<p><strong>{key}:</strong> {value}</p>"
     st.markdown(html,unsafe_allow_html= True)
-    # Generate the PDF report from the HTML
-    pdf=pdfkit.from_string(html, 'form_data_report.pdf')
-    st.balloons()
 
-    st.download_button(
-        "⬇️ Download report",
-        data=pdf,
-        file_name="report.pdf",
-        mime="application/octet-stream",
-    )
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
+        generate_pdf_report(form_data)
+        tmp_file.write(pdfkit.from_file('form_data_report.html', False))
+    
+    st.success('PDF report generated successfully. You can download it below.')
+
+    # Provide a link to download the generated PDF
+    st.subheader('Download PDF Report')
+    st.markdown(f"[Download PDF Report]({tmp_file.name})", unsafe_allow_html=True)
+
+    # Generate the PDF report from the HTML
+    # pdf=pdfkit.from_string(html, 'form_data_report.pdf')
+    # st.balloons()
+
+    
+
+    # st.download_button(
+    #     "⬇️ Download report",
+    #     data=pdf,
+    #     file_name="report.pdf",
+    #     mime="application/octet-stream",
+    # )
 
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])

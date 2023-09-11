@@ -421,6 +421,20 @@ def e_button9(id,kpdf):
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
         template = env.get_template("template (1).html")
 
+        student = "ME"
+        course="Myself & I"
+        grade = 100
+        # period=perds
+        # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
+
+        html = template.render(
+            student=student,
+            course=course,
+            grade=f"{grade}/100",
+            date="11/9/2023",
+        )
+
+        pdf = pdfkit.from_string(html, False)
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")
 #     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]

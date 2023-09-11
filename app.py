@@ -423,6 +423,8 @@ def e_button9(id,kpdf):
 
         student = "ME"
         course="Myself & I"
+        desc=" sdas  dasf"
+        desc2=" sdas  dasf 22222"
         grade = 100
         # period=perds
         # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
@@ -434,8 +436,8 @@ def e_button9(id,kpdf):
             date="11/9/2023",
             stoxoi="enas",
             stars="2",
-            desc="enaduo enaduo",
-            desc2="test test",
+            desc=desc,
+            desc2=desc2,
             starss="3",
             starsss="5",
             starssss="1"

@@ -156,7 +156,7 @@ def e_button9(id,kpdf):
             st.write("Selected Year", year)
             st.subheader("Στόχοι")
             st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
-            q1_text = st.text_input("Γράψε ελεύθερο κείμενο", key="q1text")
+            q1_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q1text",height=300)
 
             q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;", ["1", "2", "3", "4", "5"], horizontal=True)
             
@@ -165,7 +165,7 @@ def e_button9(id,kpdf):
             st.text("""Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
             Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.""")
             
-            q2_text = st.text_input("Γράψε ελεύθερο κείμενο", key="q2text")
+            q2_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q2text",height=300)
             
             q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;", ["1", "2", "3", "4", "5"], horizontal=True)
             st.write('You selected ', q2_1_ans_radio)
@@ -177,7 +177,7 @@ def e_button9(id,kpdf):
             Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
             Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
             
-            q3_text = st.text_input("Γράψε ελεύθερο κείμενο", key="q3text")
+            q3_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q3text",height=300)
             q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;", ["1", "2", "3", "4", "5"], horizontal=True)
             st.write('You selected ', q3_ans_radio)
 
@@ -324,7 +324,7 @@ def e_button9(id,kpdf):
                 # q1_text=st.text_input(placeholder=row[4],key="q1edit_text")
                 # default_value=row[4]
                 # st.write(default_value)
-                q1_text = st.text_area("Enter Text:", value=row[4], key="q1edit_text")
+                q1_text = st.text_area("Enter Text:", value=row[4], key="q1edit_text",height=300)
                 st.write(row[5])
                 options = ["1", "2", "3", "4", "5"]
 
@@ -351,7 +351,7 @@ def e_button9(id,kpdf):
                 Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
                 Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
                 
-                q3_text=st.text_area("Γράψε ελεύθερο κείμενο",value=row[9],key="q3edit_text")
+                q3_text=st.text_area("Γράψε ελεύθερο κείμενο",value=row[9],key="q3edit_text",height=300)
                 
                 default_option_indexq3=options.index(str(row[10]))
 

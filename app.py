@@ -436,9 +436,9 @@ def e_button9(id,kpdf):
             stars="2",
             desc="enaduoenaduo",
             desc2="test test",
-            stars2="3",
-            stars3="5",
-            stars4="1"
+            starss="3",
+            starsss="5",
+            starssss="1"
             
         )
 

@@ -434,7 +434,7 @@ def e_button9(id,kpdf):
             date="11/9/2023",
             stoxoi="enas",
             stars="2",
-            desc="enaduoenaduo",
+            desc="enaduo enaduo",
             desc2="test test",
             starss="3",
             starsss="5",

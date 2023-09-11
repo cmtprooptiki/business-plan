@@ -423,7 +423,7 @@ def e_button9(id,kpdf):
         result = mycursor.fetchall()
         # for row in result:
         #     st.write(row)
-            # Extract values from the "return_id" column and store them in a list
+        # Extract values from the "return_id" column and store them in a list
         return_ids = [row[0] for row in result]
         return_creation_date=[row[2] for row in result]
         return_year=[row[3] for row in result]
@@ -486,6 +486,10 @@ def e_button9(id,kpdf):
                         file_name="diploma.pdf",
                         mime="application/octet-stream",
                     )
+                result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
+                st.write(result_val)
+                fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+                st.plotly_chart(fig,use_container_width=True)
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")
 #     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]

@@ -464,7 +464,7 @@ def e_button9(id,kpdf):
 
                 student = "ME"
                 course="Myself & I"
-                desc="hello there"
+                desc=row[4]
                 desc2=" sdas  dasf 22222"
                 grade = 100
                 # period=perds

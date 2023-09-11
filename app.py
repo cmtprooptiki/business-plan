@@ -19,6 +19,7 @@ import mysql.connector
 import tempfile
 # Define the HTML template for the PDF report
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+import plotly.io as pio
 
 
 
@@ -498,6 +499,12 @@ def e_button9(id,kpdf):
                 st.write(result_val)
                 fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
                 st.plotly_chart(fig,use_container_width=True)
+
+                # Render the figure as an image (e.g., PNG)
+                img_bytes = pio.to_image(fig, format="png")
+
+                # Store the image binary data in a variable
+                image_variable = io.BytesIO(img_bytes)
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")
 #     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]

@@ -468,13 +468,14 @@ def e_button9(id,kpdf):
                 # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
 
                 html = template.render(
-                    stoxoi=row[4],
-                    stars=row[5],
-                    desc=row[6],
-                    starss=row[7],
-                    starsss=row[8],
-                    desc2=row[9],
-                    starssss=row[10],
+                    year=row[3],
+                    q1_text=row[4],
+                    q1_ans_radio=row[5],
+                    q2_text=row[6],
+                    q2_1_ans_radio=row[7],
+                    q2_2_ans_radio=row[8],
+                    q3_text=row[9],
+                    q3_ans_radio=row[10],
                     
                 )
 

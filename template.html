@@ -21,50 +21,50 @@
   <h2>YEAR:{{year}}</h2>
   <h2>Στόχοι</h2>
   <h3>Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.</h3>
-  <input name="stoxoi" value={{stoxoi}}>
+  <input name="stoxoi" value={{q1_text}}>
   <h3>Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;</h3>
   <label>
-    <input type="radio" name="stars" value="1" {% if stars == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars" value="2" {% if stars == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars" value="3" {% if stars == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars" value="4" {% if stars == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars" value="5" {% if stars == "5" %}checked{% endif %}> 5
+    <input type="radio" name="stars" value="1" {% if q1_ans_radio == "1" %}checked{% endif %}> 1
+    <input type="radio" name="stars" value="2" {% if q1_ans_radio == "2" %}checked{% endif %}> 2
+    <input type="radio" name="stars" value="3" {% if q1_ans_radio == "3" %}checked{% endif %}> 3
+    <input type="radio" name="stars" value="4" {% if q1_ans_radio == "4" %}checked{% endif %}> 4
+    <input type="radio" name="stars" value="5" {% if q1_ans_radio == "5" %}checked{% endif %}> 5
   </label>
   <h1>Περιγραφή της Επιχείρησης</h1>
   <p>Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
     Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.</p>
   <h3>Γράψε ελεύθερο κείμενο</h3>
 
-  <input name="desc" type="textarea" value='{{desc}}' size="50" maxlength="4">
+  <input name="desc" type="textarea" value='{{q2_text}}' size="50" maxlength="4">
   <h3>Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;</h3>
   <label>
-    <input type="radio" name="stars2" value="1" {% if starss == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars2" value="2" {% if starss == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars2" value="3" {% if starss == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars2" value="4" {% if starss == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars2" value="5" {% if starss == "5" %}checked{% endif %}> 5
+    <input type="radio" name="stars2" value="1" {% if q2_1_ans_radio == "1" %}checked{% endif %}> 1
+    <input type="radio" name="stars2" value="2" {% if q2_1_ans_radio == "2" %}checked{% endif %}> 2
+    <input type="radio" name="stars2" value="3" {% if q2_1_ans_radio == "3" %}checked{% endif %}> 3
+    <input type="radio" name="stars2" value="4" {% if q2_1_ans_radio == "4" %}checked{% endif %}> 4
+    <input type="radio" name="stars2" value="5" {% if q2_1_ans_radio == "5" %}checked{% endif %}> 5
   </label>
   <h3>Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;</h3>
   <label>
-    <input type="radio" name="stars3" value="1" {% if starsss == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars3" value="2" {% if starsss == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars3" value="3" {% if starsss == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars3" value="4" {% if starsss == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars3" value="5" {% if starsss == "5" %}checked{% endif %}> 5
+    <input type="radio" name="stars3" value="1" {% if q2_2_ans_radio == "1" %}checked{% endif %}> 1
+    <input type="radio" name="stars3" value="2" {% if q2_2_ans_radio == "2" %}checked{% endif %}> 2
+    <input type="radio" name="stars3" value="3" {% if q2_2_ans_radio == "3" %}checked{% endif %}> 3
+    <input type="radio" name="stars3" value="4" {% if q2_2_ans_radio == "4" %}checked{% endif %}> 4
+    <input type="radio" name="stars3" value="5" {% if q2_2_ans_radio == "5" %}checked{% endif %}> 5
   </label>
   <h1>Nομική οντότητα</h1>
   <p>Αναφέρετε αν η επιχείρησή σας είναι μια εταιρεία μεμονωμένης ιδιοκτησίας, εταιρεία (τύπου) ή συνεργασία. Εάν χρειάζεται, ορίστε τον τύπο επιχείρησης (όπως είναι η βιομηχανία, το εμπόριο ή οι υπηρεσίες). 
     Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
     Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.</p>
   <h3>Γράψε ελεύθερο κείμενο</h3>
-  <input name="desc" type="text" value='{{desc2}}'>
+  <input name="desc" type="text" value='{{q3_text}}'>
   <h3>Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;</h3>
   <label>
-    <input type="radio" name="stars4" value="1" {% if starssss == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars4" value="2" {% if starssss == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars4" value="3" {% if starssss == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars4" value="4" {% if starssss == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars4" value="5" {% if starssss == "5" %}checked{% endif %}> 5
+    <input type="radio" name="stars4" value="1" {% if q3_ans_radio == "1" %}checked{% endif %}> 1
+    <input type="radio" name="stars4" value="2" {% if q3_ans_radio == "2" %}checked{% endif %}> 2
+    <input type="radio" name="stars4" value="3" {% if q3_ans_radio == "3" %}checked{% endif %}> 3
+    <input type="radio" name="stars4" value="4" {% if q3_ans_radio == "4" %}checked{% endif %}> 4
+    <input type="radio" name="stars4" value="5" {% if q3_ans_radio == "5" %}checked{% endif %}> 5
   </label>
   
 </div>

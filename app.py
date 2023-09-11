@@ -462,26 +462,19 @@ def e_button9(id,kpdf):
                 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
                 template = env.get_template("template.html")
 
-                student = "ME"
-                course="Myself & I"
-                desc=row[4]
-                desc2=" sdas  dasf 22222"
-                grade = 100
+                #desc=row[6]
+                #desc2=" sdas  dasf 22222"
                 # period=perds
                 # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
 
                 html = template.render(
-                    student=student,
-                    course=course,
-                    grade=f"{grade}/100",
-                    date="11/9/2023",
-                    stoxoi="enas",
-                    stars="2",
-                    desc=f"{desc}",
-                    desc2=desc2,
-                    starss="3",
-                    starsss="5",
-                    starssss="1"
+                    stoxoi=row[4],
+                    stars=row[5],
+                    desc=row[6],
+                    starss=row[7],
+                    starsss=row[8],
+                    desc2=row[9],
+                    starssss=row[10],
                     
                 )
 

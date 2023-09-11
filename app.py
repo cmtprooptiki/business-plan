@@ -450,44 +450,48 @@ def e_button9(id,kpdf):
         st.write(f"Selected Date: {selected_id}")
         st.write(f"Corresponding ID: {selected_id_value}")
 
+        if selected_id:
+                mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+                result = mycursor.fetchall()
+                for row in result:
+                    st.write(row)
 
 
 
 
+                env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+                template = env.get_template("template.html")
 
-        env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-        template = env.get_template("template.html")
+                student = "ME"
+                course="Myself & I"
+                desc="hello there"
+                desc2=" sdas  dasf 22222"
+                grade = 100
+                # period=perds
+                # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
 
-        student = "ME"
-        course="Myself & I"
-        desc="hello there"
-        desc2=" sdas  dasf 22222"
-        grade = 100
-        # period=perds
-        # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
+                html = template.render(
+                    student=student,
+                    course=course,
+                    grade=f"{grade}/100",
+                    date="11/9/2023",
+                    stoxoi="enas",
+                    stars="2",
+                    desc=f"{desc}",
+                    desc2=desc2,
+                    starss="3",
+                    starsss="5",
+                    starssss="1"
+                    
+                )
 
-        html = template.render(
-            student=student,
-            course=course,
-            grade=f"{grade}/100",
-            date="11/9/2023",
-            stoxoi="enas",
-            stars="2",
-            desc=f"{desc}",
-            desc2=desc2,
-            starss="3",
-            starsss="5",
-            starssss="1"
-            
-        )
-
-        pdf = pdfkit.from_string(html, False)
-        st.download_button(
-                "⬇️ Παραλαβή βεβαίωσης παρακολούθησης",
-                data=pdf,
-                file_name="diploma.pdf",
-                mime="application/octet-stream",
-            )
+                pdf = pdfkit.from_string(html, False)
+                st.download_button(
+                        "⬇️ Παραλαβή βεβαίωσης παρακολούθησης",
+                        data=pdf,
+                        file_name="diploma.pdf",
+                        mime="application/octet-stream",
+                    )
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")
 #     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]

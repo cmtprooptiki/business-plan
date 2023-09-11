@@ -423,7 +423,7 @@ def e_button9(id,kpdf):
 
         student = "ME"
         course="Myself & I"
-        desc=" sdas  dasf"
+        desc=" sdas&ampdasf"
         desc2=" sdas  dasf 22222"
         grade = 100
         # period=perds

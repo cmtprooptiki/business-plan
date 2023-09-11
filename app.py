@@ -435,6 +435,12 @@ def e_button9(id,kpdf):
         )
 
         pdf = pdfkit.from_string(html, False)
+        st.download_button(
+                "⬇️ Παραλαβή βεβαίωσης παρακολούθησης",
+                data=pdf,
+                file_name="diploma.pdf",
+                mime="application/octet-stream",
+            )
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")
 #     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]

@@ -17,6 +17,8 @@
   <h2 style="position: relative;display: flex;align-items: center;justify-content: center;text-align: center;bottom: 585px;" class="ft01">&#160;&#160; {{student}}</h2>
 </div> -->
 <div>
+  {{stars=1}}
+  {% if stars == 1 %}hello{% endif %}
   <h2>YEAR:{{year}}</h2>
   <h2>Στόχοι</h2>
   <h3>Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.</h3>
@@ -31,5 +33,23 @@
   </label>
   <h1>Περιγραφή της Επιχείρησης</h1>
   <h3></h3>
+  <h1>Student Information</h1>
+  <p>Name: {{ student }}</p>
+  <p>Course: {{ course }}</p>
+  <p>Grade: {{ grade }}</p>
+  <p>Date: {{ date }}</p>
+  <p>Stoxoi: {{ stoxoi }}</p>
+
+  {% if stars == "2" %}
+      <p>Stars: Two stars</p>
+  {% elif stars == "3" %}
+      <p>Stars: Three stars</p>
+  {% elif stars == "4" %}
+      <p>Stars: Four stars</p>
+  {% elif stars == "5" %}
+      <p>Stars: Five stars</p>
+  {% else %}
+      <p>Stars: Not rated</p>
+  {% endif %}
 </div>
 </body>

@@ -18,7 +18,7 @@ import pdfkit
 import mysql.connector
 import tempfile
 # Define the HTML template for the PDF report
-
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 
 
 
@@ -131,7 +131,7 @@ def e_button9(id,kpdf):
     st.title("Edit Days MAC off")
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete"))
+    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
     mycursor = conn.cursor()
     st.write("Connection Established")
 
@@ -417,8 +417,9 @@ def e_button9(id,kpdf):
         #     conn.commit()
         #     st.success("Record Updated Successfully")
         #     st.experimental_rerun()
-
-
+    if(option=="export"):
+        env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+        template = env.get_template("template(1).html")
 
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")

@@ -419,7 +419,7 @@ def e_button9(id,kpdf):
         #     st.experimental_rerun()
     if(option=="export"):
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-        template = env.get_template("template (1).html")
+        template = env.get_template("template.html")
 
         student = "ME"
         course="Myself & I"
@@ -432,6 +432,8 @@ def e_button9(id,kpdf):
             course=course,
             grade=f"{grade}/100",
             date="11/9/2023",
+            stoxoi="enas",
+            stars=1
         )
 
         pdf = pdfkit.from_string(html, False)

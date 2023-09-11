@@ -433,7 +433,7 @@ def e_button9(id,kpdf):
             grade=f"{grade}/100",
             date="11/9/2023",
             stoxoi="enas",
-            stars=f"{1}"
+            stars=f"{2}"
         )
 
         pdf = pdfkit.from_string(html, False)

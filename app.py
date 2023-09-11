@@ -456,9 +456,27 @@ def e_button9(id,kpdf):
                 result = mycursor.fetchall()
                 for row in result:
                     st.write(row)
+                ######
+                year=row[3]
+                q1_text=row[4]
+                q1_ans_radio1=row[5]
+                q2_text=row[6]
+                q2_1_ans_radio2=row[7]
+                q2_2_ans_radio3=row[8]
+                q3_text=row[9]
+                q3_ans_radio4=row[10]
+                result_val=((int(q1_ans_radio1)+int(q2_1_ans_radio2)+int(q2_2_ans_radio3)+int(q3_ans_radio4))/4)*10
+                #st.write(result_val)
+                fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+                #st.plotly_chart(fig,use_container_width=True)
 
+                # Render the figure as an image (e.g., PNG)
+                img_bytes = pio.to_image(fig, format="png")
 
-
+                # Store the image binary data in a variable
+                image_variable = io.BytesIO(img_bytes)
+                image_base64 = base64.b64encode(image_variable.getvalue()).decode()
+                #####
 
                 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
                 template = env.get_template("template.html")
@@ -477,7 +495,7 @@ def e_button9(id,kpdf):
                     q2_2_ans_radio=row[8],
                     q3_text=row[9],
                     q3_ans_radio=row[10],
-                    
+                    image_base64=image_base64
                 )
 
                 pdf = pdfkit.from_string(html, False)
@@ -487,24 +505,7 @@ def e_button9(id,kpdf):
                         file_name="diploma.pdf",
                         mime="application/octet-stream",
                     )
-                year=row[3]
-                q1_text=row[4]
-                q1_ans_radio1=row[5]
-                q2_text=row[6]
-                q2_1_ans_radio2=row[7]
-                q2_2_ans_radio3=row[8]
-                q3_text=row[9]
-                q3_ans_radio4=row[10]
-                result_val=((int(q1_ans_radio1)+int(q2_1_ans_radio2)+int(q2_2_ans_radio3)+int(q3_ans_radio4))/4)*10
-                st.write(result_val)
-                fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-                st.plotly_chart(fig,use_container_width=True)
-
-                # Render the figure as an image (e.g., PNG)
-                img_bytes = pio.to_image(fig, format="png")
-
-                # Store the image binary data in a variable
-                image_variable = io.BytesIO(img_bytes)
+                
 # def e_button8(id,kpdf,js_code,css_code):
 #     st.subheader("Αναλυτικός Πίνακας Δεικτών")
 #     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]

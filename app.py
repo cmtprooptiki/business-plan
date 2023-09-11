@@ -324,7 +324,7 @@ def e_button9(id,kpdf):
                 # q1_text=st.text_input(placeholder=row[4],key="q1edit_text")
                 # default_value=row[4]
                 # st.write(default_value)
-                q1_text = st.text_input("Enter Text:", value=row[4], key="q1edit_text")
+                q1_text = st.text_area("Enter Text:", value=row[4], key="q1edit_text")
                 st.write(row[5])
                 options = ["1", "2", "3", "4", "5"]
 
@@ -351,7 +351,7 @@ def e_button9(id,kpdf):
                 Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
                 Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
                 
-                q3_text=st.text_input("Γράψε ελεύθερο κείμενο",value=row[9],key="q3edit_text")
+                q3_text=st.text_area("Γράψε ελεύθερο κείμενο",value=row[9],key="q3edit_text")
                 
                 default_option_indexq3=options.index(str(row[10]))
 

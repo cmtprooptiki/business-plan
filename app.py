@@ -515,17 +515,17 @@ def e_button9(id,kpdf):
 
 
             st.write("button click update")
-            sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
-            val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))
+            sql="update forms set title=%s,q1_text=%s,q1_1_ans_radio=%s,q1_2_ans_radio=%s,q1_3_ans_radio=%s,q1_4_ans_radio=%s,q1_5_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q2_3_ans_radio=%s,q2_4_ans_radio=%s,q3_text=%s,q3_1_ans_radio=%s,q3_2_ans_radio=%s,q3_3_ans_radio=%s,q4_text=%s,q4_1_ans_radio=%s,q4_2_ans_radio=%s,q5_text=%s,q5_1_ans_radio=%s,q5_2_ans_radio=%s,q5_3_ans_radio=%s where id=%s"
+            val=(title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,str(selected_id_value))
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Update Successfully!!!")
             st.title("Result")
             st.text("Ποσοστό Ετοιμότητας")
-            result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
-            st.write(result_val)
-            fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-            st.plotly_chart(fig,use_container_width=True)
+            # result_val=((int(q1_1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
+            # st.write(result_val)
+            # fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+            # st.plotly_chart(fig,use_container_width=True)
 
 
 

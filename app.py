@@ -128,13 +128,10 @@ def main():
 
 def e_button9(id,kpdf):
     conn = init_connection()
-    st.write("work on MACOS")
-    st.title("Edit Days MAC off")
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
     option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
     mycursor = conn.cursor()
-    st.write("Connection Established")
 
     if option == "Create":
         st.subheader("Δημιουργία Νέου Business Plan")

@@ -200,66 +200,7 @@ def e_button9(id,kpdf):
             fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
             st.plotly_chart(fig, use_container_width=True)
     ####################################################################
-    ############ADMINISTRATION PART EDIT ##############################
-#     conn = init_connection()
-#     st.write("work on MACOS")
-#     st.title("Edit Days MAC off")
-#     # id=st.number_input("Enter ID",userid)
-#     # total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)
-#     option=st.sidebar.selectbox("Select an Operation",("Create","Read","Update","Delete"))
-#     mycursor=conn.cursor()
-#     st.write("Connection Established")
-#     if option=="Create":
-#         st.subheader("Create a Record")
-        
-#         year=st.selectbox("Select year",["2021","2022","2023","2024"])
-#         st.write("Selected Year",year)
-#         st.subheader("Στόχοι")
-#         st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
-#         q1_text=st.text_input("Γράψε ελεύθερο κείμενο",key="q1text")
 
-#         q1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;",
-#         ["1", "2", "3","4","5"])
-#         st.title("Περιγραφή της Επιχείρησης")
-
-#         st.text("""Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 
-#         Περιγράψτε ειδικές δυνατότητες που θα κάνουν την επιχείρησή σας ελκυστική για πιθανούς πελάτες και θα προσδιορίσουν τους κύριους στόχους της εταιρείας σας.""")
-        
-#         q2_text=st.text_input("Γράψε ελεύθερο κείμενο",key="q2text")
-        
-#         q2_1_ans_radio = st.radio("Έχετε περιγράψει επαρκώς με τι ασχολείται η επιχείρησή σας;",
-#         ["1", "2", "3","4","5"])
-#         st.write('You selected ',q2_1_ans_radio)
-#         q2_2_ans_radio = st.radio("Έχετε περιγράψει επαρκώς τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη;",
-#         ["1", "2", "3","4","5"])
-#         st.write('You selected ',q2_2_ans_radio)
-
-#         st.subheader("Nομική οντότητα")
-#         st.text("""Αναφέρετε αν η επιχείρησή σας είναι μια εταιρεία μεμονωμένης ιδιοκτησίας, εταιρεία (τύπου) ή συνεργασία. Εάν χρειάζεται, ορίστε τον τύπο επιχείρησης (όπως είναι η βιομηχανία, το εμπόριο ή οι υπηρεσίες). 
-# Εάν απαιτούνται άδειες χρήσης, περιγράψτε τις απαιτήσεις για την απόκτηση τους και το πού βρίσκεστε σε αυτή τη διαδικασία.
-# Εάν δεν έχετε ήδη δηλώσει εάν πρόκειται για μια νέα ανεξάρτητη επιχείρηση, μια εξαγορά, ένα franchise ή μια επέκταση πρώην επιχείρησης, συμπεριλάβετε το εδώ.""")
-        
-#         q3_text=st.text_input("Γράψε ελεύθερο κείμενο",key="q3text")
-#         q3_ans_radio = st.radio("Έχετε ορίσει επαρκώς την νομική οντότητα της επιχείρησής σας;",
-#         ["1", "2", "3","4","5"])
-#         st.write('You selected ',q3_ans_radio)
-
-   
-#         # st.text('Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;')
-#         # q1_answer=st.text_input("Enter Email")
-#         if st.button("Create"):
-#             sql= "insert into forms(koispe_id,creation_date,year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio) values(%s,now(),%s,%s,%s,%s,%s,%s,%s,%s)"
-#             val= (str(id),year,q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio)
-#             mycursor.execute(sql,val)
-#             conn.commit()
-#             st.success("Record Created Successfully!!!")
-#             st.title("Result")
-#             st.text("Ποσοστό Ετοιμότητας")
-#             result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
-#             st.write(result_val)
-#             fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-#             st.plotly_chart(fig,use_container_width=True)
-#############################end old##################################################
            
 
     if option=="Read":
@@ -391,25 +332,7 @@ def e_button9(id,kpdf):
             fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
             st.plotly_chart(fig,use_container_width=True)
 
-        # if st.button("Update"):
-        #     st.write("button click update")
-        #     sql="update forms set q1_text=%s,q1_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q3_text=%s,q3_ans_radio=%s where id=%s"
-        #     val=(q1_text,q1_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q3_text,q3_ans_radio,str(selected_id_value))
-        #     mycursor.execute(sql,val)
-        #     conn.commit()
-        #     st.success("Record Update Successfully!!!")
-        #     st.title("Result")
-        #     st.text("Ποσοστό Ετοιμότητας")
-        #     result_val=((int(q1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
-        #     st.write(result_val)
-        #     fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-        #     st.plotly_chart(fig,use_container_width=True)
-        
-        # with conn.cursor() as cur:
-        #     cur.execute(sql,val)
-        #     conn.commit()
-        #     st.success("Record Updated Successfully")
-        #     st.experimental_rerun()
+
 
     if(option=="Delete"):
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
@@ -539,63 +462,7 @@ def e_button9(id,kpdf):
                         file_name="diploma.pdf",
                         mime="application/octet-stream",
                     )
-                
-# def e_button8(id,kpdf,js_code,css_code):
-#     st.subheader("Αναλυτικός Πίνακας Δεικτών")
-#     kpdf_filtered=kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])]
-#     # st.write(kpdf.loc[:, ~kpdf.columns.isin(['D36_overal', 'D18_lipsi','D18_eko','D18_general','D22_23_g','D40_metaboli'])])
-#    # Get the current column names in a list
-#     current_cols = kpdf_filtered.columns.tolist()
-
-#     # Create a dictionary to map old column names to new column names
-#     new_cols = {}
-#     found_year = False
-
-#     # Enumerate through the current column names and rename them accordingly
-#     for old_col in current_cols:
-#         if old_col == 'year':
-#             found_year = True
-#             new_cols[old_col] = old_col  # Keep 'year' column unchanged
-#         elif found_year:
-#             new_cols[old_col] = f'Δ{len(new_cols) - 1}'  # Start enumeration from 1 after 'year'
-#         else:
-#             new_cols[old_col] = old_col  # Keep columns before 'year' unchanged
-
-#     # Rename the columns using the .rename() method
-#     kpdf_filtered.rename(columns=new_cols, inplace=True)
-
-#     st.write(kpdf_filtered)
-#     csv = convert_df(kpdf_filtered)
-
-#     st.download_button(
-#     label="Λήψη Πίνακα Δεικτών",
-#     data=csv,
-#     file_name='kpis_table.csv',
-#     mime='text/csv',
-#     )
-
-
-# def display_pinkas_submenu(id):
-#     st.subheader("pinkas Submenu")
-#     st.write("Content for pinkas submenu")
-    
-#     response = json.loads(requests.get("https://cmtprooptiki.gr/api/getemploymentcmt.json").text)
-#     df=pd.json_normalize(response, max_level=2)
-#     df['year'] = df['year'].apply(format_year)
-
-#     df1=df.groupby(['koispe_id','year'])['profile.eko.sum'].sum()
-#     dftest=pd.DataFrame(df1).reset_index()
-    
-#     st.write(df)
-#     dffilter=dftest[dftest['koispe_id']==int(id)]
-#     # dffilter['year'] = dffilter['year'].apply(format_year)
-#     # dffilter
-#     # data_canada = px.data.gapminder().query("country == 'Canada'")
-#     fig = px.bar(dffilter, x=dffilter['year'].astype(str), y='profile.eko.sum',orientation='v')
-#     st.plotly_chart(fig)
-    
-    
-    # Add content for pinkas submenu here
+     
 
 
 def get_url_params():

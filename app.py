@@ -373,6 +373,7 @@ def e_button9(id,kpdf):
             st.write(row[1],row[2],row[3])
            
             if st.button("remove"):
+                st.error("are you sure?")
                 # mycursor.execute("delete from forms where id="+str(row[0])+"and koispe_id="+str(row[1])+" and creation_date="+str(row[2])+"")
                 st.write("Done")
     if(option=="export"):

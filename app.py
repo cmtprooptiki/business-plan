@@ -390,9 +390,11 @@ def e_button9(id,kpdf):
                 st.subheader("Έχει αναφερθεί ξεκάθαρα η νομική οντότητα του ΚοιΣΠΕ;")
                 q1_2_ans_radio = st.radio("",["ΝΑΙ","ΟΧΙ"],horizontal=True,key="q1_2_ans_radio")
                 st.subheader("Η απάντησή σας περιγράφει επαρκώς την αποστολή, τις αξίες και τους κοινωνικούς στόχους του ΚοιΣΠΕ;")
-                q1_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q1_3_ans_radio")
+                default_option_indexq1_3 = options.index(str(row[7]))
+                q1_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_3 ,horizontal=True,key="q1_3_ans_radio")
                 st.subheader("Η απάντησή σας περιγράφει επαρκώς τις έως τώρα επιχειρηματικές δράσεις;")
-                q1_4_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q1_4_ans_radio")
+                default_option_indexq1_4 = options.index(str(row[8]))
+                q1_4_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_4 ,horizontal=True,key="q1_4_ans_radio")
                 st.subheader("Παρατίθενται αριθμητικά στοιχεία εργαζομένων και κύκλοι εργασιών τριετίας;")
                 q1_5_ans_radio = st.radio("",["ΝΑΙ","ΟΧΙ"],horizontal=True,key="q1_5_ans_radio")
                 ###QUESTION 2
@@ -403,16 +405,19 @@ def e_button9(id,kpdf):
                 Αναφερθείτε σε τυχόν αντίστοιχη εμπειρία άλλων Συνεταιρισμών στον ίδιο τομέα.
                 Αξιολογήστε το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς.
                 """)
-                q2_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q2text",height=300)
+                q2_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q2text",value=row[10],height=300)
 
                 st.subheader("Η απάντησή σας αναλύει επαρκώς την αγορά-στόχο και το μέγεθός της;")
-                q2_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q2_1_ans_radio")
+                default_option_indexq2_1 = options.index(str(row[11]))
+                q2_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_1, horizontal=True,key="q2_1_ans_radio")
                 st.write('You selected ', q2_1_ans_radio)
                 st.subheader("Η απάντησή σας προσδιορίζει επαρκώς το κοινό-στόχο και τις ανάγκες του;")
-                q2_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q2_2_ans_radio")
+                default_option_indexq2_2 = options.index(str(row[12]))
+                q2_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_2, horizontal=True,key="q2_2_ans_radio")
                 st.write('You selected ', q2_2_ans_radio)
                 st.subheader("Στην απάντησή σας αναφέρετε εάν υπάρχουν ή όχι άλλοι Συνεταιρισμοί με αντίστοιχη εμπειρία;")
-                q2_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q2_3_ans_radio")
+                default_option_indexq2_3 = options.index(str(row[13]))
+                q2_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_3,horizontal=True,key="q2_3_ans_radio")
                 st.write('You selected ', q2_3_ans_radio)
                 st.subheader("Έχετε αξιολογήσει το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς;")
                 q2_4_ans_radio = st.radio("",  ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q2_4_ans_radio")
@@ -423,15 +428,18 @@ def e_button9(id,kpdf):
                 Εξηγήστε πώς οι προσφορές αυτές (προϊόντα ή υπηρεσίες) ανταποκρίνονται στις ανάγκες της αγοράς.
                 Επισημάνετε τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε.
                 """)
-                q3_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q3text",height=300)
+                q3_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q3text",value=row[15],height=300)
                 st.subheader("Έχετε αναφέρει τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο Συνεταιρισμός σας;")
+                
                 q3_1_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q3_1_ans_radio")
                 st.write('You selected ', q3_1_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;")
-                q3_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q3_2_ans_radio")
+                default_option_indexq3_2 = options.index(str(row[17]))
+                q3_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_2,horizontal=True,key="q3_2_ans_radio")
                 st.write('You selected ', q3_2_ans_radio)
                 st.subheader("Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;")
-                q3_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q3_3_ans_radio")
+                default_option_indexq3_3 = options.index(str(row[18]))
+                q3_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_3,horizontal=True,key="q3_3_ans_radio")
                 st.write('You selected ', q3_3_ans_radio)
                 
                 

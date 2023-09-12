@@ -411,7 +411,7 @@ def e_button9(id,kpdf):
         #     st.success("Record Updated Successfully")
         #     st.experimental_rerun()
 
-    if(option=="delete"):
+    if(option=="Delete"):
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
 

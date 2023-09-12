@@ -374,7 +374,7 @@ def e_button9(id,kpdf):
                     st.write(row)
 
                 options = ["1", "2", "3", "4", "5","6","7","8","9","10"]
-
+                option2=["ΝΑΙ","ΟΧΙ"]
                 st.subheader("EDIT FORM")
                 title=st.text_area("Τίτλος επιχειρηματικής ιδέας",key="title",value=row[3])
                 st.title("Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)")
@@ -388,7 +388,8 @@ def e_button9(id,kpdf):
                 default_option_indexq1_1 = options.index(str(row[5]))
                 q1_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_1 ,horizontal=True,key="q1_1_ans_radio")
                 st.subheader("Έχει αναφερθεί ξεκάθαρα η νομική οντότητα του ΚοιΣΠΕ;")
-                q1_2_ans_radio = st.radio("",["ΝΑΙ","ΟΧΙ"],horizontal=True,key="q1_2_ans_radio")
+                default_option_indexq1_2 = option2.index(str(row[6]))
+                q1_2_ans_radio = st.radio("",["ΝΑΙ","ΟΧΙ"],default_option_indexq1_2,horizontal=True,key="q1_2_ans_radio")
                 st.subheader("Η απάντησή σας περιγράφει επαρκώς την αποστολή, τις αξίες και τους κοινωνικούς στόχους του ΚοιΣΠΕ;")
                 default_option_indexq1_3 = options.index(str(row[7]))
                 q1_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_3 ,horizontal=True,key="q1_3_ans_radio")
@@ -467,7 +468,6 @@ def e_button9(id,kpdf):
                 q5_1_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q5_1_ans_radio")
                 st.write('You selected ', q5_1_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
-                option2=["ΝΑΙ","ΟΧΙ"]
                 default_option_indexq5_2 = option2.index(str(row[24]))
                 q5_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"],default_option_indexq5_2, horizontal=True,key="q5_2_ans_radio")
                 st.write('You selected ', q5_2_ans_radio)

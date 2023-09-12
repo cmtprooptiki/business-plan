@@ -450,7 +450,7 @@ def e_button9(id,kpdf):
             result = mycursor.fetchall()
             for row in result:
                 st.write(row)
-            st.write(row[2])
+            st.write(row[1],row[2],row[3])
         
     if(option=="export"):
 

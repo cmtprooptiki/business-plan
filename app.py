@@ -138,19 +138,20 @@ def e_button9(id,kpdf):
         
         # Encapsulate the form using st.form
         with st.form(key="create_form"):
-            year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
-            colors = ['#618abb','#00235e','#F0894F']
+            # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
+            # colors = ['#618abb','#00235e','#F0894F']
 
-            columns = ['D9', 'D10', 'D11']
-            # kpdf_selected = kpdf[columns]
-            # Create the stacked bar plot using Plotly
-            legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
-            fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
-            # Show the plot
-            st.plotly_chart(fig, use_container_width=True)
+            # columns = ['D9', 'D10', 'D11']
+            # # kpdf_selected = kpdf[columns]
+            # # Create the stacked bar plot using Plotly
+            # legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
+            # fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+            # # Show the plot
+            # st.plotly_chart(fig, use_container_width=True)
 
 
-            st.write("Selected Year", year)
+            # st.write("Selected Year", year)
+            st.text_area("Τίτλος επιχειρηματικής ιδέας",key="title")
             st.subheader("Στόχοι")
             st.text('Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.')
             q1_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q1text",height=300)

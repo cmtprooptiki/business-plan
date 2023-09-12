@@ -377,7 +377,7 @@ def e_button9(id,kpdf):
                 # mycursor.execute("delete from forms where id="+str(row[0])+"and koispe_id="+str(row[1])+" and creation_date="+str(row[2])+"")
                 if(st.button("yes")):
                     st.write("Done")
-                    mycursor.execute("delete from forms where id="+str(row[0])+"and koispe_id="+str(row[1])+" and creation_date="+str(row[2])+"")
+                    mycursor.execute("delete from forms where id="+str(row[0])+"and koispe_id="+str(row[1])+"")
                 elif(st.button("No")):
                     pass
     if(option=="export"):

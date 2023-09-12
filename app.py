@@ -210,6 +210,17 @@ def e_button9(id,kpdf):
             # Submit button inside the form
             submit_button = st.form_submit_button("Submit")
 
+            st.tile("Ανάλυση επιχειρηματικής ιδέας")
+            st.subheader("""Κείμενο Επεξήγησης	Περιγράψτε τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό.
+            Σχολιάστε την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας.
+            """)
+            q4_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q4text",height=300)
+            st.subheader("Στην απάντησή σας έχετε περιγράψει επαρκώς  τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό;")
+            q4_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q4_1_ans_radio")
+            st.write('You selected ', q4_1_ans_radio)
+            st.subheader("Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας;")
+            q4_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q4_2_ans_radio")
+            st.write('You selected ', q4_2_ans_radio)
         # Check if the submit button is clicked
         if submit_button:
             # Call the create_record function to insert the data into the database

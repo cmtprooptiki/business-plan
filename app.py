@@ -467,14 +467,14 @@ def e_button9(id,kpdf):
                 q5_1_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q5_1_ans_radio")
                 st.write('You selected ', q5_1_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
-                q5_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q5_2_ans_radio")
+                q5_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"],str(row[24]), horizontal=True,key="q5_2_ans_radio")
                 st.write('You selected ', q5_2_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
                 default_option_indexq5_3 = options.index(str(row[25]))
                 q5_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq5_3, horizontal=True,key="q5_3_ans_radio")
                 st.write('You selected ', q5_3_ans_radio)
                 # Submit button inside the form
-                submit_button = st.form_submit_button("Submit")
+                # submit_button = st.form_submit_button("Submit")
                 # Check if the submit button is clicked
                 # if submit_button:
                 #     # Call the create_record function to insert the data into the database

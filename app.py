@@ -446,10 +446,11 @@ def e_button9(id,kpdf):
 
 
         if selected_id:
-                mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
-                result = mycursor.fetchall()
-                for row in result:
-                    st.write(row)
+            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+            result = mycursor.fetchall()
+            for row in result:
+                st.write(row)
+            st.write(row[2])
         
     if(option=="export"):
 

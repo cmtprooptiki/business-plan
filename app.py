@@ -201,11 +201,11 @@ def e_button9(id,kpdf):
             st.subheader("Έχετε αναφέρει τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο Συνεταιρισμός σας;")
             q3_1_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q3_1_ans_radio")
             st.write('You selected ', q3_1_ans_radio)
-            st.header("Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;")
+            st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;")
             q3_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q3_2_ans_radio")
             st.write('You selected ', q3_2_ans_radio)
             st.subheader("Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;")
-            q3_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q3_2_ans_radio")
+            q3_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q3_3_ans_radio")
             st.write('You selected ', q3_3_ans_radio)
             # Submit button inside the form
             submit_button = st.form_submit_button("Submit")

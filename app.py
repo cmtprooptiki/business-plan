@@ -467,7 +467,9 @@ def e_button9(id,kpdf):
                 q5_1_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q5_1_ans_radio")
                 st.write('You selected ', q5_1_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
-                q5_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"],str(row[24]), horizontal=True,key="q5_2_ans_radio")
+                option2=["ΝΑΙ","ΟΧΙ"]
+                default_option_indexq5_2 = option2.index(str(row[24]))
+                q5_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"],default_option_indexq5_2, horizontal=True,key="q5_2_ans_radio")
                 st.write('You selected ', q5_2_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
                 default_option_indexq5_3 = options.index(str(row[25]))

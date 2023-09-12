@@ -48,7 +48,7 @@ def main():
     
     #st.write(home())
     st.set_page_config(
-        page_title="Koispe Dashboard",
+        page_title="Business Plan",
         page_icon="✅",
         layout="wide",
     )    
@@ -137,7 +137,7 @@ def e_button9(id,kpdf):
     st.write("Connection Established")
 
     if option == "Create":
-        st.subheader("Create a Record")
+        st.subheader("Δημιουργία Νέου Business Plan")
         
         # Encapsulate the form using st.form
         with st.form(key="create_form"):
@@ -217,8 +217,8 @@ def e_button9(id,kpdf):
         st.write(str(return_ids))
 
     if option=="Update":
-        st.subheader("Edit Submitted Forms")
-        st.write("Select Form for editing")
+        st.subheader("Επεξεργασία καταχωρημένων Business Plan")
+        st.write("Επέλεξε το Business Plan που θέλεις να επεξεργαστείς:")
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
         # for row in result:

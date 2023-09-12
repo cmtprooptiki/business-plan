@@ -208,7 +208,7 @@ def e_button9(id,kpdf):
             q3_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q3_3_ans_radio")
             st.write('You selected ', q3_3_ans_radio)
             # Submit button inside the form
-            submit_button = st.form_submit_button("Submit")
+            
 
             st.tile("Ανάλυση επιχειρηματικής ιδέας")
             st.subheader("""Κείμενο Επεξήγησης	Περιγράψτε τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό.
@@ -221,6 +221,9 @@ def e_button9(id,kpdf):
             st.subheader("Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας;")
             q4_2_ans_radio = st.radio("", ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q4_2_ans_radio")
             st.write('You selected ', q4_2_ans_radio)
+
+
+            submit_button = st.form_submit_button("Submit")
         # Check if the submit button is clicked
         if submit_button:
             # Call the create_record function to insert the data into the database

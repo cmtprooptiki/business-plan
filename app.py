@@ -189,7 +189,7 @@ def e_button9(id,kpdf):
             q2_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q2_3_ans_radio")
             st.write('You selected ', q2_3_ans_radio)
             st.subheader("Έχετε αξιολογήσει το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς;")
-            q2_4_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["1", "2", "3", "4", "5","6","7","8","9","10"], horizontal=True,key="q2_4_ans_radio")
+            q2_4_ans_radio = st.radio("",  ["ΝΑΙ","ΟΧΙ"], horizontal=True,key="q2_4_ans_radio")
             st.write('You selected ', q2_4_ans_radio)
             
             st.subheader("Nομική οντότητα")

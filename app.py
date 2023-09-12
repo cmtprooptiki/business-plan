@@ -257,7 +257,13 @@ def e_button9(id,kpdf):
             # Calculate and display the result
             st.title("Result")
             st.text("Ποσοστό Ετοιμότητας")
-            result_val = ((int(q1_ans_radio) + int(q2_1_ans_radio) + int(q2_2_ans_radio) + int(q3_ans_radio)) / 4) * 10
+            #metraopi nai oxi apanstise se 10 kai 0 antistoixa
+            if q1_2_ans_radio=='ΝΑΙ':
+                q1_2_ans_radio='10'
+            else:
+                q1_2_ans_radio='0'
+            st.write(q1_2_ans_radio)    
+            result_val = ((int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio)) / 4) * 10
             st.write(result_val)
             fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
             st.plotly_chart(fig, use_container_width=True)

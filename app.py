@@ -56,6 +56,8 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
     return mycursor
 
 def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
+    st.write(title)
+    st.write(q6_text)
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("prin h forma ginei update")
@@ -65,7 +67,7 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
     # mycursor.execute(sql, val)
     # conn.commit()
 
-
+# update forms set q6_text='test' where title='cr7'
     st.write("button click update")
     sql="update forms set q6_text=%s where title=%s"
     val=(title,q6_text)
@@ -283,14 +285,17 @@ def form2(title):
         # For example:
         # q = st.text_input("Enter your address")
         # age = st.text_input("Enter your phone number")
-        st.write(title)
         submit_button2 = st.form_submit_button("Submit Form 2")
 
         if submit_button2:
+            st.write(title)
+
             # Process Form 2 data here and save it to the same database table
             st.write('aposvesi ypologismo gia erotisi 6')
             st.write(q6_1_calc)
-            mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+            st.write(q6_text)
+            st.write(q6_1_ans_num)
+            # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
             st.success("Form 2 submitted successfully!")
 
 

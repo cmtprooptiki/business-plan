@@ -68,6 +68,7 @@ def calculate_percentage():
 
 
 def form1():
+    st.title("FORM1")
     st.subheader("Δημιουργία Νέου Business Plan")
         
     # Encapsulate the form using st.form
@@ -184,7 +185,7 @@ def form1():
                form2(title)
 
 def form2(title):
-    
+
     with st.form("Form 2"):
         st.title("Form 2")
         st.write("o titlos tis formas1")

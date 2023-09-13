@@ -59,11 +59,19 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("prin h forma ginei update")
-    st.write(title)
-    sql ="update  forms (q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, %s,%s) where title={title}"
-    val = (q6_text,float(q6_1_ans_num),float(q6_1_calc))
-    mycursor.execute(sql, val)
+    # st.write(title)
+    # sql ="update  forms (q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, %s,%s) where title={title}"
+    # val = (q6_text,float(q6_1_ans_num),float(q6_1_calc))
+    # mycursor.execute(sql, val)
+    # conn.commit()
+
+
+    st.write("button click update")
+    sql="update forms set q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s where title=%s"
+    val=(title,q6_text,q6_1_ans_num,q6_1_calc)
+    mycursor.execute(sql,val)
     conn.commit()
+
     return mycursor
 
 

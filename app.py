@@ -272,7 +272,9 @@ def form2(title):
         q6_1_ans_num=st.number_input('Kόστος:')
         st.write('The current number is ', q6_1_ans_num)
         q6_1_calc=q6_1_ans_num*0.04
-        st.write('Ετήσια απόσβεση:',q6_1_calc)
+        calc6=st.button("Υπολογισμός Ετήσιας απόσβεσης")
+        if calc6:
+            st.write('Ετήσια απόσβεση:',q6_1_calc)
 
         # Add input fields for Form 2
         # For example:

@@ -42,26 +42,26 @@ def create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2
     conn.commit()
     return mycursor
 
-def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age):
+def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("inside record1")
     st.write(id)
     # q="test"
     # age="testage"
-    sql = "INSERT INTO forms (koispe_id, creation_date,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
-    val = (str(id),title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age)
+    sql = "INSERT INTO forms (koispe_id, creation_date,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (str(id),title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
     mycursor.execute(sql, val)
     conn.commit()
     return mycursor
 
-def update_record(title,q,age):
+def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("prin h forma ginei update")
     st.write(title)
-    sql ="update  forms (q, age) VALUES (%s, %s) where title={title}"
-    val = (q,age)
+    sql ="update  forms (q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, %s,%s) where title={title}"
+    val = (q6_text,q6_1_ans_num,q6_1_calc)
     mycursor.execute(sql, val)
     conn.commit()
     return mycursor
@@ -178,8 +178,8 @@ def form1(id):
         st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
         q5_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
         st.write('You selected ', q5_3_ans_radio)
-        q=""
-        age=""
+        # q=""
+        # age=""
         # Submit button inside the form
         submit_button = st.form_submit_button("Submit")
     # Check if the submit button is clicked
@@ -237,38 +237,53 @@ def form1(id):
         fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
         st.plotly_chart(fig, use_container_width=True)
 
-        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age)
+        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
         # Display a success message
         st.success("Record Created Successfully!!!")
-        if int(result_val) > 50:
-            st.write("Ειστε ετοιμοι να προχωρίσεται στην Φόρμα 2")
+        if int(result_val) >= 70:
+            st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
             form2(title)
-        elif int(result_val) <50:
-            st.write("Δεν ειστε έτοιμοι ακόμα να συμπλήρωσετε την Φόρμα.")
+        elif (int(result_val) >= 60) and (int(result_val)<=70):
+            st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
             form2(title)
         else:
-            st.write("Ειστε ετοιμοι να προχωρίσεται στην Φόρμα 2")
+            st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
             form2(title)
+        
 
 
 
 def form2(title):
 
     with st.form("Form 2"):
-        st.title("Form 2")
-        st.write("o titlos tis formas1")
+        st.title("Τμήμα Β")
+        st.title("Κόστος Εκκίνησης")
+
+        st.text("""Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
+                Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).""")
         st.write(title)
+
+        #QUESTION 6
+        st.title("Κτίρια & Υποδομές")
+        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης")
+
+        q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
         
+        q6_1_ans_num=st.number_input('Kόστος:')
+        st.write('The current number is ', q6_1_ans_num)
+        q6_1_calc=q6_1_ans_num*0.04
+        st.write('Ετήσια απόσβεση:',q6_1_calc)
+
         # Add input fields for Form 2
         # For example:
-        q = st.text_input("Enter your address")
-        age = st.text_input("Enter your phone number")
+        # q = st.text_input("Enter your address")
+        # age = st.text_input("Enter your phone number")
         st.write(title)
         submit_button2 = st.form_submit_button("Submit Form 2")
 
         if submit_button2:
             # Process Form 2 data here and save it to the same database table
-            mycursor=update_record(title,q,age)
+            mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
             st.success("Form 2 submitted successfully!")
 
 

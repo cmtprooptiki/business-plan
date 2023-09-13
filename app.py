@@ -400,7 +400,7 @@ def e_button9(id,kpdf,title):
 
     if option == "Create":
         title=form1(id)
-        
+        st.write(title)
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form
@@ -530,8 +530,7 @@ def e_button9(id,kpdf,title):
         #     st.plotly_chart(fig, use_container_width=True)
     ####################################################################
     if option == "Form2":
-        if title:
-            form2(title)
+        form2("test")
      
            
 

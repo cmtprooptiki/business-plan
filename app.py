@@ -42,26 +42,29 @@ def create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2
     conn.commit()
     return mycursor
 
-def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio):
+def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("inside record1")
     st.write(id)
-    sql = "INSERT INTO forms (koispe_id, creation_date,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (str(id),title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
+    # q="test"
+    # age="testage"
+    sql = "INSERT INTO forms (koispe_id, creation_date,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
+    val = (str(id),title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age)
     mycursor.execute(sql, val)
     conn.commit()
     return mycursor
 
-# def update_record(title,q,age):
-#     conn = init_connection()
-#     mycursor = conn.cursor()
-   
-#     sql ="update  forms (q, age) VALUES (%s, %s) where title={title}"
-#     val = (q,age)
-#     mycursor.execute(sql, val)
-#     conn.commit()
-#     return mycursor
+def update_record(title,q,age):
+    conn = init_connection()
+    mycursor = conn.cursor()
+    st.write("prin h forma ginei update")
+    st.write(title)
+    sql ="update  forms (q, age) VALUES (%s, %s) where title={title}"
+    val = (q,age)
+    mycursor.execute(sql, val)
+    conn.commit()
+    return mycursor
 
 
 # Function to calculate the percentage
@@ -175,13 +178,15 @@ def form1(id):
         st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
         q5_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
         st.write('You selected ', q5_3_ans_radio)
+        q=""
+        age=""
         # Submit button inside the form
         submit_button = st.form_submit_button("Submit")
     # Check if the submit button is clicked
     if submit_button:
         # Call the create_record function to insert the data into the database
         #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
-        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
+        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age)
         # Display a success message
         st.success("Record Created Successfully!!!")
         if calculate_percentage() > 50:
@@ -203,7 +208,7 @@ def form2(title):
 
         if submit_button:
             # Process Form 2 data here and save it to the same database table
-            # mycursor=update_record(title,q,age)
+            mycursor=update_record(title,q,age)
             st.success("Form 2 submitted successfully!")
 
 

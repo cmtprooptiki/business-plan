@@ -184,6 +184,7 @@ def form1():
                form2(title)
 
 def form2(title):
+    
     with st.form("Form 2"):
         st.title("Form 2")
         st.write("o titlos tis formas1")

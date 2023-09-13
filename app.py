@@ -387,10 +387,11 @@ def main():
 
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
     #     e_button8(id,kpdf,js_code,css_code) 
+    title=""
     if selected_option1=="Business Plan":
-        e_button9(id,kpdf)
+        e_button9(id,kpdf,title)
 
-def e_button9(id,kpdf):
+def e_button9(id,kpdf,title):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
@@ -529,7 +530,7 @@ def e_button9(id,kpdf):
         #     st.plotly_chart(fig, use_container_width=True)
     ####################################################################
     if option == "Form2":
-        if title!=None:
+        if title:
             form2(title)
      
            

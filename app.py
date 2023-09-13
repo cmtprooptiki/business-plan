@@ -302,11 +302,19 @@ def form2(title):
         st.success("Form 2 submitted successfully!")
 
 
+class MyClass:
+    def __init__(self):
+        self._title = ""
 
+    def set_title(self, new_title):
+        self._title = new_title
 
-
+    def get_title(self):
+        return self._title
 
 def main():
+    obj = MyClass()
+
  
     
     
@@ -387,11 +395,11 @@ def main():
 
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
     #     e_button8(id,kpdf,js_code,css_code) 
-    title=""
+    
     if selected_option1=="Business Plan":
-        e_button9(id,kpdf,title)
+        e_button9(id,kpdf,obj)
 
-def e_button9(id,kpdf,title):
+def e_button9(id,kpdf,obj):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
@@ -400,7 +408,8 @@ def e_button9(id,kpdf,title):
 
     if option == "Create":
         title=form1(id)
-        st.write(title)
+        obj.set_title(title)
+        st.write(obj.get_title())
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form

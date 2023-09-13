@@ -56,6 +56,7 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
     return mycursor
 
 def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
+    st.write("Update proti grammi")
     st.write(title)
     st.write(q6_text)
     conn = init_connection()

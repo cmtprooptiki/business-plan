@@ -20,6 +20,7 @@ import tempfile
 # Define the HTML template for the PDF report
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 import plotly.io as pio
+from streamlit import SessionState
 
 
 
@@ -79,7 +80,7 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
 
 
 
-def form1(id):
+def form1(id,state):
     st.title("FORM1")
     st.subheader("Δημιουργία Νέου Business Plan")
         
@@ -253,17 +254,21 @@ def form1(id):
         if int(result_val) >= 70:
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
             form2(title)
+            # Set the state to move to form2
+            state.current_form = "form2"
         elif (int(result_val) >= 60) and (int(result_val)<=70):
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
             form2(title)
+            state.current_form = "form2"
         else:
             st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
             form2(title)
+            state.current_form = "form2"
         
 
 
 
-def form2(title):
+def form2(title,state):
 
     with st.form(key="rest_form2"):
         st.title("Τμήμα Β")
@@ -391,6 +396,11 @@ def main():
    
     # Empty container for the right side content
     content_container = st.empty()
+    # Create a session state object
+    state = SessionState.get(current_form="form1")
+
+    
+ 
         
 
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
@@ -398,7 +408,7 @@ def main():
     if selected_option1=="Business Plan":
         e_button9(id,kpdf)
 
-def e_button9(id,kpdf):
+def e_button9(id,kpdf,state):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
@@ -406,7 +416,11 @@ def e_button9(id,kpdf):
     mycursor = conn.cursor()
 
     if option == "Create":
-        form1(id)
+
+        if state.current_form == "form1":
+            form1(id)
+        elif state.current_form == "form2":
+            form2(title)
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form

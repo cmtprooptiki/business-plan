@@ -70,7 +70,7 @@ def calculate_percentage():
    return 60  # Example percentage
 
 
-def form1():
+def form1(id):
     st.title("FORM1")
     st.subheader("Δημιουργία Νέου Business Plan")
         
@@ -185,7 +185,7 @@ def form1():
         # Display a success message
         st.success("Record Created Successfully!!!")
         if calculate_percentage() > 50:
-               form2(title)
+            form2(title)
 
 def form2(title):
 
@@ -303,7 +303,7 @@ def e_button9(id,kpdf):
     mycursor = conn.cursor()
 
     if option == "Create":
-        form1()
+        form1(id)
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form

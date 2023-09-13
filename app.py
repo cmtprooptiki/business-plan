@@ -409,7 +409,6 @@ def e_button9(id,kpdf,obj):
     if option == "Create":
         title=form1(id)
         obj.set_title(title)
-        st.write(obj.get_title())
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form
@@ -540,8 +539,8 @@ def e_button9(id,kpdf,obj):
     ####################################################################
     if option == "Form2":
         st.write("on form2")
-        st.write(title)
-        form2("test")
+        st.write(obj.get_title())
+        form2(obj.get_title())
      
            
 

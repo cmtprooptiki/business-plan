@@ -67,18 +67,14 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
 
 
     st.write("button click update")
-    sql="update forms set q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s where title=%s"
-    val=(title,q6_text,q6_1_ans_num,q6_1_calc)
+    sql="update forms set q6_text=%s where title=%s"
+    val=(title,q6_text)
     mycursor.execute(sql,val)
     conn.commit()
 
     return mycursor
 
 
-# Function to calculate the percentage
-def calculate_percentage():
-   # Add your calculation logic here
-   return 60  # Example percentage
 
 
 def form1(id):

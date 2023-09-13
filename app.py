@@ -78,50 +78,6 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
 
 
 
-def form2(title,id):
-    st.write(id)
-
-    with st.form("Form 2"):
-        st.title("Τμήμα Β")
-        st.title("Κόστος Εκκίνησης")
-
-        st.text("""Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
-                Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).""")
-        st.write(title)
-
-        #QUESTION 6
-        st.title("Κτίρια & Υποδομές")
-        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης")
-
-        q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
-        
-        q6_1_ans_num=st.number_input('Kόστος:')
-        st.write('The current number is ', q6_1_ans_num)
-        q6_1_calc=q6_1_ans_num*0.04
-
-        st.write('Ετήσια απόσβεση:',q6_1_calc)
-
-        # Add input fields for Form 2
-        # For example:
-        # q = st.text_input("Enter your address")
-        # age = st.text_input("Enter your phone number")
-        submit_button2 = st.form_submit_button("Submit Form 2")
-
-        if submit_button2:
-            st.write(title)
-
-            # Process Form 2 data here and save it to the same database table
-            st.write('aposvesi ypologismo gia erotisi 6')
-            st.write(q6_1_calc)
-            st.write(q6_text)
-            st.write(q6_1_ans_num)
-            # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
-            st.success("Form 2 submitted successfully!")
-
-
-
-
-
 
 def form1(id):
     st.title("FORM1")
@@ -233,74 +189,113 @@ def form1(id):
         # Submit button inside the form
         submit_button = st.form_submit_button("Submit")
     # Check if the submit button is clicked
-        if submit_button:
-            # Call the create_record function to insert the data into the database
-            #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
-            # Calculate and display the result
-            st.title("Result")
-            st.text("Ποσοστό Ετοιμότητας")
-            #metraopi nai oxi apanstise se 10 kai 0 antistoixa
-            if q1_2_ans_radio=='ΝΑΙ':
-                q1_2_ans_radio='10'
-            else:
-                q1_2_ans_radio='0'
+    if submit_button:
+        # Call the create_record function to insert the data into the database
+        #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
+        # Calculate and display the result
+        st.title("Result")
+        st.text("Ποσοστό Ετοιμότητας")
+        #metraopi nai oxi apanstise se 10 kai 0 antistoixa
+        if q1_2_ans_radio=='ΝΑΙ':
+            q1_2_ans_radio='10'
+        else:
+            q1_2_ans_radio='0'
 
-            if q1_5_ans_radio=='ΝΑΙ':
-                q1_5_ans_radio='10'
-            else:
-                q1_5_ans_radio='0'
+        if q1_5_ans_radio=='ΝΑΙ':
+            q1_5_ans_radio='10'
+        else:
+            q1_5_ans_radio='0'
 
-            if q2_4_ans_radio=='ΝΑΙ':
-                q2_4_ans_radio='10'
-            else:
-                q2_4_ans_radio='0'
+        if q2_4_ans_radio=='ΝΑΙ':
+            q2_4_ans_radio='10'
+        else:
+            q2_4_ans_radio='0'
 
-            if q3_1_ans_radio=='ΝΑΙ':
-                q3_1_ans_radio='10'
-            else:
-                q3_1_ans_radio='0'
+        if q3_1_ans_radio=='ΝΑΙ':
+            q3_1_ans_radio='10'
+        else:
+            q3_1_ans_radio='0'
 
-            if q4_2_ans_radio=='ΝΑΙ':
-                q4_2_ans_radio='10'
-            else:
-                q4_2_ans_radio='0'
-            
-            if q5_1_ans_radio=='ΝΑΙ':
-                q5_1_ans_radio='10'
-            else:
-                q5_1_ans_radio='0'
-            
-            if q5_2_ans_radio=='ΝΑΙ':
-                q5_2_ans_radio='10'
-            else:
-                q5_2_ans_radio='0'
+        if q4_2_ans_radio=='ΝΑΙ':
+            q4_2_ans_radio='10'
+        else:
+            q4_2_ans_radio='0'
+        
+        if q5_1_ans_radio=='ΝΑΙ':
+            q5_1_ans_radio='10'
+        else:
+            q5_1_ans_radio='0'
+        
+        if q5_2_ans_radio=='ΝΑΙ':
+            q5_2_ans_radio='10'
+        else:
+            q5_2_ans_radio='0'
 
 
 
-            st.write(q1_2_ans_radio)    
-            result_val = ( (   int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
-                        + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
-                        +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
-                        +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
-            st.write(result_val)
+        st.write(q1_2_ans_radio)    
+        result_val = ( (   int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
+                       + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
+                       +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
+                       +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
+        st.write(result_val)
 
-            fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
-            st.plotly_chart(fig, use_container_width=True)
+        fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
+        st.plotly_chart(fig, use_container_width=True)
 
-            mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
-            # Display a success message
-            st.success("Record Created Successfully!!!")
-            if int(result_val) >= 70:
-                st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
-                form2(title,id)
-            elif (int(result_val) >= 60) and (int(result_val)<=70):
-                st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
-                form2(title,id)
-            else:
-                st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
-                form2(title,id)
-            
+        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
+        # Display a success message
+        st.success("Record Created Successfully!!!")
+        if int(result_val) >= 70:
+            st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
+            form2(title)
+        elif (int(result_val) >= 60) and (int(result_val)<=70):
+            st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
+            form2(title)
+        else:
+            st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
+            form2(title)
+        
 
+
+
+def form2(title):
+
+    with st.form("Form 2"):
+        st.title("Τμήμα Β")
+        st.title("Κόστος Εκκίνησης")
+
+        st.text("""Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
+                Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).""")
+        st.write(title)
+
+        #QUESTION 6
+        st.title("Κτίρια & Υποδομές")
+        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης")
+
+        q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
+        
+        q6_1_ans_num=st.number_input('Kόστος:')
+        st.write('The current number is ', q6_1_ans_num)
+        q6_1_calc=q6_1_ans_num*0.04
+
+        st.write('Ετήσια απόσβεση:',q6_1_calc)
+
+        # Add input fields for Form 2
+        # For example:
+        # q = st.text_input("Enter your address")
+        # age = st.text_input("Enter your phone number")
+        st.write(title)
+        submit_button2 = st.form_submit_button("Submit Form 2")
+
+        if submit_button2:
+            # Process Form 2 data here and save it to the same database table
+            st.write('aposvesi ypologismo gia erotisi 6')
+            st.write(q6_1_calc)
+            st.write(q6_text)
+            st.write(q6_1_ans_num)
+            # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+            st.success("Form 2 submitted successfully!")
 
 
 

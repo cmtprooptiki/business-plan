@@ -186,11 +186,71 @@ def form1(id):
     if submit_button:
         # Call the create_record function to insert the data into the database
         #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
+        # Calculate and display the result
+        st.title("Result")
+        st.text("Ποσοστό Ετοιμότητας")
+        #metraopi nai oxi apanstise se 10 kai 0 antistoixa
+        if q1_2_ans_radio=='ΝΑΙ':
+            q1_2_ans_radio='10'
+        else:
+            q1_2_ans_radio='0'
+
+        if q1_5_ans_radio=='ΝΑΙ':
+            q1_5_ans_radio='10'
+        else:
+            q1_5_ans_radio='0'
+
+        if q2_4_ans_radio=='ΝΑΙ':
+            q2_4_ans_radio='10'
+        else:
+            q2_4_ans_radio='0'
+
+        if q3_1_ans_radio=='ΝΑΙ':
+            q3_1_ans_radio='10'
+        else:
+            q3_1_ans_radio='0'
+
+        if q4_2_ans_radio=='ΝΑΙ':
+            q4_2_ans_radio='10'
+        else:
+            q4_2_ans_radio='0'
+        
+        if q5_1_ans_radio=='ΝΑΙ':
+            q5_1_ans_radio='10'
+        else:
+            q5_1_ans_radio='0'
+        
+        if q5_2_ans_radio=='ΝΑΙ':
+            q5_2_ans_radio='10'
+        else:
+            q5_2_ans_radio='0'
+
+
+
+        st.write(q1_2_ans_radio)    
+        result_val = ( (   int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
+                       + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
+                       +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
+                       +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / 17*10) * 100
+        st.write(result_val)
+        
+        fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
+        st.plotly_chart(fig, use_container_width=True)
+
         mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,q,age)
         # Display a success message
         st.success("Record Created Successfully!!!")
-        if calculate_percentage() > 50:
+        if int(result_val) > 50:
+            st.write("Ειστε ετοιμοι να προχωρίσεται στην Φόρμα 2")
             form2(title)
+        elif int(result_val) <50:
+            st.write("Δεν ειστε έτοιμοι ακόμα να συμπλήρωσετε την Φόρμα.")
+            form2(title)
+        else:
+            st.write("Ειστε ετοιμοι να προχωρίσεται στην Φόρμα 2")
+            form2(title)
+
+
 
 def form2(title):
 
@@ -204,9 +264,9 @@ def form2(title):
         q = st.text_input("Enter your address")
         age = st.text_input("Enter your phone number")
         st.write(title)
-        submit_button = st.form_submit_button("Submit Form 2")
+        submit_button2 = st.form_submit_button("Submit Form 2")
 
-        if submit_button:
+        if submit_button2:
             # Process Form 2 data here and save it to the same database table
             mycursor=update_record(title,q,age)
             st.success("Form 2 submitted successfully!")

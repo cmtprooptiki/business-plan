@@ -20,7 +20,6 @@ import tempfile
 # Define the HTML template for the PDF report
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 import plotly.io as pio
-from streamlit import SessionState
 
 
 
@@ -80,7 +79,7 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
 
 
 
-def form1(id,state):
+def form1(id):
     st.title("FORM1")
     st.subheader("Δημιουργία Νέου Business Plan")
         
@@ -253,22 +252,18 @@ def form1(id,state):
         st.success("Record Created Successfully!!!")
         if int(result_val) >= 70:
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
-            form2(title)
-            # Set the state to move to form2
-            state.current_form = "form2"
+            return title
         elif (int(result_val) >= 60) and (int(result_val)<=70):
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
-            form2(title)
-            state.current_form = "form2"
+            return title
         else:
             st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
-            form2(title)
-            state.current_form = "form2"
+            return title
         
 
 
 
-def form2(title,state):
+def form2(title):
 
     with st.form(key="rest_form2"):
         st.title("Τμήμα Β")
@@ -290,14 +285,6 @@ def form2(title,state):
 
         st.write('Ετήσια απόσβεση:',q6_1_calc)
 
-        # Display the result dynamically without a submit button
-        result_container = st.empty()
-
-        # Check if both values are entered
-        if q6_1_ans_num:
-            result_container.text(f"Result: {q6_1_calc}")
-        else:
-            result_container.text("Result will be displayed here once both values are entered.")
         # Add input fields for Form 2
         # For example:
         # q = st.text_input("Enter your address")
@@ -396,11 +383,6 @@ def main():
    
     # Empty container for the right side content
     content_container = st.empty()
-    # Create a session state object
-    state = SessionState.get(current_form="form1")
-
-    
- 
         
 
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
@@ -408,7 +390,7 @@ def main():
     if selected_option1=="Business Plan":
         e_button9(id,kpdf)
 
-def e_button9(id,kpdf,state):
+def e_button9(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
@@ -416,11 +398,8 @@ def e_button9(id,kpdf,state):
     mycursor = conn.cursor()
 
     if option == "Create":
-
-        if state.current_form == "form1":
-            form1(id)
-        elif state.current_form == "form2":
-            form2(title)
+        title=form1(id)
+        form2(title)
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form

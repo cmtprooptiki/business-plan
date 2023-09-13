@@ -78,7 +78,8 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
 
 
 
-def form2(title):
+def form2(title,id):
+    st.write(id)
 
     with st.form("Form 2"):
         st.title("Τμήμα Β")
@@ -291,13 +292,13 @@ def form1(id):
         st.success("Record Created Successfully!!!")
         if int(result_val) >= 70:
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
-            form2(title)
+            form2(title,id)
         elif (int(result_val) >= 60) and (int(result_val)<=70):
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
-            form2(title)
+            form2(title,id)
         else:
             st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
-            form2(title)
+            form2(title,id)
         
 
 

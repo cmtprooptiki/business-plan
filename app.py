@@ -78,6 +78,49 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
 
 
 
+def form2(title):
+
+    with st.form("Form 2"):
+        st.title("Τμήμα Β")
+        st.title("Κόστος Εκκίνησης")
+
+        st.text("""Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
+                Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).""")
+        st.write(title)
+
+        #QUESTION 6
+        st.title("Κτίρια & Υποδομές")
+        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης")
+
+        q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
+        
+        q6_1_ans_num=st.number_input('Kόστος:')
+        st.write('The current number is ', q6_1_ans_num)
+        q6_1_calc=q6_1_ans_num*0.04
+
+        st.write('Ετήσια απόσβεση:',q6_1_calc)
+
+        # Add input fields for Form 2
+        # For example:
+        # q = st.text_input("Enter your address")
+        # age = st.text_input("Enter your phone number")
+        submit_button2 = st.form_submit_button("Submit Form 2")
+
+    if submit_button2:
+        st.write(title)
+
+        # Process Form 2 data here and save it to the same database table
+        st.write('aposvesi ypologismo gia erotisi 6')
+        st.write(q6_1_calc)
+        st.write(q6_text)
+        st.write(q6_1_ans_num)
+        # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        st.success("Form 2 submitted successfully!")
+
+
+
+
+
 
 def form1(id):
     st.title("FORM1")
@@ -257,46 +300,6 @@ def form1(id):
             form2(title)
         
 
-
-
-def form2(title):
-
-    with st.form("Form 2"):
-        st.title("Τμήμα Β")
-        st.title("Κόστος Εκκίνησης")
-
-        st.text("""Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
-                Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).""")
-        st.write(title)
-
-        #QUESTION 6
-        st.title("Κτίρια & Υποδομές")
-        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης")
-
-        q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
-        
-        q6_1_ans_num=st.number_input('Kόστος:')
-        st.write('The current number is ', q6_1_ans_num)
-        q6_1_calc=q6_1_ans_num*0.04
-
-        st.write('Ετήσια απόσβεση:',q6_1_calc)
-
-        # Add input fields for Form 2
-        # For example:
-        # q = st.text_input("Enter your address")
-        # age = st.text_input("Enter your phone number")
-        submit_button2 = st.form_submit_button("Submit Form 2")
-
-        if submit_button2:
-            st.write(title)
-
-            # Process Form 2 data here and save it to the same database table
-            st.write('aposvesi ypologismo gia erotisi 6')
-            st.write(q6_1_calc)
-            st.write(q6_text)
-            st.write(q6_1_ans_num)
-            # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
-            st.success("Form 2 submitted successfully!")
 
 
 

@@ -298,7 +298,8 @@ def form2(title):
         st.write(q6_1_calc)
         st.write(q6_text)
         st.write(q6_1_ans_num)
-        # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        st.write(q6_1_calc)
         st.success("Form 2 submitted successfully!")
 
 
@@ -399,7 +400,8 @@ def e_button9(id,kpdf):
 
     if option == "Create":
         title=form1(id)
-        form2(title)
+        if title!=None:
+            form2(title)
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form

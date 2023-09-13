@@ -530,6 +530,8 @@ def e_button9(id,kpdf,title):
         #     st.plotly_chart(fig, use_container_width=True)
     ####################################################################
     if option == "Form2":
+        st.write("on form2")
+        st.write(title)
         form2("test")
      
            

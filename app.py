@@ -61,7 +61,7 @@ def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
     st.write("prin h forma ginei update")
     st.write(title)
     sql ="update  forms (q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, %s,%s) where title={title}"
-    val = (q6_text,q6_1_ans_num,q6_1_calc)
+    val = (q6_text,float(q6_1_ans_num),float(q6_1_calc))
     mycursor.execute(sql, val)
     conn.commit()
     return mycursor
@@ -284,6 +284,7 @@ def form2(title):
 
         if submit_button2:
             # Process Form 2 data here and save it to the same database table
+            st.write('aposvesi ypologismo gia erotisi 6')
             st.write(q6_1_calc)
             mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
             st.success("Form 2 submitted successfully!")

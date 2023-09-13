@@ -243,6 +243,7 @@ def form1(id):
         fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
         st.plotly_chart(fig, use_container_width=True)
         st.write("until here is working")
+
         mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,
                                 q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,
                                 q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,
@@ -298,23 +299,15 @@ def form2(title):
         st.write(q6_1_calc)
         st.write(q6_text)
         st.write(q6_1_ans_num)
-        # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.success("Form 2 submitted successfully!")
 
 
-class MyClass:
-    def __init__(self):
-        self._title = ""
 
-    def set_title(self, new_title):
-        self._title = new_title
 
-    def get_title(self):
-        return self._title
+
 
 def main():
-    obj = MyClass()
-
  
     
     
@@ -395,11 +388,11 @@ def main():
 
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
     #     e_button8(id,kpdf,js_code,css_code) 
-    
+    title=""
     if selected_option1=="Business Plan":
-        e_button9(id,kpdf,obj)
+        e_button9(id,kpdf,title)
 
-def e_button9(id,kpdf,obj):
+def e_button9(id,kpdf,title):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
@@ -408,7 +401,13 @@ def e_button9(id,kpdf,obj):
 
     if option == "Create":
         title=form1(id)
-        obj.set_title(title)
+        st.write(title)
+        col1, col2 = st.columns(2)
+        with col1:
+            form2(title)
+        with col1:
+            pass
+
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form
@@ -538,9 +537,8 @@ def e_button9(id,kpdf,obj):
         #     st.plotly_chart(fig, use_container_width=True)
     ####################################################################
     if option == "Form2":
-        st.write("on form2")
-        st.write(obj.get_title())
-        form2(obj.get_title())
+        
+        form2("test")
      
            
 

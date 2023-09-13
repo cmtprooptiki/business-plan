@@ -298,7 +298,7 @@ def form2(title):
         st.write(q6_1_calc)
         st.write(q6_text)
         st.write(q6_1_ans_num)
-        mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.write(q6_1_calc)
         st.success("Form 2 submitted successfully!")
 

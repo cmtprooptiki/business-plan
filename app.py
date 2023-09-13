@@ -285,6 +285,14 @@ def form2(title):
 
         st.write('Ετήσια απόσβεση:',q6_1_calc)
 
+        # Display the result dynamically without a submit button
+        result_container = st.empty()
+
+        # Check if both values are entered
+        if q6_1_ans_num:
+            result_container.text(f"Result: {q6_1_calc}")
+        else:
+            result_container.text("Result will be displayed here once both values are entered.")
         # Add input fields for Form 2
         # For example:
         # q = st.text_input("Enter your address")

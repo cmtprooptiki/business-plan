@@ -394,13 +394,12 @@ def e_button9(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
+    option = st.sidebar.selectbox("Select an Operation", ("Create", "Form2","Read", "Update", "Delete","export"))
     mycursor = conn.cursor()
 
     if option == "Create":
         title=form1(id)
-        if title!=None:
-            form2(title)
+        
         # st.subheader("Δημιουργία Νέου Business Plan")
         
         # # Encapsulate the form using st.form
@@ -529,7 +528,10 @@ def e_button9(id,kpdf):
         #     fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
         #     st.plotly_chart(fig, use_container_width=True)
     ####################################################################
-
+    if option == "Form2":
+        if title!=None:
+            form2(title)
+     
            
 
     if option=="Read":

@@ -33,14 +33,14 @@ def run_query(conn,query):
         return cur.fetchall(),columnsnames
     
 # Function to create a new record
-def create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio):
-    conn = init_connection()
-    mycursor = conn.cursor()
-    sql = "INSERT INTO forms (koispe_id, creation_date, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (str(id), year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
-    mycursor.execute(sql, val)
-    conn.commit()
-    return mycursor
+# def create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio):
+#     conn = init_connection()
+#     mycursor = conn.cursor()
+#     sql = "INSERT INTO forms (koispe_id, creation_date, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s)"
+#     val = (str(id), year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
+#     mycursor.execute(sql, val)
+#     conn.commit()
+#     return mycursor
 
 def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio):
     conn = init_connection()
@@ -242,8 +242,12 @@ def form1(id):
 
         fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
         st.plotly_chart(fig, use_container_width=True)
-
-        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
+        st.write("until here is working")
+        mycursor=create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,
+                                q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,
+                                q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,
+                                q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,
+                                q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
         # Display a success message
         st.success("Record Created Successfully!!!")
         if int(result_val) >= 70:
@@ -261,7 +265,7 @@ def form1(id):
 
 def form2(title):
 
-    with st.form("Form 2"):
+    with st.form(key="rest_form2"):
         st.title("Τμήμα Β")
         st.title("Κόστος Εκκίνησης")
 
@@ -288,14 +292,14 @@ def form2(title):
         st.write(title)
         submit_button2 = st.form_submit_button("Submit Form 2")
 
-        if submit_button2:
-            # Process Form 2 data here and save it to the same database table
-            st.write('aposvesi ypologismo gia erotisi 6')
-            st.write(q6_1_calc)
-            st.write(q6_text)
-            st.write(q6_1_ans_num)
-            # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
-            st.success("Form 2 submitted successfully!")
+    if submit_button2:
+        # Process Form 2 data here and save it to the same database table
+        st.write('aposvesi ypologismo gia erotisi 6')
+        st.write(q6_1_calc)
+        st.write(q6_text)
+        st.write(q6_1_ans_num)
+        # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        st.success("Form 2 submitted successfully!")
 
 
 

@@ -381,6 +381,7 @@ def e_button9(id,kpdf):
 
     if option == "Create":
         form1(id)
+    
         
 
         # st.subheader("Δημιουργία Νέου Business Plan")
@@ -917,6 +918,20 @@ def e_button10(id,kpdf):
     
     if option == "Create":
         form2(id)
+    if option == "Read":
+        st.subheader("Read all Submitted Forms")
+        mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
+        result = mycursor.fetchall()
+        for row in result:
+            st.write(row)
+            # Extract values from the "return_id" column and store them in a list
+        return_ids = [row[0] for row in result]
+
+        # Display the list of return_ids
+        st.write(return_ids)
+        st.write(str(return_ids))
+        
+        
 
 def get_url_params():
     query_params = st.experimental_get_query_params()

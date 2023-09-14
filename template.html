@@ -18,18 +18,25 @@
 </div> -->
 <div>
   
-  <h2>YEAR:{{year}}</h2>
+  <h2>Τίτλος:{{title}}</h2>
   <h2>Στόχοι</h2>
   <h3>Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.</h3>
   <p style="white-space: pre-line;">{{q1_text}}</p>
   <!-- <input name="stoxoi" value='{{q1_text}}' size="50" cols="50" rows="4"> -->
   <h3>Έχετε περιγράψει επαρκώς τους στόχους που ελπίζετε να πετύχετε;</h3>
   <label>
+    <input type="radio" name="stars" value="0" {% if q1_ans_radio == "0" %}checked{% endif %}> 0
+
     <input type="radio" name="stars" value="1" {% if q1_ans_radio == "1" %}checked{% endif %}> 1
     <input type="radio" name="stars" value="2" {% if q1_ans_radio == "2" %}checked{% endif %}> 2
     <input type="radio" name="stars" value="3" {% if q1_ans_radio == "3" %}checked{% endif %}> 3
     <input type="radio" name="stars" value="4" {% if q1_ans_radio == "4" %}checked{% endif %}> 4
     <input type="radio" name="stars" value="5" {% if q1_ans_radio == "5" %}checked{% endif %}> 5
+    <input type="radio" name="stars" value="6" {% if q1_ans_radio == "6" %}checked{% endif %}> 6
+    <input type="radio" name="stars" value="7" {% if q1_ans_radio == "7" %}checked{% endif %}> 7
+    <input type="radio" name="stars" value="8" {% if q1_ans_radio == "8" %}checked{% endif %}> 8
+    <input type="radio" name="stars" value="9" {% if q1_ans_radio == "9" %}checked{% endif %}> 9
+    <input type="radio" name="stars" value="10" {% if q1_ans_radio == "10" %}checked{% endif %}> 10
   </label>
   <h1>Περιγραφή της Επιχείρησης</h1>
   <p>Δώστε μια θετική, συνοπτική και βασισμένη στην πραγματικότητα περιγραφή της επιχείρησής σας: με τι ασχολείται και τι θα την κάνει μοναδική, ανταγωνιστική και επιτυχημένη. 

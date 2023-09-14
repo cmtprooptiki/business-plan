@@ -1068,7 +1068,7 @@ def e_button9(id,kpdf):
         return_ids = [row[0] for row in result]
         return_creation_date=[row[2] for row in result]
         return_year=[row[3] for row in result]
-        return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        return_identifierform=["Title:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
         # st.write(return_identifierform)
          #getAllformsId
         # st.write(str(return_ids))
@@ -1097,7 +1097,7 @@ def e_button9(id,kpdf):
                 for row in result:
                     st.write(row)
                 ######
-                year=row[3]
+                title=row[3]
                 q1_text=row[4]
                 q1_ans_radio1=row[5]
                 q2_text=row[6]
@@ -1105,7 +1105,7 @@ def e_button9(id,kpdf):
                 q2_2_ans_radio3=row[8]
                 q3_text=row[9]
                 q3_ans_radio4=row[10]
-                result_val=((int(q1_ans_radio1)+int(q2_1_ans_radio2)+int(q2_2_ans_radio3)+int(q3_ans_radio4))/4)*10
+                result_val=(5)*10
                 #st.write(result_val)
                 fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
                 #st.plotly_chart(fig,use_container_width=True)
@@ -1127,7 +1127,7 @@ def e_button9(id,kpdf):
                 # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
 
                 html = template.render(
-                    year=row[3],
+                    title=row[3],
                     q1_text=row[4],
                     q1_ans_radio=row[5],
                     q2_text=row[6],

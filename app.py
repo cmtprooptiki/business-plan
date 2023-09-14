@@ -1245,9 +1245,8 @@ def e_button10(id,kpdf):
                 q7_1_calc = q7_1_ans_num * questions[0]["calc_coefficient"]
 
                 st.write('Ετήσια απόσβεση:', q7_1_calc)
-
                 # QUESTION 8
-                st.title("test qurstion 8")
+                st.title("")
                 st.title(questions[1]["title"])
                 st.subheader(questions[1]["text"])
 

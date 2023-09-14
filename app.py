@@ -400,13 +400,20 @@ def e_button9(id,kpdf):
     mycursor = conn.cursor()
 
     if option == "Create":
-        title=form1(id)
-        st.write(title)
+        # title=form1(id)
+        # st.write(title)
+
         col1, col2 = st.columns(2)
+
         with col1:
-            form2(title)
+            title=form1(id)
+            st.write(title)
+
         with col1:
-            pass
+            if title!=None:
+                form2(title)
+            else:
+                st.write("Form 2 not available yest")
 
         # st.subheader("Δημιουργία Νέου Business Plan")
         

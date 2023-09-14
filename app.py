@@ -753,12 +753,9 @@ def e_button9(id,kpdf):
                 st.write("FIXING YES NO PROBLEM")
                 # st.write(default_option_indexq1_2)
                 st.write(row[6])
-                if row[6]=='0':
-                    row[6]='ΟΧΙ'
-                else:
-                    row[6]='ΝΑΙ'
+              
                 
-                st.write(str(row[6]))
+                
     
                 options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
                 option2=["ΟΧΙ","ΝΑΙ"]
@@ -777,7 +774,14 @@ def e_button9(id,kpdf):
                 q1_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_1 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_1_ans_radio")
                 
                 st.subheader("Έχει αναφερθεί ξεκάθαρα η νομική οντότητα του ΚοιΣΠΕ;")
-                default_option_indexq1_2 = option2.index(str(row[6]))
+
+                if row[6]=='0':
+                    default_option_indexq1_2 = option2.index('ΟΧΙ')
+                else:
+                    default_option_indexq1_2 = option2.index('ΝΑΙ')
+
+
+                # default_option_indexq1_2 = option2.index(str(row[6]))
                 st.write("FIXING YES NO PROBLEM")
                 st.write(default_option_indexq1_2)
                 st.write(row[6])

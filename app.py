@@ -269,17 +269,117 @@ def form2(id):
 
         st.write('Ετήσια απόσβεση:',q6_1_calc)
 
-        #QUESTION 7
-        st.title("Εξοπλισμός & Έπιπλα")
-        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης")
+        # #QUESTION 7
+        # st.title("Εξοπλισμός & Έπιπλα")
+        # st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης")
 
-        q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text",height=300)
+        # q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text",height=300)
         
-        q7_1_ans_num=st.number_input('Kόστος:',key="q7_1_ans_num")
-        st.write('To Κόστος ειναι:', q7_1_ans_num)
-        q7_1_calc=q7_1_ans_num*0.1
+        # q7_1_ans_num=st.number_input('Kόστος:',key="q7_1_ans_num")
+        # st.write('To Κόστος ειναι:', q7_1_ans_num)
+        # q7_1_calc=q7_1_ans_num*0.1
 
-        st.write('Ετήσια απόσβεση:',q7_1_calc)
+        # st.write('Ετήσια απόσβεση:',q7_1_calc)
+
+
+        questions = [
+            {"number": 7, "title": "Εξοπλισμός & Έπιπλα", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης", "calc_coefficient": 0.1},
+            {"number": 8, "title": "Εργασίες διαμόρφωσης, εγκατάστασης κλπ", "text": "Συμπεριλαμβάνονται τα έξοδα για τις εργασίες που απαιτούνται στον χώρο για την έναρξη λειτουργίας της επιχείρησης", "calc_coefficient": 0},
+            {"number": 9, "title": "Μηχανήματα, εξοπλισμός εκτός Η/Υ και λογισμικού", "text": "Η κατηγορία συμπεριλαμβάνει την αγορά μηχανημάτων π.χ εκτυπωτές κλπ.", "calc_coefficient": 0.1},
+            {"number": 10, "title": "Εξοπλισμός Η/Υ, κύριος και περιφερειακός & λογισμικό", "text": "Η κατηγορία συμπεριλαμβάνει την αγορά μηχανημάτων π.χ πρόγραμμα παραγγελιοληψίας, λογιστικά /εμπορικά προγράμματα κλπ.", "calc_coefficient": 0.2},
+            {"number": 11, "title": "Λοιπές υπηρεσίες", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνονται υπηρεσίες τρίτων π.χ. πολιτικού μηχανικού για σχέδια – κατόψεις αλλά και την έκδοση άδειας λειτουργίας, υγειονολόγου ΤΕ για τη σύνταξη της μελέτης λειτουργίας της επιχείρησης, μηχανολόγου μηχανικού για μελέτη πυροπροστασίας κλπ.", "calc_coefficient": 0.2},
+            {"number": 12, "title": "Αρχικό απόθεμα σε πρώτες και βοηθητικές ύλες", "text": "Συμπεριλαμβάνεται κάθε υλικό αγαθό που ανήκει στην επιχείρηση και προορίζεται για να πωληθεί στην κατάσταση που βρίσκεται ή να επεξεργαστεί για τους σκοπούς της παραγωγής", "calc_coefficient": 0},
+            {"number": 13, "title": "Λοιπά έξοδα εκκίνησης", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνονται τα έξοδα που προκύπτουν κατά τη διαδικασία δημιουργίας μιας νέας επιχείρησης και δεν συμπεριλαμβάνονται στις ανωτέρω ενότητες", "calc_coefficient": 0}
+        ]
+
+        # QUESTION 7
+        st.title(questions[0]["title"])
+        st.subheader(questions[0]["text"])
+
+        q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text", height=300)
+
+        q7_1_ans_num = st.number_input('Kόστος:', key="q71ansnum")
+        st.write('To Κόστος είναι:', q7_1_ans_num)
+        q7_1_calc = q7_1_ans_num * questions[0]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q7_1_calc)
+
+        # QUESTION 8
+        st.title(questions[1]["title"])
+        st.subheader(questions[1]["text"])
+
+        q8_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q8text", height=300)
+
+        q8_1_ans_num = st.number_input('Kόστος:', key="q81ansnum")
+        st.write('To Κόστος είναι:', q8_1_ans_num)
+        q8_1_calc = q8_1_ans_num * questions[1]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q8_1_calc)
+
+        # QUESTION 9
+        st.title(questions[2]["title"])
+        st.subheader(questions[2]["text"])
+
+        q9_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q9text", height=300)
+
+        q9_1_ans_num = st.number_input('Kόστος:', key="q91ansnum")
+        st.write('To Κόστος είναι:', q9_1_ans_num)
+        q9_1_calc = q9_1_ans_num * questions[2]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q9_1_calc)
+
+        # QUESTION 10
+        st.title(questions[3]["title"])
+        st.subheader(questions[3]["text"])
+
+        q10_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q10text", height=300)
+
+        q10_1_ans_num = st.number_input('Kόστος:', key="q101ansnum")
+        st.write('To Κόστος είναι:', q10_1_ans_num)
+        q10_1_calc = q10_1_ans_num * questions[3]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q10_1_calc)
+
+        # QUESTION 11
+        st.title(questions[4]["title"])
+        st.subheader(questions[4]["text"])
+
+        q11_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q11text", height=300)
+
+        q11_1_ans_num = st.number_input('Kόστος:', key="q111ansnum")
+        st.write('To Κόστος είναι:', q11_1_ans_num)
+        q11_1_calc = q11_1_ans_num * questions[4]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q11_1_calc)
+
+        # QUESTION 12
+        st.title(questions[5]["title"])
+        st.subheader(questions[5]["text"])
+
+        q12_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q12text", height=300)
+
+        q12_1_ans_num = st.number_input('Kόστος:', key="q121ansnum")
+        st.write('To Κόστος είναι:', q12_1_ans_num)
+        q12_1_calc = q12_1_ans_num * questions[5]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q12_1_calc)
+
+        # QUESTION 13
+        st.title(questions[6]["title"])
+        st.subheader(questions[6]["text"])
+
+        q13_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q13text", height=300)
+
+        q13_1_ans_num = st.number_input('Kόστος:', key="q131ansnum")
+        st.write('To Κόστος είναι:', q13_1_ans_num)
+        q13_1_calc = q13_1_ans_num * questions[6]["calc_coefficient"]
+
+        st.write('Ετήσια απόσβεση:', q13_1_calc)
+
+
+
+
+
 
         # Add input fields for Form 2
         # For example:
@@ -299,6 +399,11 @@ def form2(id):
         st.write(q7_1_calc)
         st.write(q7_text)
         st.write(q7_1_ans_num)
+
+        st.write('aposvesi ypologismo gia erotisi 8')
+        st.write(q8_1_calc)
+        st.write(q8_text)
+        st.write(q8_1_ans_num)
         create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
         # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.success("Form 2 submitted successfully!")

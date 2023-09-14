@@ -915,7 +915,7 @@ def e_button9(id,kpdf):
                 default_option_indexq5_3 = options.index(str(row[25]))
                 q5_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq5_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
                 st.write('You selected ', q5_3_ans_radio)
-                
+
                 # Submit button inside the form
                 # submit_button = st.form_submit_button("Submit")
                 # Check if the submit button is clicked
@@ -976,6 +976,16 @@ def e_button9(id,kpdf):
                 q5_2_ans_radio='10'
             else:
                 q5_2_ans_radio='0'
+
+            result_val = ( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
+                        + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
+                        +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
+                        +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
+            st.write(result_val)
+
+            fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
+            st.plotly_chart(fig, use_container_width=True)
+            st.write("until here is working")
                 
 
 
@@ -985,9 +995,17 @@ def e_button9(id,kpdf):
             val=(title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,str(selected_id_value))
             mycursor.execute(sql,val)
             conn.commit()
+            # Display a success message
             st.success("Record Update Successfully!!!")
-            st.title("Result")
-            st.text("Ποσοστό Ετοιμότητας")
+            if int(result_val) >= 70:
+                st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
+                # return title
+            elif (int(result_val) >= 60) and (int(result_val)<=70):
+                st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
+                # return title
+            else:
+                st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
+            # return title
             # result_val=((int(q1_1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
             # st.write(result_val)
             # fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])

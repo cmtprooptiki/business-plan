@@ -45,15 +45,82 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
     return mycursor
 
 
-def create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc):
+def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7_1_ans_num, q7_1_calc,
+                        q8_text, q8_1_ans_num, q8_1_calc, q9_text, q9_1_ans_num, q9_1_calc,
+                        q10_text, q10_1_ans_num, q10_1_calc, q11_text, q11_1_ans_num, q11_1_calc,
+                        q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("inside record1 φορμ2")
     st.write(id)
     # q="test"
     # age="testage"
-    sql = "INSERT INTO forms2 (koispe_id, creation_date, title, q6_text ,q6_1_ans_num, q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc) VALUES (%s, NOW(), %s, %s, %s,%s,%s,%s,%s)"
-    val = (str(id),title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
+    sql = """
+    INSERT INTO forms2 (
+        koispe_id,
+        creation_date,
+        title,
+        q6_text,
+        q6_1_ans_num,
+        q6_1_calc,
+        q7_text,
+        q7_1_ans_num,
+        q7_1_calc,
+        q8_text,
+        q8_1_ans_num,
+        q8_1_calc,
+        q9_text,
+        q9_1_ans_num,
+        q9_1_calc,
+        q10_text,
+        q10_1_ans_num,
+        q10_1_calc,
+        q11_text,
+        q11_1_ans_num,
+        q11_1_calc,
+        q12_text,
+        q12_1_ans_num,
+        q12_1_calc,
+        q13_text,
+        q13_1_ans_num,
+        q13_1_calc
+    ) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+
+    val = (
+        str(id),
+        title,
+        q6_text,
+        q6_1_ans_num,
+        q6_1_calc,
+        q7_text,
+        q7_1_ans_num,
+        q7_1_calc,
+        q8_text,
+        q8_1_ans_num,
+        q8_1_calc,
+        q9_text,
+        q9_1_ans_num,
+        q9_1_calc,
+        q10_text,
+        q10_1_ans_num,
+        q10_1_calc,
+        q11_text,
+        q11_1_ans_num,
+        q11_1_calc,
+        q12_text,
+        q12_1_ans_num,
+        q12_1_calc,
+        q13_text,
+        q13_1_ans_num,
+        q13_1_calc
+    )
+
+
+
+
+    # sql = "INSERT INTO forms2 (koispe_id, creation_date, title, q6_text ,q6_1_ans_num, q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc) VALUES (%s, NOW(), %s, %s, %s,%s,%s,%s,%s)"
+    # val = (str(id),title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
     mycursor.execute(sql, val)
     conn.commit()
     return mycursor
@@ -404,7 +471,41 @@ def form2(id):
         st.write(q8_1_calc)
         st.write(q8_text)
         st.write(q8_1_ans_num)
-        create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
+        
+        st.write('aposvesi ypologismo gia erotisi 9')
+        st.write(q9_1_calc)
+        st.write(q9_text)
+        st.write(q9_1_ans_num)
+
+        st.write('aposvesi ypologismo gia erotisi 10')
+        st.write(q10_1_calc)
+        st.write(q10_text)
+        st.write(q10_1_ans_num)
+
+        st.write('aposvesi ypologismo gia erotisi 11')
+        st.write(q11_1_calc)
+        st.write(q11_text)
+        st.write(q11_1_ans_num)
+
+        
+        st.write('aposvesi ypologismo gia erotisi 12')
+        st.write(q12_1_calc)
+        st.write(q12_text)
+        st.write(q12_1_ans_num)
+
+        st.write('aposvesi ypologismo gia erotisi 13')
+        st.write(q13_1_calc)
+        st.write(q13_text)
+        st.write(q13_1_ans_num)
+
+
+
+
+        # create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
+        create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7_1_ans_num, q7_1_calc,
+                        q8_text, q8_1_ans_num, q8_1_calc, q9_text, q9_1_ans_num, q9_1_calc,
+                        q10_text, q10_1_ans_num, q10_1_calc, q11_text, q11_1_ans_num, q11_1_calc,
+                        q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc)
         # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.success("Form 2 submitted successfully!")
 

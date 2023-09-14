@@ -263,8 +263,8 @@ def form2(id):
 
         q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
         
-        q6_1_ans_num=st.number_input('Kόστος:')
-        st.write('The current number is ', q6_1_ans_num)
+        q6_1_ans_num=st.number_input('Kόστος:',key="q6_1_ans_num")
+        st.write('The current number is ',q6_1_ans_num)
         q6_1_calc=q6_1_ans_num*0.04
 
         st.write('Ετήσια απόσβεση:',q6_1_calc)
@@ -275,7 +275,7 @@ def form2(id):
 
         q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text",height=300)
         
-        q7_1_ans_num=st.number_input('Kόστος:')
+        q7_1_ans_num=st.number_input('Kόστος:',key="q7_1_ans_num")
         st.write('To Κόστος ειναι:', q7_1_ans_num)
         q7_1_calc=q7_1_ans_num*0.1
 
@@ -999,7 +999,7 @@ def e_button10(id,kpdf):
 
                 q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",value=row[4], height=300)
                 
-                q6_1_ans_num=st.number_input('Kόστος:',value=row[5])
+                q6_1_ans_num=st.number_input('Kόστος:',key="q6_1_ans_num", value=row[5])
                 st.write('The current number is ', q6_1_ans_num)
                 q6_1_calc=q6_1_ans_num*0.04
 
@@ -1011,7 +1011,7 @@ def e_button10(id,kpdf):
 
                 q7_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[7] ,key="q7text",height=300)
                 
-                q7_1_ans_num=st.number_input('Kόστος:',value=row[8])
+                q7_1_ans_num=st.number_input('Kόστος:',key="q7_1_ans_num",value=row[8])
                 st.write('To Κόστος ειναι:', q7_1_ans_num)
                 q7_1_calc=q7_1_ans_num*0.1
 

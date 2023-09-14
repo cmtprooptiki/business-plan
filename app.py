@@ -594,6 +594,7 @@ def form2(id):
         st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
         st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
         st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
+        st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
 
         st.success("Form 2 submitted successfully!")
 
@@ -1477,7 +1478,7 @@ def e_button10(id,kpdf):
             st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
             st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
             st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
-
+            st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
             # st.write("button click update")
             # sql="update forms2 set title=%s,q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s,q7_text=%s,q7_1_ans_num=%s, q7_1_calc=%s where id=%s"
             # val=(title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc,str(selected_id_value))

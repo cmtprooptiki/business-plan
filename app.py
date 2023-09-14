@@ -1153,6 +1153,7 @@ def e_button10(id,kpdf):
         # Display the list of return_ids
         st.write(return_ids)
         st.write(str(return_ids))
+
     if option =="Update":
         st.subheader("Επεξεργασία καταχωρημένων Οικονομικών Στοιχείων")
         st.write("Επέλεξε την φόρμα Οικονομικών Στοιχείων που θέλεις να επεξεργαστείς:")
@@ -1246,6 +1247,7 @@ def e_button10(id,kpdf):
                 st.write('Ετήσια απόσβεση:', q7_1_calc)
 
                 # QUESTION 8
+                st.title("test qurstion 8")
                 st.title(questions[1]["title"])
                 st.subheader(questions[1]["text"])
 

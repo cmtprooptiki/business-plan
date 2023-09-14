@@ -933,7 +933,7 @@ def e_button10(id,kpdf):
     if option =="Update":
         st.subheader("Επεξεργασία καταχωρημένων Οικονομικών Στοιχείων")
         st.write("Επέλεξε την φόρμα Οικονομικών Στοιχείων που θέλεις να επεξεργαστείς:")
-        mycursor.execute("select * from forms2 where koispe_id="+str(id)+"ORDER BY creation_date DESC")
+        mycursor.execute("select * from forms2 where koispe_id="+str(id)+" ORDER BY creation_date DESC")
         result = mycursor.fetchall()
         # for row in result:
         #     st.write(row)

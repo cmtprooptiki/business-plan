@@ -21,6 +21,8 @@ import tempfile
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 import plotly.io as pio
 
+
+
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
 
@@ -30,6 +32,15 @@ def run_query(conn,query):
         columnsnames=cur.column_names
         return cur.fetchall(),columnsnames
     
+# Function to create a new record
+# def create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio):
+#     conn = init_connection()
+#     mycursor = conn.cursor()
+#     sql = "INSERT INTO forms (koispe_id, creation_date, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s)"
+#     val = (str(id), year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
+#     mycursor.execute(sql, val)
+#     conn.commit()
+#     return mycursor
 
 def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio):
     conn = init_connection()
@@ -44,18 +55,26 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
     conn.commit()
     return mycursor
 
-
-def create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc):
+def update_record(title,q6_text,q6_1_ans_num,q6_1_calc):
+    st.write("Update proti grammi")
+    st.write(title)
+    st.write(q6_text)
     conn = init_connection()
     mycursor = conn.cursor()
-    st.write("inside record1")
-    st.write(id)
-    # q="test"
-    # age="testage"
-    sql = "INSERT INTO forms2 (koispe_id, creation_date,title,q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, NOW(), %s, %s, %s)"
-    val = (str(id),title,q6_text,q6_1_ans_num,q6_1_calc)
-    mycursor.execute(sql, val)
+    st.write("prin h forma ginei update")
+    # st.write(title)
+    # sql ="update  forms (q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, %s,%s) where title={title}"
+    # val = (q6_text,float(q6_1_ans_num),float(q6_1_calc))
+    # mycursor.execute(sql, val)
+    # conn.commit()
+
+# update forms set q6_text='test' where title='cr7'
+    st.write("button click update")
+    sql="update forms set q6_text=%s where title=%s"
+    val=(title,q6_text)
+    mycursor.execute(sql,val)
     conn.commit()
+
     return mycursor
 
 
@@ -235,27 +254,26 @@ def form1(id):
         st.success("Record Created Successfully!!!")
         if int(result_val) >= 70:
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
-            # return title
+            return title
         elif (int(result_val) >= 60) and (int(result_val)<=70):
             st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
-            # return title
+            return title
         else:
             st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
-            # return title
+            return title
+        
 
 
 
-def form2(id):
+def form2(title):
 
     with st.form(key="rest_form2"):
         st.title("Τμήμα Β")
-        title=st.text_area("Τίτλος Φορμας Οικονομικών στοιχείων",key="title")
-
         st.title("Κόστος Εκκίνησης")
 
         st.text("""Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
                 Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).""")
-        st.write(id)
+        st.write(title)
 
         #QUESTION 6
         st.title("Κτίρια & Υποδομές")
@@ -273,7 +291,7 @@ def form2(id):
         # For example:
         # q = st.text_input("Enter your address")
         # age = st.text_input("Enter your phone number")
-        st.write(id)
+        st.write(title)
         submit_button2 = st.form_submit_button("Submit Form 2")
 
     if submit_button2:
@@ -282,9 +300,13 @@ def form2(id):
         st.write(q6_1_calc)
         st.write(q6_text)
         st.write(q6_1_ans_num)
-        create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc)
-        # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.success("Form 2 submitted successfully!")
+
+
+
+
+
 
 def main():
  
@@ -346,8 +368,8 @@ def main():
 
     with st.sidebar:
 
-            selected_option1 = option_menu("Μενού", ["Επιχειρηματική Ιδέα","Οικονομικά Στοιχεία"],
-                                icons=['table','table'],
+            selected_option1 = option_menu("Μενού", ["Business Plan"],
+                                icons=['table'],
                                 menu_icon="cast", default_index=0,
                                 
                                 styles={
@@ -367,21 +389,31 @@ def main():
 
     # elif selected_option1=="Αναλυτικός Πίνακας Δεικτών":
     #     e_button8(id,kpdf,js_code,css_code) 
-    if selected_option1=="Επιχειρηματική Ιδέα":
+    if selected_option1=="Business Plan":
         e_button9(id,kpdf)
-    elif selected_option1=="Οικονομικά Στοιχεία":
-        e_button10(id,kpdf)
 
 def e_button9(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
+    option = st.sidebar.selectbox("Select an Operation", ("Create", "Form2","Read", "Update", "Delete","export"))
     mycursor = conn.cursor()
 
     if option == "Create":
-        form1(id)
-        
+        # title=form1(id)
+        # st.write(title)
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            title=form1(id)
+            st.write(title)
+
+        with col1:
+            if title!=None:
+                form2(title)
+            else:
+                st.write("Form 2 not available yest")
 
         # st.subheader("Δημιουργία Νέου Business Plan")
         
@@ -511,8 +543,12 @@ def e_button9(id,kpdf):
         #     fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
         #     st.plotly_chart(fig, use_container_width=True)
     ####################################################################
-
+    if option == "Form2":
+        
+        form2("test")
+     
            
+
     if option=="Read":
         st.subheader("Read all Submitted Forms")
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
@@ -907,17 +943,8 @@ def e_button9(id,kpdf):
                         mime="application/octet-stream",
                     )
      
-def e_button10(id,kpdf):
-    st.title("Οικονομικά Στοιχεία")
-    conn = init_connection()
-    # id = st.number_input("Enter ID", userid)
-    # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
-    mycursor = conn.cursor()
-    
-    if option == "Create":
-        form2(id)
-        
+
+
 def get_url_params():
     query_params = st.experimental_get_query_params()
     id_received = query_params.get("id", [""])[0]
@@ -939,3 +966,4 @@ def display_contents(id_received):
 
 if __name__ == "__main__":
     main()
+    

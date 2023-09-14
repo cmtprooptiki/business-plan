@@ -933,7 +933,7 @@ def e_button10(id,kpdf):
     if option =="Update":
         st.subheader("Επεξεργασία καταχωρημένων Οικονομικών Στοιχείων")
         st.write("Επέλεξε την φόρμα Οικονομικών Στοιχείων που θέλεις να επεξεργαστείς:")
-        mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
+        mycursor.execute("select * from forms2 where koispe_id="+str(id)+"ORDER BY creation_date DESC")
         result = mycursor.fetchall()
         # for row in result:
         #     st.write(row)
@@ -941,7 +941,7 @@ def e_button10(id,kpdf):
         return_ids = [row[0] for row in result]
         return_creation_date=[row[2] for row in result]
         return_year=[row[3] for row in result]
-        return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        return_identifierform=["Τίτλος:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
         # st.write(return_identifierform)
          #getAllformsId
         # st.write(str(return_ids))
@@ -1001,8 +1001,7 @@ def e_button10(id,kpdf):
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Update Successfully!!!")
-            st.title("Result")
-            st.text("Ποσοστό Ετοιμότητας")
+
 
 
         

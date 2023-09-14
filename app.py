@@ -45,15 +45,15 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
     return mycursor
 
 
-def create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc):
+def create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("inside record1 φορμ2")
     st.write(id)
     # q="test"
     # age="testage"
-    sql = "INSERT INTO forms2 (koispe_id, creation_date, title, q6_text ,q6_1_ans_num, q6_1_calc) VALUES (%s, NOW(), %s, %s, %s,%s)"
-    val = (str(id),title,q6_text,q6_1_ans_num,q6_1_calc)
+    sql = "INSERT INTO forms2 (koispe_id, creation_date, title, q6_text ,q6_1_ans_num, q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc) VALUES (%s, NOW(), %s, %s, %s,%s,%s,%s,%s)"
+    val = (str(id),title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
     mycursor.execute(sql, val)
     conn.commit()
     return mycursor
@@ -269,6 +269,18 @@ def form2(id):
 
         st.write('Ετήσια απόσβεση:',q6_1_calc)
 
+        #QUESTION 7
+        st.title("Εξοπλισμός & Έπιπλα")
+        st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης")
+
+        q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text",height=300)
+        
+        q7_1_ans_num=st.number_input('Kόστος:')
+        st.write('To Κόστος ειναι:', q7_1_ans_num)
+        q7_1_calc=q7_1_ans_num*0.1
+
+        st.write('Ετήσια απόσβεση:',q7_1_calc)
+
         # Add input fields for Form 2
         # For example:
         # q = st.text_input("Enter your address")
@@ -282,7 +294,12 @@ def form2(id):
         st.write(q6_1_calc)
         st.write(q6_text)
         st.write(q6_1_ans_num)
-        create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc)
+
+        st.write('aposvesi ypologismo gia erotisi 7')
+        st.write(q7_1_calc)
+        st.write(q7_text)
+        st.write(q7_1_ans_num)
+        create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc)
         # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.success("Form 2 submitted successfully!")
 
@@ -988,6 +1005,22 @@ def e_button10(id,kpdf):
 
                 st.write('Ετήσια απόσβεση:',q6_1_calc)
 
+                #QUESTION 7
+                st.title("Εξοπλισμός & Έπιπλα")
+                st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης")
+
+                q7_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[7] ,key="q7text",height=300)
+                
+                q7_1_ans_num=st.number_input('Kόστος:',value=row[8])
+                st.write('To Κόστος ειναι:', q7_1_ans_num)
+                q7_1_calc=q7_1_ans_num*0.1
+
+                st.write('Ετήσια απόσβεση:',q7_1_calc)
+
+
+
+
+
                 submit_button_edit = st.form_submit_button("Update")
 
 
@@ -996,8 +1029,8 @@ def e_button10(id,kpdf):
 
 
             st.write("button click update")
-            sql="update forms2 set title=%s,q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s where id=%s"
-            val=(title,q6_text,q6_1_ans_num,q6_1_calc,str(selected_id_value))
+            sql="update forms2 set title=%s,q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s,q7_text=%s,q7_1_ans_num=%s, q7_1_calc=%s where id=%s"
+            val=(title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc,str(selected_id_value))
             mycursor.execute(sql,val)
             conn.commit()
             st.success("Record Update Successfully!!!")

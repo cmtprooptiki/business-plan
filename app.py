@@ -711,7 +711,7 @@ def e_button9(id,kpdf):
     if option=="Update":
         st.subheader("Επεξεργασία καταχωρημένων Business Plan")
         st.write("Επέλεξε το Business Plan που θέλεις να επεξεργαστείς:")
-        mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+        mycursor.execute("select * from forms where koispe_id="+str(id)+" ORDER BY creation_date DESC")
         result = mycursor.fetchall()
         # for row in result:
         #     st.write(row)
@@ -746,7 +746,7 @@ def e_button9(id,kpdf):
         with st.form(key="edit_form"):
 
             if selected_id:
-                mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+" ORDER BY creation_date DESC")
+                mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                 result = mycursor.fetchall()
                 for row in result:
                     st.write(row)

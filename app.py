@@ -48,11 +48,11 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
 def create_record_form2(id,title,q6_text,q6_1_ans_num,q6_1_calc):
     conn = init_connection()
     mycursor = conn.cursor()
-    st.write("inside record1")
+    st.write("inside record1 φορμ2")
     st.write(id)
     # q="test"
     # age="testage"
-    sql = "INSERT INTO forms2 (koispe_id, creation_date,title,q6_text,q6_1_ans_num,q6_1_calc) VALUES (%s, NOW(), %s, %s, %s)"
+    sql = "INSERT INTO forms2 (koispe_id, creation_date, title, q6_text ,q6_1_ans_num, q6_1_calc) VALUES (%s, NOW(), %s, %s, %s,%s)"
     val = (str(id),title,q6_text,q6_1_ans_num,q6_1_calc)
     mycursor.execute(sql, val)
     conn.commit()
@@ -917,7 +917,7 @@ def e_button10(id,kpdf):
     
     if option == "Create":
         form2(id)
-        
+
 def get_url_params():
     query_params = st.experimental_get_query_params()
     id_received = query_params.get("id", [""])[0]

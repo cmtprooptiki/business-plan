@@ -48,7 +48,8 @@ def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio
 def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7_1_ans_num, q7_1_calc,
                         q8_text, q8_1_ans_num, q8_1_calc, q9_text, q9_1_ans_num, q9_1_calc,
                         q10_text, q10_1_ans_num, q10_1_calc, q11_text, q11_1_ans_num, q11_1_calc,
-                        q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc):
+                        q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc,
+                        q14_text,q14_1_ans_num,q15_text,q15_1_ans_num,q16_text,q16_1_ans_num,q17_text,q17_1_ans_num):
     conn = init_connection()
     mycursor = conn.cursor()
     st.write("inside record1 φορμ2")
@@ -83,8 +84,16 @@ def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7
         q12_1_calc,
         q13_text,
         q13_1_ans_num,
-        q13_1_calc
-    ) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        q13_1_calc,
+        q14_text,
+        q14_1_ans_num,
+        q15_text,
+        q15_1_ans_num,
+        q16_text,
+        q16_1_ans_num,
+        q17_text,
+        q17_1_ans_num
+    ) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s)
     """
 
     val = (
@@ -113,7 +122,15 @@ def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7
         q12_1_calc,
         q13_text,
         q13_1_ans_num,
-        q13_1_calc
+        q13_1_calc,
+        q14_text,
+        q14_1_ans_num,
+        q15_text,
+        q15_1_ans_num,
+        q16_text,
+        q16_1_ans_num,
+        q17_text,
+        q17_1_ans_num
     )
 
 
@@ -356,7 +373,8 @@ def form2(id):
             {"number": 10, "title": "Εξοπλισμός Η/Υ, κύριος και περιφερειακός & λογισμικό", "text": "Η κατηγορία συμπεριλαμβάνει την αγορά μηχανημάτων π.χ πρόγραμμα παραγγελιοληψίας, λογιστικά /εμπορικά προγράμματα κλπ.", "calc_coefficient": 0.2},
             {"number": 11, "title": "Λοιπές υπηρεσίες", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνονται υπηρεσίες τρίτων π.χ. πολιτικού μηχανικού για σχέδια – κατόψεις αλλά και την έκδοση άδειας λειτουργίας, υγειονολόγου ΤΕ για τη σύνταξη της μελέτης λειτουργίας της επιχείρησης, μηχανολόγου μηχανικού για μελέτη πυροπροστασίας κλπ.", "calc_coefficient": 0.2},
             {"number": 12, "title": "Αρχικό απόθεμα σε πρώτες και βοηθητικές ύλες", "text": "Συμπεριλαμβάνεται κάθε υλικό αγαθό που ανήκει στην επιχείρηση και προορίζεται για να πωληθεί στην κατάσταση που βρίσκεται ή να επεξεργαστεί για τους σκοπούς της παραγωγής", "calc_coefficient": 0},
-            {"number": 13, "title": "Λοιπά έξοδα εκκίνησης", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνονται τα έξοδα που προκύπτουν κατά τη διαδικασία δημιουργίας μιας νέας επιχείρησης και δεν συμπεριλαμβάνονται στις ανωτέρω ενότητες", "calc_coefficient": 0}
+            {"number": 13, "title": "Λοιπά έξοδα εκκίνησης", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνονται τα έξοδα που προκύπτουν κατά τη διαδικασία δημιουργίας μιας νέας επιχείρησης και δεν συμπεριλαμβάνονται στις ανωτέρω ενότητες", "calc_coefficient": 0},
+            
         ]
 
         # QUESTION 7
@@ -443,6 +461,55 @@ def form2(id):
 
         st.write('Ετήσια απόσβεση:', q13_1_calc)
 
+        # QUESTION 14
+        st.title("Ενοικίαση χώρων")
+        st.subheader("""Σε αυτή την κατηγορία, καταγράψτε τους χώρους που θα χρειαστούν για τη στέγαση της επιχειρηματικής δραστηριότητας και τυχόν άλλων χώρων που θα εξυπηρετούν τις ανάγκες της επιχείρησης λ.χ αποθήκη.
+Έπειτα υπολογίστε το ετήσιο κόστος για την ενοικίαση χώρου/ ων.
+Αν το μηνιαίο κόστος ενοικίασης χώρου είναι π.χ. 100€, υπολογίστε το ετήσιο κόστος πολλαπλασιάζοντας επί 12 (100*12=1200€). Εάν υπάρχουν περισσότεροι του ενός χώροι, προσθέστε τα ποσά που προκύπτουν.
+  """)
+
+        q14_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q14text", height=300)
+        st.text("Πόσο υπολογίζετε το συνολικό ετήσιο κόστος για την ενοικίαση χώρου/ων;")
+        q14_1_ans_num = st.number_input('Kόστος:', key="q141ansnum")
+        st.write('To Κόστος είναι:', q14_1_ans_num)
+
+        # QUESTION 15
+        st.title("Δαπάνες μισθοδοσίας")
+        st.subheader("""Καταγράψτε το σύνολο των εργαζομένων που θα απασχοληθούν στην επιχείρηση. Έπειτα υπολογίστε το ετήσιο κόστος μισθοδοσίας του συνόλου των εργαζομένων, λαμβάνοντας υπόψη το μισθολογικό κλιμάκιο που ανήκουν και τον χρόνο απασχόλησης. 
+Το κόστος είναι το άθροισμα των μικτών αποδοχών και εργοδοτικών εισφορών κάθε μήνα, ενώ επιπλέον, για κάθε ημερολογιακό έτος, προστίθεται δώρο Πάσχα & Χριστουγέννων, οι αποδοχές άδειας και η αποζημίωση της άδειας, αν προκύπτει.
+""")
+
+        q15_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q15text", height=300)
+        st.text("Πόσο υπολογίζετε το συνολικό ετήσιο κόστος μισθοδοσίας;")
+        q15_1_ans_num = st.number_input('Kόστος:', key="q151ansnum")
+        st.write('To Κόστος είναι:', q15_1_ans_num)
+        
+        # QUESTION 16
+        st.title("Παροχές υπηρεσιών τρίτων")
+        st.subheader("""Καταγράψτε τις παροχές υπηρεσιών από τρίτους, που θα χρειαστούν κατά το πρώτο έτος λειτουργίας της επιχειρηματικής δραστηριότητας. Σε αυτή την κατηγορία συμπεριλαμβάνονται οι λογαριασμοί ΔΕΚΟ, έξοδα επαγγελματιών (δικηγόρος, λογιστής, τεχνικός ασφαλείας), έξοδα διαφήμισης κλπ.
+Έπειτα υπολογίστε το ετήσιο κόστος της κάθε υπηρεσίας, πολλαπλασιάζοντας επί 12 σε περιπτώσεις μηνιαίων χρεώσεων, π.χ. λογαριασμοί ΔΕΚΟ.
+""")
+
+        q16_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q16text", height=300)
+        st.text("Πόσο υπολογίζετε το συνολικό ετήσιο κόστος παροχής υπηρεσιών από τρίτους;")
+        q16_1_ans_num = st.number_input('Kόστος:', key="q161ansnum")
+        st.write('To Κόστος είναι:', q16_1_ans_num)
+
+        # QUESTION 17
+        st.title("Λοιπά έκτακτα έξοδα")
+        st.subheader("""Καταγράψτε τυχόν έκτακτα έξοδα που μπορεί να προκύψουν κατά τον πρώτο χρόνο λειτουργία της επιχειρηματικής δράσης (π.χ. βλάβη μηχανημάτων, οχημάτων, κλπ.).
+Έπειτα υπολογίστε το συνολικό ετήσιο κόστος έκτακτων εξόδων.""")
+
+        q17_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q17text", height=300)
+        st.text("Πόσο υπολογίζετε το συνολικό ετήσιο κόστος έκτακτων εξόδων;")
+        q17_1_ans_num = st.number_input('Kόστος:', key="q171ansnum")
+        st.write('To Κόστος είναι:', q17_1_ans_num)
+
+
+
+
+
+
 
 
 
@@ -498,6 +565,22 @@ def form2(id):
         st.write(q13_text)
         st.write(q13_1_ans_num)
 
+        st.write('ypologismo gia erotisi 14')
+        st.write(q14_text)
+        st.write(q14_1_ans_num)
+
+        st.write('ypologismo gia erotisi 15')
+        st.write(q15_text)
+        st.write(q15_1_ans_num)
+
+        st.write('ypologismo gia erotisi 16')
+        st.write(q16_text)
+        st.write(q16_1_ans_num)
+
+        st.write('ypologismo gia erotisi 17')
+        st.write(q17_text)
+        st.write(q17_1_ans_num)
+
 
 
 
@@ -505,7 +588,7 @@ def form2(id):
         create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7_1_ans_num, q7_1_calc,
                         q8_text, q8_1_ans_num, q8_1_calc, q9_text, q9_1_ans_num, q9_1_calc,
                         q10_text, q10_1_ans_num, q10_1_calc, q11_text, q11_1_ans_num, q11_1_calc,
-                        q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc)
+                        q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc,q14_text,q14_1_ans_num,q15_text,q15_1_ans_num,q16_text,q16_1_ans_num,q17_text,q17_1_ans_num)
         # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
         st.success("Form 2 submitted successfully!")
 

@@ -900,6 +900,10 @@ def e_button9(id,kpdf):
 
 
         if submit_button_edit:
+            if q1_2_ans_radio=='ΝΑΙ':
+                q1_2_ans_radio='10'
+            else:
+                q1_2_ans_radio='0'
 
 
 

@@ -590,6 +590,11 @@ def form2(id):
                         q10_text, q10_1_ans_num, q10_1_calc, q11_text, q11_1_ans_num, q11_1_calc,
                         q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc,q14_text,q14_1_ans_num,q15_text,q15_1_ans_num,q16_text,q16_1_ans_num,q17_text,q17_1_ans_num)
         # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
+        st.title("Αποτελέσματα")
+        st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
+        st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
+        st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
+
         st.success("Form 2 submitted successfully!")
 
 def main():
@@ -1542,6 +1547,11 @@ def e_button10(id,kpdf):
             mycursor.execute(sql, val)
             conn.commit()
             st.success("Record Updated Successfully!!!")
+            st.title("Αποτελέσματα")
+            st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
+            st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
+            st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
+
             # st.write("button click update")
             # sql="update forms2 set title=%s,q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s,q7_text=%s,q7_1_ans_num=%s, q7_1_calc=%s where id=%s"
             # val=(title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc,str(selected_id_value))

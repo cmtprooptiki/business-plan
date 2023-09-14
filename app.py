@@ -983,20 +983,15 @@ def e_button9(id,kpdf):
                         +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
             st.write(result_val)
 
-            fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
+            fig = donut_pct_Chart(round(result_val,2), '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
             st.plotly_chart(fig, use_container_width=True)
-            st.write("until here is working")
-                
 
-
-
-            st.write("button click update")
             sql="update forms set title=%s,q1_text=%s,q1_1_ans_radio=%s,q1_2_ans_radio=%s,q1_3_ans_radio=%s,q1_4_ans_radio=%s,q1_5_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q2_3_ans_radio=%s,q2_4_ans_radio=%s,q3_text=%s,q3_1_ans_radio=%s,q3_2_ans_radio=%s,q3_3_ans_radio=%s,q4_text=%s,q4_1_ans_radio=%s,q4_2_ans_radio=%s,q5_text=%s,q5_1_ans_radio=%s,q5_2_ans_radio=%s,q5_3_ans_radio=%s where id=%s"
             val=(title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,str(selected_id_value))
             mycursor.execute(sql,val)
             conn.commit()
             # Display a success message
-            st.success("Record Update Successfully!!!")
+            st.success("Η φόρμα σας ενημερώθηκε με τις τελευταίες αλλαγές!")
             if int(result_val) >= 70:
                 st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
                 # return title

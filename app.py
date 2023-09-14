@@ -1498,7 +1498,7 @@ def e_button10(id,kpdf):
                     q16_text=%s,
                     q16_1_ans_num=%s,
                     q17_text=%s,
-                    q17_1_ans_num=%s,
+                    q17_1_ans_num=%s
                 WHERE id = %s
             """
 

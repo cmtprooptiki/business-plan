@@ -753,6 +753,13 @@ def e_button9(id,kpdf):
                 st.write("FIXING YES NO PROBLEM")
                 # st.write(default_option_indexq1_2)
                 st.write(row[6])
+                if row[6]=='0':
+                    row[6]='ΟΧΙ'
+                else:
+                    row[6]='ΝΑΙ'
+                
+                st.write(row[6])
+    
                 options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
                 option2=["ΟΧΙ","ΝΑΙ"]
 

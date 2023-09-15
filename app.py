@@ -174,12 +174,13 @@ def form1(id,kpdf):
 
 
         st.write("Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία")
+        colors2 = ['#00235e','#F0894F','#618abb']
 
         columns2 = ['D26', 'D27', 'D28']
         legend_labels = ['Κτηρια & Εξ.Χώροι ','Εστίαση','Λοιπές Δραστηριότητες']
         # kpdf_selected = kpdf[columns2]
         # Create the stacked bar plot using Plotly
-        fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors)
+        fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
         st.plotly_chart(fig,use_container_width=True)
 
 

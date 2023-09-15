@@ -1127,7 +1127,7 @@ def e_button9(id,kpdf):
                     mycursor.execute(sql, val)
 
                     # Commit the transaction
-                    mycursor.commit()
+                    conn.commit()
 
                     st.success("Record Deleted Successfully")
                 except Exception as e:

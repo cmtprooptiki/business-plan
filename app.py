@@ -145,26 +145,37 @@ def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7
 
 
 
-def form1(id):
+def form1(id,kpdf):
     st.title("FORM1")
     st.subheader("Δημιουργία Νέου Business Plan")
         
     # Encapsulate the form using st.form
     with st.form(key="create_form",clear_on_submit=True):
-        # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
-        # colors = ['#618abb','#00235e','#F0894F']
-
-        # columns = ['D9', 'D10', 'D11']
-        # # kpdf_selected = kpdf[columns]
-        # # Create the stacked bar plot using Plotly
-        # legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
-        # fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
-        # # Show the plot
-        # st.plotly_chart(fig, use_container_width=True)
+        
 
         ###QUESTION 1
         # st.write("Selected Year", year)
         title=st.text_area("Τίτλος επιχειρηματικής ιδέας",key="title")
+
+        st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
+
+
+
+# year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
+        colors = ['#618abb','#00235e','#F0894F']
+
+        columns = ['D9', 'D10', 'D11']
+        # kpdf_selected = kpdf[columns]
+        # Create the stacked bar plot using Plotly
+        legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
+        fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+        # Show the plot
+        st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
         st.title("Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)")
         st.text("""Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. 
         Περιγράψτε: 
@@ -692,7 +703,7 @@ def e_button9(id,kpdf):
     mycursor = conn.cursor()
 
     if option == "Create":
-        form1(id)
+        form1(id,kpdf)
 
 
            

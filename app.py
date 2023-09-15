@@ -1221,7 +1221,7 @@ def e_button9(id,kpdf):
                             + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
                             +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
                             +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
-                st.write(result_val)                #st.write(result_val)
+                # st.write(result_val)                #st.write(result_val)
                 fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
                 #st.plotly_chart(fig,use_container_width=True)
 

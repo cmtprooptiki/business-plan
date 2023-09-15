@@ -1189,7 +1189,8 @@ def e_button9(id,kpdf):
                 mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                 result = mycursor.fetchall()
                 for row in result:
-                    st.write(row)
+                    pass
+                    # st.write(row)
                 
                 title=row[3]
                 q1_text=row[4]

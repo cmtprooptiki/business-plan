@@ -159,8 +159,8 @@ def form1(id,kpdf):
 
         st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
 
+        st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>", unsafe_allow_html=True)
 
-        st.write("Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ")
 # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
         colors = ['#618abb','#00235e','#F0894F']
 
@@ -172,8 +172,8 @@ def form1(id,kpdf):
         # Show the plot
         st.plotly_chart(fig, use_container_width=True)
 
+        st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία</h3>", unsafe_allow_html=True)
 
-        st.write("Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία")
         colors2 = ['#00235e','#F0894F','#618abb']
 
         columns2 = ['D26', 'D27', 'D28']

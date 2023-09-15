@@ -1099,12 +1099,29 @@ def e_button9(id,kpdf):
                 ######
                 title=row[3]
                 q1_text=row[4]
-                q1_ans_radio1=row[5]
-                q2_text=row[6]
-                q2_1_ans_radio2=row[7]
-                q2_2_ans_radio3=row[8]
-                q3_text=row[9]
-                q3_ans_radio4=row[10]
+                q1_1_ans_radio=row[5]
+                q1_2_ans_radio=row[6]
+                q1_3_ans_radio=row[7]
+                q1_4_ans_radio=row[8]
+                q1_5_ans_radio=row[9]
+                q2_text=row[10]
+                q2_1_ans_radio=row[11]
+                q2_2_ans_radio=row[12]
+                q2_3_ans_radio=row[13]
+                q2_4_ans_radio=row[14]
+                q3_text=row[15]
+                q3_1_ans_radio=row[16]
+                q3_2_ans_radio=row[17]
+                q3_3_ans_radio=row[18]
+                q4_text=row[19]
+                q4_1_ans_radio=row[20]
+                q4_2_ans_radio=row[21]
+                q5_text=row[22]
+                q5_1_ans_radio=row[23]
+                q5_2_ans_radio=row[24]
+                q5_3_ans_radio=row[25]
+
+
                 result_val=(5)*10
                 #st.write(result_val)
                 fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
@@ -1129,12 +1146,39 @@ def e_button9(id,kpdf):
                 html = template.render(
                     title=row[3],
                     q1_text=row[4],
-                    q1_ans_radio=row[5],
-                    q2_text=row[6],
-                    q2_1_ans_radio=row[7],
-                    q2_2_ans_radio=row[8],
-                    q3_text=row[9],
-                    q3_ans_radio=row[10],
+                    q1_1_ans_radio=row[5],
+                    q1_2_ans_radio=row[6],
+                    q1_3_ans_radio=row[7],
+                    q1_4_ans_radio=row[8],
+                    q1_5_ans_radio=row[9],
+                    q2_text=row[10],
+                    q2_1_ans_radio=row[11],
+                    q2_2_ans_radio=row[12],
+                    q2_3_ans_radio=row[13],
+                    q2_4_ans_radio=row[14],
+                    q3_text=row[15],
+                    q3_1_ans_radio=row[16],
+                    q3_2_ans_radio=row[17],
+                    q3_3_ans_radio=row[18],
+                    q4_text=row[19],
+                    q4_1_ans_radio=row[20],
+                    q4_2_ans_radio=row[21],
+                    q5_text=row[22],
+                    q5_1_ans_radio=row[23],
+                    q5_2_ans_radio=row[24],
+                    q5_3_ans_radio=row[25],
+
+
+
+
+                    # title=row[3],
+                    # q1_text=row[4],
+                    # q1_ans_radio=row[5],
+                    # q2_text=row[6],
+                    # q2_1_ans_radio=row[7],
+                    # q2_2_ans_radio=row[8],
+                    # q3_text=row[9],
+                    # q3_ans_radio=row[10],
                     image_base64=image_base64
                 )
 

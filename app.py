@@ -1182,14 +1182,14 @@ def e_button9(id,kpdf):
         selected_id_value = return_ids[selected_id_index]
 
         # Display the selected date and its corresponding ID
-        st.write(f"Selected Date: {selected_id}")
-        st.write(f"Corresponding ID: {selected_id_value}")
+        # st.write(f"Selected Date: {selected_id}")
+        # st.write(f"Corresponding ID: {selected_id_value}")
 
         if selected_id:
                 mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                 result = mycursor.fetchall()
-                for row in result:
-                    st.write(row)
+                # for row in result:
+                #     st.write(row)
                 ######
                 title=row[3]
                 q1_text=row[4]
@@ -1278,7 +1278,7 @@ def e_button9(id,kpdf):
 
                 pdf = pdfkit.from_string(html, False)
                 st.download_button(
-                        "⬇️ Παραλαβή βεβαίωσης παρακολούθησης",
+                        "⬇️ Λήψη Business Plan Report",
                         data=pdf,
                         file_name="diploma.pdf",
                         mime="application/octet-stream",

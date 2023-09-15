@@ -183,7 +183,16 @@ def form1(id,kpdf):
         fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
         st.plotly_chart(fig,use_container_width=True)
 
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Ετήσια Μεταβολή Κύκλου Εργασιών</h3>", unsafe_allow_html=True)
 
+        categories=kpdf['year'].tolist()
+        # Sample data
+        # categories = ['Category A', 'Category B', 'Category C', 'Category D']
+        values =kpdf['D24'].astype(float).tolist()
+        line_labels=kpdf['D29'].tolist()
+        fig=pctChangeV2(categories,values,line_labels,'Κύκλοι Εργασιών','Κυκλ.Εργασιών')
+        # fig=pctChangeChart(values,categories,'Values','Ποσοστιαία μεταβολή','Percentage Change','Values')
+        st.plotly_chart(fig,use_container_width=True)
 
 
 

@@ -1188,9 +1188,9 @@ def e_button9(id,kpdf):
         if selected_id:
                 mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                 result = mycursor.fetchall()
-                # for row in result:
-                #     st.write(row)
-                ######
+                for row in result:
+                    st.write(row)
+                
                 title=row[3]
                 q1_text=row[4]
                 q1_1_ans_radio=row[5]

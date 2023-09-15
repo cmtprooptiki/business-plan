@@ -794,6 +794,44 @@ def e_button9(id,kpdf):
 
                 st.subheader("EDIT FORM")
                 title=st.text_area("Τίτλος επιχειρηματικής ιδέας",key="title",value=row[3])
+                st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
+
+                st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>", unsafe_allow_html=True)
+
+        # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
+                colors = ['#618abb','#00235e','#F0894F']
+
+                columns = ['D9', 'D10', 'D11']
+                # kpdf_selected = kpdf[columns]
+                # Create the stacked bar plot using Plotly
+                legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
+                fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+                # Show the plot
+                st.plotly_chart(fig, use_container_width=True)
+
+                st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία</h3>", unsafe_allow_html=True)
+
+                colors2 = ['#00235e','#F0894F','#618abb']
+
+                columns2 = ['D26', 'D27', 'D28']
+                legend_labels = ['Κτηρια & Εξ.Χώροι ','Εστίαση','Λοιπές Δραστηριότητες']
+                # kpdf_selected = kpdf[columns2]
+                # Create the stacked bar plot using Plotly
+                fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
+                st.plotly_chart(fig,use_container_width=True)
+
+                st.markdown("<h3 style='text-align: center; color: grey;'>% Ετήσια Μεταβολή Κύκλου Εργασιών</h3>", unsafe_allow_html=True)
+
+                categories=kpdf['year'].tolist()
+                # Sample data
+                # categories = ['Category A', 'Category B', 'Category C', 'Category D']
+                values =kpdf['D24'].astype(float).tolist()
+                line_labels=kpdf['D29'].tolist()
+                fig=pctChangeV2(categories,values,line_labels,'Κύκλοι Εργασιών','Κυκλ.Εργασιών')
+                # fig=pctChangeChart(values,categories,'Values','Ποσοστιαία μεταβολή','Percentage Change','Values')
+                st.plotly_chart(fig,use_container_width=True)
+
+
                 st.title("Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)")
                 st.text("""Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. 
                 Περιγράψτε: 

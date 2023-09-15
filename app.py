@@ -1123,7 +1123,7 @@ def e_button9(id,kpdf):
             if st.button("Remove"):
                 try:
                     sql = "DELETE FROM forms WHERE id=%s AND koispe_id=%s"
-                    val = (selected_id, id)
+                    val = (selected_id_value, id)
                     mycursor.execute(sql, val)
 
                     # Commit the transaction

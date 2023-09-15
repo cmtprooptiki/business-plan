@@ -1120,6 +1120,8 @@ def e_button9(id,kpdf):
             st.write(row[1],row[2],row[3])
            
             if st.button("remove"):
+                st.write(str(selected_id_value))
+                st.write(str(id))
                 mycursor.execute("delete from forms where id="+str(selected_id_value)+" and koispe_id="+str(id)+" ")
                 st.success("Record Deleted Succesfully")
                 # st.error("are you sure?")

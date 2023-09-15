@@ -1117,17 +1117,31 @@ def e_button9(id,kpdf):
             result = mycursor.fetchall()
             for row in result:
                 st.write(row)
-            st.write(row[1],row[2],row[3])
-           
-            if st.button("remove"):
-                st.write(str(selected_id_value))
-                st.write(str(id))
 
-                # mycursor.execute("delete from forms where id="+str(selected_id_value)+" and koispe_id="+str(id)+" ")
-                sql="DELETE FROM forms WHERE id=%s and koispe_id=%s"
-                val=(selected_id_value,id)
-                mycursor.execute(sql,val)
-                st.success("Record Deleted Succesfully")
+            st.write(row[1],row[2],row[3])
+
+            if st.button("Remove"):
+                try:
+                    sql = "DELETE FROM forms WHERE id=%s AND koispe_id=%s"
+                    val = (selected_id, id)
+                    mycursor.execute(sql, val)
+
+                    # Commit the transaction
+                    mycursor.commit()
+
+                    st.success("Record Deleted Successfully")
+                except Exception as e:
+                    st.error(f"Error deleting record: {str(e)}")
+    
+            # if st.button("remove"):
+            #     st.write(str(selected_id_value))
+            #     st.write(str(id))
+
+            #     # mycursor.execute("delete from forms where id="+str(selected_id_value)+" and koispe_id="+str(id)+" ")
+            #     sql="DELETE FROM forms WHERE id=%s and koispe_id=%s"
+            #     val=(selected_id_value,id)
+            #     mycursor.execute(sql,val)
+            #     st.success("Record Deleted Succesfully")
                 # st.error("are you sure?")
                 # # mycursor.execute("delete from forms where id="+str(row[0])+"and koispe_id="+str(row[1])+" and creation_date="+str(row[2])+"")
                 # if(st.button("yes")):

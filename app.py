@@ -1130,6 +1130,8 @@ def e_button9(id,kpdf):
                     conn.commit()
 
                     st.success("Record Deleted Successfully")
+                    st.experimental_rerun()
+
                 except Exception as e:
                     st.error(f"Error deleting record: {str(e)}")
     

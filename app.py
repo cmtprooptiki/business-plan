@@ -1124,8 +1124,8 @@ def e_button9(id,kpdf):
                 st.write(str(id))
 
                 # mycursor.execute("delete from forms where id="+str(selected_id_value)+" and koispe_id="+str(id)+" ")
-                sql="DELETE FROM `forms` WHERE `id`=%s and `koispe_id`=%s"
-                val=(selected_id_value,str(id))
+                sql="DELETE FROM forms WHERE id=%s and koispe_id=%s"
+                val=(selected_id_value,id)
                 mycursor.execute(sql,val)
                 st.success("Record Deleted Succesfully")
                 # st.error("are you sure?")

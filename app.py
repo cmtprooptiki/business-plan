@@ -160,7 +160,7 @@ def form1(id,kpdf):
         st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
 
 
-
+        st.write("Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ")
 # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
         colors = ['#618abb','#00235e','#F0894F']
 
@@ -171,6 +171,16 @@ def form1(id,kpdf):
         fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
         # Show the plot
         st.plotly_chart(fig, use_container_width=True)
+
+
+        st.write("Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία")
+
+        columns2 = ['D26', 'D27', 'D28']
+        legend_labels = ['Κτηρια & Εξ.Χώροι ','Εστίαση','Λοιπές Δραστηριότητες']
+        # kpdf_selected = kpdf[columns2]
+        # Create the stacked bar plot using Plotly
+        fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors)
+        st.plotly_chart(fig,use_container_width=True)
 
 
 

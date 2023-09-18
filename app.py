@@ -381,7 +381,9 @@ def form2(id):
 
         q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",height=300)
         
-        q6_1_ans_num=st.number_input('Kόστος:',key="q6_1_ans_num")
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+
+        q6_1_ans_num=st.number_input('Συμπληρώστε νούμερο:',key="q6_1_ans_num")
         st.write('The current number is ',q6_1_ans_num)
         q6_1_calc=q6_1_ans_num*0.04
 

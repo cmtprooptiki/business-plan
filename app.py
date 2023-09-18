@@ -146,7 +146,7 @@ def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7
 
 
 def form1(id,kpdf):
-    st.title("FORM1")
+    # st.title("FORM1")
     st.subheader("Δημιουργία Νέου Business Plan")
         
     # Encapsulate the form using st.form

@@ -364,8 +364,10 @@ def form1(id,kpdf):
 def form2(id):
 
     with st.form(key="rest_form2"):
-        st.title("Τμήμα Β")
-        title=st.text_area("Τίτλος Φορμας Οικονομικών στοιχείων",key="title")
+        st.title("Τίτλος επιχειρηματικής ιδέας")
+        title=st.text_area("Συμπληρώστε τον τίτλο που συμπληρώσατε και στη φόρμα 'Περιγραφή Επιχειρηματικής Ιδέας'",key="title")
+
+        # title=st.text_area("Τίτλος Φορμας Οικονομικών στοιχείων",key="title")
 
         st.title("Κόστος Εκκίνησης")
 

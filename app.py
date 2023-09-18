@@ -514,7 +514,7 @@ def form2(id):
 
         
         q14_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q141ansnum")
-        st.write('To Κόστος είναι:', q14_1_ans_num)
+        # st.write('To Κόστος είναι:', q14_1_ans_num)
 
         # QUESTION 15
         st.title("Δαπάνες μισθοδοσίας")

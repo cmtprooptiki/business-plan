@@ -156,7 +156,7 @@ def form1(id,kpdf):
         ###QUESTION 1
         # st.write("Selected Year", year)
         st.title("Τίτλος επιχειρηματικής ιδέας")
-        title=st.text_area("",key="title")
+        title=st.text_area("Συμπληρώστε εδώ:",key="title")
 
         st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
 

@@ -406,7 +406,7 @@ def form2(id):
         ]
 
         # QUESTION 7
-        st.title(questions[0]["title"])
+        st.subheader(questions[0]["title"])
         #st.subheader(questions[0]["text"])
         st.markdown("""<h4>Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης</h4>
         """,unsafe_allow_html=True)
@@ -418,7 +418,7 @@ def form2(id):
 
 
         # QUESTION 8
-        st.title(questions[1]["title"])
+        st.subheader(questions[1]["title"])
         #st.subheader(questions[1]["text"])
         st.markdown("""<h4>Κείμενο Επεξήγησης	Συμπεριλαμβάνονται τα έξοδα για τις εργασίες που απαιτούνται στον χώρο για την έναρξη λειτουργίας της νέας επένδυσης.</h4>
         """,unsafe_allow_html=True)
@@ -429,7 +429,7 @@ def form2(id):
         q8_1_calc = q8_1_ans_num * questions[1]["calc_coefficient"]
 
         # QUESTION 9
-        st.title(questions[2]["title"])
+        st.subheader(questions[2]["title"])
         st.markdown("""<h4>Η κατηγορία συμπεριλαμβάνει την αγορά μηχανημάτων π.χ οχήματα κλπ.</h4>
         """,unsafe_allow_html=True)
 
@@ -439,7 +439,7 @@ def form2(id):
         q9_1_calc = q9_1_ans_num * questions[2]["calc_coefficient"]
 
         # QUESTION 10
-        st.title(questions[3]["title"])
+        st.subheader(questions[3]["title"])
         st.markdown("""<h4>Η κατηγορία συμπεριλαμβάνει την αγορά εξοπλισμού π.χ πρόγραμμα παραγγελιοληψίας, λογιστικά /εμπορικά προγράμματα κλπ.</h4>
         """,unsafe_allow_html=True)
 
@@ -449,7 +449,7 @@ def form2(id):
         q10_1_calc = q10_1_ans_num * questions[3]["calc_coefficient"]
 
         # QUESTION 11
-        st.title(questions[4]["title"])
+        st.subheader(questions[4]["title"])
         st.markdown("""<h4>Σε αυτή την κατηγορία συμπεριλαμβάνονται υπηρεσίες τρίτων π.χ. πολιτικού μηχανικού για σχέδια – κατόψεις, αλλά και την έκδοση άδειας λειτουργίας, μηχανολόγου μηχανικού για μελέτη πυροπροστασίας κλπ.</h4>
         """,unsafe_allow_html=True)
 
@@ -459,7 +459,7 @@ def form2(id):
         q11_1_calc = q11_1_ans_num * questions[4]["calc_coefficient"]
 
         # QUESTION 12
-        st.title(questions[5]["title"])
+        st.subheader(questions[5]["title"])
         st.markdown("""<h4>Συμπεριλαμβάνεται κάθε υλικό αγαθό που ανήκει στην επιχείρηση και προορίζεται για να πωληθεί στην κατάσταση που βρίσκεται ή να επεξεργαστεί για τους σκοπούς της παραγωγής.</h4>
         """,unsafe_allow_html=True)
 
@@ -469,7 +469,7 @@ def form2(id):
         q12_1_calc = q12_1_ans_num * questions[5]["calc_coefficient"]
 
         # QUESTION 13
-        st.title(questions[6]["title"])
+        st.subheader(questions[6]["title"])
         st.markdown("""<h4>Σε αυτή την κατηγορία συμπεριλαμβάνονται τα έξοδα που προκύπτουν κατά τη διαδικασία της νέας επένδυσης και δεν συμπεριλαμβάνονται στις ανωτέρω ενότητες.</h4>
         """,unsafe_allow_html=True)
 
@@ -499,7 +499,7 @@ def form2(id):
         # st.write('To Κόστος είναι:', q14_1_ans_num)
 
         # QUESTION 15
-        st.title("Δαπάνες μισθοδοσίας")
+        st.subheader("Δαπάνες μισθοδοσίας")
         st.markdown("""<h4>Καταγράψτε το σύνολο των εργαζομένων που θα απασχοληθούν στην επιχείρηση. Έπειτα υπολογίστε το ετήσιο κόστος μισθοδοσίας του συνόλου των εργαζομένων, λαμβάνοντας υπόψη το μισθολογικό κλιμάκιο που ανήκουν και τον χρόνο απασχόλησης. 
         Το κόστος είναι το άθροισμα των μικτών αποδοχών και εργοδοτικών εισφορών κάθε μήνα, ενώ επιπλέον, για κάθε ημερολογιακό έτος, προστίθεται δώρο Πάσχα & Χριστουγέννων, οι αποδοχές άδειας και η αποζημίωση της άδειας, αν προκύπτει.
         </h4>""",unsafe_allow_html=True)
@@ -509,7 +509,7 @@ def form2(id):
         q15_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q151ansnum")
         
         # QUESTION 16
-        st.title("Παροχές υπηρεσιών τρίτων")
+        st.subheader("Παροχές υπηρεσιών τρίτων")
         st.markdown("""<h4>Καταγράψτε τις παροχές υπηρεσιών από τρίτους, που θα χρειαστούν για ένα έτος λειτουργίας της επιχειρηματικής δραστηριότητας. Σε αυτή την κατηγορία συμπεριλαμβάνονται οι λογαριασμοί ΔΕΚΟ, έξοδα επαγγελματιών (δικηγόρος, λογιστής, τεχνικός ασφαλείας), έξοδα διαφήμισης κλπ.
         Έπειτα υπολογίστε το ετήσιο κόστος της κάθε υπηρεσίας, πολλαπλασιάζοντας επί 12 σε περιπτώσεις μηνιαίων χρεώσεων, π.χ. λογαριασμοί ΔΕΚΟ.
         </h4>""",unsafe_allow_html=True)
@@ -519,7 +519,7 @@ def form2(id):
         q16_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q161ansnum")
 
         # QUESTION 17
-        st.title("Λοιπά έκτακτα έξοδα")
+        st.subheader("Λοιπά έκτακτα έξοδα")
         st.markdown("""<h4>Καταγράψτε τυχόν έκτακτα έξοδα που μπορεί να προκύψουν σε ένα έτος λειτουργίας της επιχειρηματικής δράσης (π.χ. βλάβη μηχανημάτων, οχημάτων, κλπ.).
         Έπειτα υπολογίστε το συνολικό ετήσιο κόστος έκτακτων εξόδων.
         .</h4>""",unsafe_allow_html=True)
@@ -1485,7 +1485,7 @@ def e_button10(id,kpdf):
 
 
                 # QUESTION 13
-                st.title(questions[6]["title"])
+                st.subheader(questions[6]["title"])
                 st.markdown("<h4>"+questions[6]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q13_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[25], key="q13text", height=300)

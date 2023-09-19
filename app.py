@@ -838,11 +838,11 @@ def e_button9(id,kpdf):
 
 
                 st.title("Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)")
-                st.markdown("""<h4>Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. 
-                Περιγράψτε: 
-                •	την αποστολή, τις αξίες και τους κοινωνικούς στόχους σας. 
+                st.markdown("""<h4>Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. <br>
+                Περιγράψτε: <br>
+                •	την αποστολή, τις αξίες και τους κοινωνικούς στόχους σας. <br>
                 •	τις έως τώρα επιχειρηματικές δράσεις, σχολιάζοντας τα διαχρονικά στοιχεία απασχόλησης και κύκλου εργασιών που προκύπτουν από τα παραπάνω διαγράμματα.  
-                """,unsafe_allow_html=True)
+                </h4>""",unsafe_allow_html=True)
                 q1_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q1text",height=300,value=row[4])
                 st.subheader("Η απάντησή σας εξηγεί επαρκώς το ιστορικό της ίδρυσης του ΚοιΣΠΕ;")
                 default_option_indexq1_1 = options.index(str(row[5]))
@@ -857,9 +857,9 @@ def e_button9(id,kpdf):
 
 
                 # default_option_indexq1_2 = option2.index(str(row[6]))
-                st.write("FIXING YES NO PROBLEM")
-                st.write(default_option_indexq1_2)
-                st.write(row[6])
+                #st.write("FIXING YES NO PROBLEM")
+                #st.write(default_option_indexq1_2)
+                #st.write(row[6])
                 q1_2_ans_radio = st.radio("",["ΟΧΙ","ΝΑΙ"],default_option_indexq1_2,horizontal=True,key="q1_2_ans_radio")
                 st.subheader("Η απάντησή σας περιγράφει επαρκώς την αποστολή, τις αξίες και τους κοινωνικούς στόχους του ΚοιΣΠΕ;")
                 default_option_indexq1_3 = options.index(str(row[7]))

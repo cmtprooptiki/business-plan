@@ -419,75 +419,65 @@ def form2(id):
 
         # QUESTION 8
         st.title(questions[1]["title"])
-        st.subheader(questions[1]["text"])
-
+        #st.subheader(questions[1]["text"])
+        st.markdown("""<h4>Κείμενο Επεξήγησης	Συμπεριλαμβάνονται τα έξοδα για τις εργασίες που απαιτούνται στον χώρο για την έναρξη λειτουργίας της νέας επένδυσης.</h4>
+        """,unsafe_allow_html=True)
         q8_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q8text", height=300)
-
-        q8_1_ans_num = st.number_input('Kόστος:', key="q81ansnum")
-        st.write('To Κόστος είναι:', q8_1_ans_num)
+        
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q8_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q81ansnum")
         q8_1_calc = q8_1_ans_num * questions[1]["calc_coefficient"]
-
-        st.write('Ετήσια απόσβεση:', q8_1_calc)
 
         # QUESTION 9
         st.title(questions[2]["title"])
-        st.subheader(questions[2]["text"])
+        st.markdown("""<h4>Η κατηγορία συμπεριλαμβάνει την αγορά μηχανημάτων π.χ οχήματα κλπ.</h4>
+        """,unsafe_allow_html=True)
 
         q9_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q9text", height=300)
-
-        q9_1_ans_num = st.number_input('Kόστος:', key="q91ansnum")
-        st.write('To Κόστος είναι:', q9_1_ans_num)
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q9_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q91ansnum")
         q9_1_calc = q9_1_ans_num * questions[2]["calc_coefficient"]
-
-        st.write('Ετήσια απόσβεση:', q9_1_calc)
 
         # QUESTION 10
         st.title(questions[3]["title"])
-        st.subheader(questions[3]["text"])
+        st.markdown("""<h4>Η κατηγορία συμπεριλαμβάνει την αγορά εξοπλισμού π.χ πρόγραμμα παραγγελιοληψίας, λογιστικά /εμπορικά προγράμματα κλπ.</h4>
+        """,unsafe_allow_html=True)
 
         q10_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q10text", height=300)
-
-        q10_1_ans_num = st.number_input('Kόστος:', key="q101ansnum")
-        st.write('To Κόστος είναι:', q10_1_ans_num)
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q10_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q101ansnum")
         q10_1_calc = q10_1_ans_num * questions[3]["calc_coefficient"]
-
-        st.write('Ετήσια απόσβεση:', q10_1_calc)
 
         # QUESTION 11
         st.title(questions[4]["title"])
-        st.subheader(questions[4]["text"])
+        st.markdown("""<h4>Σε αυτή την κατηγορία συμπεριλαμβάνονται υπηρεσίες τρίτων π.χ. πολιτικού μηχανικού για σχέδια – κατόψεις, αλλά και την έκδοση άδειας λειτουργίας, μηχανολόγου μηχανικού για μελέτη πυροπροστασίας κλπ.</h4>
+        """,unsafe_allow_html=True)
 
         q11_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q11text", height=300)
-
-        q11_1_ans_num = st.number_input('Kόστος:', key="q111ansnum")
-        st.write('To Κόστος είναι:', q11_1_ans_num)
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q11_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q111ansnum")
         q11_1_calc = q11_1_ans_num * questions[4]["calc_coefficient"]
-
-        st.write('Ετήσια απόσβεση:', q11_1_calc)
 
         # QUESTION 12
         st.title(questions[5]["title"])
-        st.subheader(questions[5]["text"])
+        st.markdown("""<h4>Συμπεριλαμβάνεται κάθε υλικό αγαθό που ανήκει στην επιχείρηση και προορίζεται για να πωληθεί στην κατάσταση που βρίσκεται ή να επεξεργαστεί για τους σκοπούς της παραγωγής.</h4>
+        """,unsafe_allow_html=True)
 
         q12_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q12text", height=300)
-
-        q12_1_ans_num = st.number_input('Kόστος:', key="q121ansnum")
-        st.write('To Κόστος είναι:', q12_1_ans_num)
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q12_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q121ansnum")
         q12_1_calc = q12_1_ans_num * questions[5]["calc_coefficient"]
-
-        st.write('Ετήσια απόσβεση:', q12_1_calc)
 
         # QUESTION 13
         st.title(questions[6]["title"])
-        st.subheader(questions[6]["text"])
+        st.markdown("""<h4>Σε αυτή την κατηγορία συμπεριλαμβάνονται τα έξοδα που προκύπτουν κατά τη διαδικασία της νέας επένδυσης και δεν συμπεριλαμβάνονται στις ανωτέρω ενότητες.</h4>
+        """,unsafe_allow_html=True)
 
         q13_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q13text", height=300)
-
-        q13_1_ans_num = st.number_input('Kόστος:', key="q131ansnum")
-        st.write('To Κόστος είναι:', q13_1_ans_num)
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q13_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q131ansnum")
         q13_1_calc = q13_1_ans_num * questions[6]["calc_coefficient"]
 
-        st.write('Ετήσια απόσβεση:', q13_1_calc)
 
         # QUESTION 14
         st.title("Λειτουργικό Κόστος")

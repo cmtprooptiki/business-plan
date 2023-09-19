@@ -631,35 +631,35 @@ def form2(id):
                             </tr>
                             <tr>
                                 <td>Κτίρια & Υποδομές</td>
-                                <td>"""+str(q6_1_calc)+"""</td>
+                                <td>"""+str(round(q6_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Εξοπλισμός & Έπιπλα</td>
-                                <td>"""+str(q7_1_calc)+"""</td>
+                                <td>"""+str(round(q7_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Εργασίες διαμόρφωσης, εγκατάστασης κλπ</td>
-                                <td>"""+str(q8_1_calc)+"""</td>
+                                <td>"""+str(round(q8_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Μηχανήματα, εξοπλισμός εκτός Η/Υ και λογισμικού</td>
-                                <td>"""+str(q9_1_calc)+"""</td>
+                                <td>"""+str(round(q8_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Εξοπλισμός Η/Υ, κύριος και περιφερειακός & λογισμικό</td>
-                                <td>"""+str(q10_1_calc)+"""</td>
+                                <td>"""+str(round(q10_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Λοιπές υπηρεσίες</td>
-                                <td>"""+str(q11_1_calc)+"""</td>
+                                <td>"""+str(round(q11_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Αρχικό απόθεμα σε πρώτες και βοηθητικές ύλες</td>
-                                <td>"""+str(q12_1_calc)+"""</td>
+                                <td>"""+str(round(q12_1_calc,2))+"""</td>
                             </tr>
                             <tr>
                                 <td>Λοιπά έξοδα εκκίνησης</td>
-                                <td>"""+str(q13_1_calc)+"""</td>
+                                <td>"""+str(round(q13_1_calc,2))+"""</td>
                             </tr>
                         </table>
         """,unsafe_allow_html=True)
@@ -1653,35 +1653,35 @@ def e_button10(id,kpdf):
                                 </tr>
                                 <tr>
                                     <td>Κτίρια & Υποδομές</td>
-                                    <td>"""+str(q6_1_calc)+"""</td>
+                                    <td>"""+str(round(q6_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Εξοπλισμός & Έπιπλα</td>
-                                    <td>"""+str(q7_1_calc)+"""</td>
+                                    <td>"""+str(round(q7_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Εργασίες διαμόρφωσης, εγκατάστασης κλπ</td>
-                                    <td>"""+str(q8_1_calc)+"""</td>
+                                    <td>"""+str(round(q8_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Μηχανήματα, εξοπλισμός εκτός Η/Υ και λογισμικού</td>
-                                    <td>"""+str(q9_1_calc)+"""</td>
+                                    <td>"""+str(round(q8_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Εξοπλισμός Η/Υ, κύριος και περιφερειακός & λογισμικό</td>
-                                    <td>"""+str(q10_1_calc)+"""</td>
+                                    <td>"""+str(round(q10_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Λοιπές υπηρεσίες</td>
-                                    <td>"""+str(q11_1_calc)+"""</td>
+                                    <td>"""+str(round(q11_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Αρχικό απόθεμα σε πρώτες και βοηθητικές ύλες</td>
-                                    <td>"""+str(q12_1_calc)+"""</td>
+                                    <td>"""+str(round(q12_1_calc,2))+"""</td>
                                 </tr>
                                 <tr>
                                     <td>Λοιπά έξοδα εκκίνησης</td>
-                                    <td>"""+str(q13_1_calc)+"""</td>
+                                    <td>"""+str(round(q13_1_calc,2))+"""</td>
                                 </tr>
                             </table>
             """,unsafe_allow_html=True)

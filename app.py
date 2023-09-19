@@ -1433,7 +1433,7 @@ def e_button10(id,kpdf):
                 # QUESTION 8
                 st.title("")
                 st.title(questions[1]["title"])
-                st.subheader("<h4>"+questions[1]["text"]+"</h4>",unsafe_allow_html=True)
+                st.subheader("<h4>Συμπεριλαμβάνονται τα έξοδα για τις εργασίες που απαιτούνται στον χώρο για την έναρξη λειτουργίας της επιχείρησης</h4>",unsafe_allow_html=True)
 
                 q8_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[10], key="q8text", height=300)
                 st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)

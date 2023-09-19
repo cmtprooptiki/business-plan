@@ -1695,6 +1695,7 @@ def e_button10(id,kpdf):
             st.write("Συνεπώς, για να είναι βιώσιμη η επιχειρηματική ιδέα σας, κρίνεται απαραίτητο, το ελάχιστο των ετήσιων εσόδων να είναι: "+str(SUM_leit))
             st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
     if option =="export":
+        st.write("hello")
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
         # for row in result:

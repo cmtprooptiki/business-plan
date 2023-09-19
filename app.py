@@ -1759,46 +1759,56 @@ def e_button10(id,kpdf):
                 pass
                 # st.write(row)
             
-            title=row[3]
-            q1_text=row[4]
-            q1_1_ans_radio=row[5]
-            q1_2_ans_radio=row[6]
-            q1_3_ans_radio=row[7]
-            q1_4_ans_radio=row[8]
-            q1_5_ans_radio=row[9]
-            q2_text=row[10]
-            q2_1_ans_radio=row[11]
-            q2_2_ans_radio=row[12]
-            q2_3_ans_radio=row[13]
-            q2_4_ans_radio=row[14]
-            q3_text=row[15]
-            q3_1_ans_radio=row[16]
-            q3_2_ans_radio=row[17]
-            q3_3_ans_radio=row[18]
-            q4_text=row[19]
-            q4_1_ans_radio=row[20]
-            q4_2_ans_radio=row[21]
-            q5_text=row[22]
-            q5_1_ans_radio=row[23]
-            q5_2_ans_radio=row[24]
-            q5_3_ans_radio=row[25]
+            title=row[3],
+            q6_text=row[4],
+            q6_1_ans_num=row[5],
+            q6_1_calc=row[6],
+            q7_text=row[7],
+            q7_1_ans_num=row[8],
+            q7_1_calc=row[9],
+            q8_text=row[10],
+            q8_1_ans_num=row[11],
+            q8_1_calc=row[12],
+            q9_text=row[13],
+            q9_1_ans_num=row[14],
+            q9_1_calc=row[15],
+            q10_text=row[16],
+            q10_1_ans_num=row[17],
+            q10_1_calc=row[18],
+            q11_text=row[19],
+            q11_1_ans_num=row[20],
+            q11_1_calc=row[21],
+            q12_text=row[22],
+            q12_1_ans_num=row[23],
+            q12_1_calc=row[24],
+            q13_text=row[25],
+            q13_1_ans_num=row[26],
+            q13_1_calc=row[27],
+            q14_text=row[28],
+            q14_1_ans_num=row[29],
+            q15_text=row[30],
+            q15_1_ans_num=row[31],
+            q16_text=row[32],
+            q16_1_ans_num=row[33],
+            q17_text=row[34],
+            q17_1_ans_num=row[35]
 
 
-            result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
-                        + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
-                        +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
-                        +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100,2) 
+            # result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
+            #             + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
+            #             +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
+            #             +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100,2) 
             
-            # st.write(result_val)                #st.write(result_val)
-            fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-            #st.plotly_chart(fig,use_container_width=True)
+            # # st.write(result_val)                #st.write(result_val)
+            # fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+            # #st.plotly_chart(fig,use_container_width=True)
 
-            # Render the figure as an image (e.g., PNG)
-            img_bytes = pio.to_image(fig, format="png")
+            # # Render the figure as an image (e.g., PNG)
+            # img_bytes = pio.to_image(fig, format="png")
 
-            # Store the image binary data in a variable
-            image_variable = io.BytesIO(img_bytes)
-            image_base64 = base64.b64encode(image_variable.getvalue()).decode()
+            # # Store the image binary data in a variable
+            # image_variable = io.BytesIO(img_bytes)
+            # image_base64 = base64.b64encode(image_variable.getvalue()).decode()
             #####
 
             env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
@@ -1811,32 +1821,38 @@ def e_button10(id,kpdf):
 
             html = template.render(
                 title=row[3],
-                q1_text=row[4],
-                q1_1_ans_radio=row[5],
-                q1_2_ans_radio=row[6],
-                q1_3_ans_radio=row[7],
-                q1_4_ans_radio=row[8],
-                q1_5_ans_radio=row[9],
-                q2_text=row[10],
-                q2_1_ans_radio=row[11],
-                q2_2_ans_radio=row[12],
-                q2_3_ans_radio=row[13],
-                q2_4_ans_radio=row[14],
-                q3_text=row[15],
-                q3_1_ans_radio=row[16],
-                q3_2_ans_radio=row[17],
-                q3_3_ans_radio=row[18],
-                q4_text=row[19],
-                q4_1_ans_radio=row[20],
-                q4_2_ans_radio=row[21],
-                q5_text=row[22],
-                q5_1_ans_radio=row[23],
-                q5_2_ans_radio=row[24],
-                q5_3_ans_radio=row[25],
-
-
-
-
+                q6_text=row[4],
+                q6_1_ans_num=row[5],
+                q6_1_calc=row[6],
+                q7_text=row[7],
+                q7_1_ans_num=row[8],
+                q7_1_calc=row[9],
+                q8_text=row[10],
+                q8_1_ans_num=row[11],
+                q8_1_calc=row[12],
+                q9_text=row[13],
+                q9_1_ans_num=row[14],
+                q9_1_calc=row[15],
+                q10_text=row[16],
+                q10_1_ans_num=row[17],
+                q10_1_calc=row[18],
+                q11_text=row[19],
+                q11_1_ans_num=row[20],
+                q11_1_calc=row[21],
+                q12_text=row[22],
+                q12_1_ans_num=row[23],
+                q12_1_calc=row[24],
+                q13_text=row[25],
+                q13_1_ans_num=row[26],
+                q13_1_calc=row[27],
+                q14_text=row[28],
+                q14_1_ans_num=row[29],
+                q15_text=row[30],
+                q15_1_ans_num=row[31],
+                q16_text=row[32],
+                q16_1_ans_num=row[33],
+                q17_text=row[34],
+                q17_1_ans_num=row[35]
                 # title=row[3],
                 # q1_text=row[4],
                 # q1_ans_radio=row[5],
@@ -1845,7 +1861,7 @@ def e_button10(id,kpdf):
                 # q2_2_ans_radio=row[8],
                 # q3_text=row[9],
                 # q3_ans_radio=row[10],
-                image_base64=image_base64
+                #image_base64=image_base64
             )
 
             pdf = pdfkit.from_string(html, False)

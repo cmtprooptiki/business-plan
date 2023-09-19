@@ -407,15 +407,15 @@ def form2(id):
 
         # QUESTION 7
         st.title(questions[0]["title"])
-        st.subheader(questions[0]["text"])
-
+        #st.subheader(questions[0]["text"])
+        st.markdown("""<h4>Σε αυτή την κατηγορία συμπεριλαμβάνεται το σύνολο του απαραίτητου εξοπλισμού και τα έπιπλα για τον χώρο της νέας επιχείρησης</h4>
+        """,unsafe_allow_html=True)
         q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text", height=300)
 
-        q7_1_ans_num = st.number_input('Kόστος:', key="q71ansnum")
-        st.write('To Κόστος είναι:', q7_1_ans_num)
+        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        q7_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q71ansnum")
         q7_1_calc = q7_1_ans_num * questions[0]["calc_coefficient"]
 
-        st.write('Ετήσια απόσβεση:', q7_1_calc)
 
         # QUESTION 8
         st.title(questions[1]["title"])
@@ -1060,7 +1060,6 @@ def e_button9(id,kpdf):
             # Display a success message
             
             st.success("Η φόρμα σας ενημερώθηκε με τις τελευταίες αλλαγές!")
-            st.write("test")
             if int(result_val) >= 80:
                 st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")
                 # return title

@@ -1386,8 +1386,8 @@ def e_button10(id,kpdf):
 
                 # options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
                 # option2=["ΟΧΙ","ΝΑΙ"]
-                st.subheader("Eπεξεργασία Φόρμας Οικονομικών Στοιχείων")
-                title=st.text_area("Τίτλος Φόρμας Οικονομικών στοιχείων",key="title",value=row[3])
+                st.title("Eπεξεργασία Φόρμας Οικονομικών Στοιχείων")
+                title=st.text_area("",key="title",value=row[3])
 
                 #QUESTION 6
                 st.title("Κτίρια & Υποδομές")

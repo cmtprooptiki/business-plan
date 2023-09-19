@@ -339,7 +339,8 @@ def form1(id,kpdf):
                                 q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,
                                 q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
         # Display a success message
-        
+        st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
+        st.text("Ποσοστό Ετοιμότητας")
         st.success("Record Created Successfully!!!")
         if int(result_val) >= 80:
             st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")
@@ -1042,8 +1043,7 @@ def e_button9(id,kpdf):
 
             submit_button_edit = st.form_submit_button("Update")
 
-        st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
-        st.text("Ποσοστό Ετοιμότητας")
+       
 
         if submit_button_edit:
 
@@ -1096,7 +1096,8 @@ def e_button9(id,kpdf):
             mycursor.execute(sql,val)
             conn.commit()
             # Display a success message
-            
+            st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
+            st.text("Ποσοστό Ετοιμότητας")
             st.success("Η φόρμα σας ενημερώθηκε με τις τελευταίες αλλαγές!")
             if int(result_val) >= 80:
                 st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")

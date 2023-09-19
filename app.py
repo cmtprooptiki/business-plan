@@ -1380,15 +1380,16 @@ def e_button10(id,kpdf):
         selected_id_value = return_ids[selected_id_index]
 
         # Display the selected date and its corresponding ID
-        st.write(f"Selected Date: {selected_id}")
-        st.write(f"Corresponding ID: {selected_id_value}")
+        # st.write(f"Selected Date: {selected_id}")
+        # st.write(f"Corresponding ID: {selected_id_value}")
 
         with st.form(key="edit_form"):
             if selected_id:
                 mycursor.execute("select * from forms2 where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                 result = mycursor.fetchall()
                 for row in result:
-                    st.write(row)
+                    # st.write(row)
+                    pass
 
                 # options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
                 # option2=["ΟΧΙ","ΝΑΙ"]

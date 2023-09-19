@@ -283,8 +283,7 @@ def form1(id,kpdf):
         # Call the create_record function to insert the data into the database
         #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
         # Calculate and display the result
-        st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
-        st.text("Ποσοστό Ετοιμότητας")
+        
         #metraopi nai oxi apanstise se 10 kai 0 antistoixa
         if q1_2_ans_radio=='ΝΑΙ':
             q1_2_ans_radio='10'
@@ -340,6 +339,8 @@ def form1(id,kpdf):
                                 q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,
                                 q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
         # Display a success message
+        st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
+        st.text("Ποσοστό Ετοιμότητας")
         st.success("Record Created Successfully!!!")
         if int(result_val) >= 80:
             st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")

@@ -1276,9 +1276,9 @@ def e_button9(id,kpdf):
                 # kpdf_selected = kpdf[columns]
                 # Create the stacked bar plot using Plotly
                 legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
-                fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+                fig1=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
 
-                img_bytes = pio.to_image(fig, format="png")
+                img_bytes = pio.to_image(fig1, format="png")
 
                 # Store the image binary data in a variable
                 image_variable = io.BytesIO(img_bytes)
@@ -1286,7 +1286,40 @@ def e_button9(id,kpdf):
                 # Encode the image data as base64
                 image_base64_1 = base64.b64encode(image_variable.getvalue()).decode()
                 #######################
+                colors2 = ['#00235e','#F0894F','#618abb']
 
+                columns2 = ['D26', 'D27', 'D28']
+                legend_labels = ['Κτηρια & Εξ.Χώροι ','Εστίαση','Λοιπές Δραστηριότητες']
+                # kpdf_selected = kpdf[columns2]
+                # Create the stacked bar plot using Plotly
+                fig2=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
+                st.plotly_chart(fig,use_container_width=True)
+
+                img_bytes = pio.to_image(fig2, format="png")
+
+                # Store the image binary data in a variable
+                image_variable = io.BytesIO(img_bytes)
+
+                # Encode the image data as base64
+                image_base64_2 = base64.b64encode(image_variable.getvalue()).decode()
+                #######################
+                categories=kpdf['year'].tolist()
+                # Sample data
+                # categories = ['Category A', 'Category B', 'Category C', 'Category D']
+                values =kpdf['D24'].astype(float).tolist()
+                line_labels=kpdf['D29'].tolist()
+                fig3=pctChangeV2(categories,values,line_labels,'Κύκλοι Εργασιών','Κυκλ.Εργασιών')
+                # fig=pctChangeChart(values,categories,'Values','Ποσοστιαία μεταβολή','Percentage Change','Values')
+                st.plotly_chart(fig,use_container_width=True)
+
+                img_bytes = pio.to_image(fig3, format="png")
+
+                # Store the image binary data in a variable
+                image_variable = io.BytesIO(img_bytes)
+
+                # Encode the image data as base64
+                image_base64_3 = base64.b64encode(image_variable.getvalue()).decode()
+                #######################
                 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
                 template = env.get_template("template.html")
 
@@ -1331,7 +1364,10 @@ def e_button9(id,kpdf):
                     # q2_2_ans_radio=row[8],
                     # q3_text=row[9],
                     # q3_ans_radio=row[10],
-                    image_base64=image_base64
+                    image_base64=image_base64,
+                    image_base64_1=image_base64_1,
+                    image_base64_2=image_base64_2,
+                    image_base64_3=image_base64_3
                 )
 
                 pdf = pdfkit.from_string(html, False)

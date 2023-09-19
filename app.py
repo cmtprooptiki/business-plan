@@ -881,25 +881,25 @@ def e_button9(id,kpdf):
                 ###QUESTION 2
                 st.title("Ανάλυση της αγοράς (εξωτερικό περιβάλλον & οικοσύστημα των ΚοιΣΠΕ)")
 
-                st.text("""Αναλύστε την αγορά-στόχο και το μέγεθός της.
-                Προσδιορίστε το κοινό-στόχο και τις ανάγκες του. 
-                Αναφερθείτε σε τυχόν αντίστοιχη εμπειρία άλλων Συνεταιρισμών στον ίδιο τομέα.
+                st.markdown("""<h4>Αναλύστε την αγορά-στόχο και το μέγεθός της.<br>
+                Προσδιορίστε το κοινό-στόχο και τις ανάγκες του. <br>
+                Αναφερθείτε σε τυχόν αντίστοιχη εμπειρία άλλων Συνεταιρισμών στον ίδιο τομέα.<br>
                 Αξιολογήστε το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς.
-                """)
+                </h4>""",unsafe_allow_html=True)
                 q2_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q2text",value=row[10],height=300)
 
                 st.subheader("Η απάντησή σας αναλύει επαρκώς την αγορά-στόχο και το μέγεθός της;")
                 default_option_indexq2_1 = options.index(str(row[11]))
-                q2_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_1_ans_radio")
-                st.write('You selected ', q2_1_ans_radio)
+                q2_1_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_1_ans_radio")
+
                 st.subheader("Η απάντησή σας προσδιορίζει επαρκώς το κοινό-στόχο και τις ανάγκες του;")
                 default_option_indexq2_2 = options.index(str(row[12]))
-                q2_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_2_ans_radio")
-                st.write('You selected ', q2_2_ans_radio)
+                q2_2_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_2_ans_radio")
+
                 st.subheader("Στην απάντησή σας αναφέρετε εάν υπάρχουν ή όχι άλλοι Συνεταιρισμοί με αντίστοιχη εμπειρία;")
                 default_option_indexq2_3 = options.index(str(row[13]))
-                q2_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q2_3_ans_radio")
-                st.write('You selected ', q2_3_ans_radio)
+                q2_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q2_3_ans_radio")
+
                 st.subheader("Έχετε αξιολογήσει το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς;")
 
                 if row[14]=='0':
@@ -909,13 +909,13 @@ def e_button9(id,kpdf):
 
                 # default_option_indexq2_4 = option2.index(str(row[14]))
                 q2_4_ans_radio = st.radio("",  ["ΟΧΙ","ΝΑΙ"],default_option_indexq2_4, horizontal=True,key="q2_4_ans_radio")
-                st.write('You selected ', q2_4_ans_radio)
+
                 ###QUESTION 3
                 st.title("Προϊόντα ή υπηρεσίες")
-                st.subheader("""Αναφέρατε τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο συνεταιρισμός.
-                Εξηγήστε πώς οι προσφορές αυτές (προϊόντα ή υπηρεσίες) ανταποκρίνονται στις ανάγκες της αγοράς.
+                st.markdown("""<h4>Αναφέρατε τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο συνεταιρισμός.<br>
+                Εξηγήστε πώς οι προσφορές αυτές (προϊόντα ή υπηρεσίες) ανταποκρίνονται στις ανάγκες της αγοράς.<br>
                 Επισημάνετε τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε.
-                """)
+                </h4>""",unsafe_allow_html=True)
                 q3_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q3text",value=row[15],height=300)
                 st.subheader("Έχετε αναφέρει τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο Συνεταιρισμός σας;")
                 
@@ -928,15 +928,12 @@ def e_button9(id,kpdf):
                 
                 # default_option_indexq3_1 = option2.index(str(row[16]))
                 q3_1_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq3_1, horizontal=True,key="q3_1_ans_radio")
-                st.write('You selected ', q3_1_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;")
                 default_option_indexq3_2 = options.index(str(row[17]))
-                q3_2_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_2_ans_radio")
-                st.write('You selected ', q3_2_ans_radio)
+                q3_2_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_2_ans_radio")
                 st.subheader("Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;")
                 default_option_indexq3_3 = options.index(str(row[18]))
-                q3_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_3_ans_radio")
-                st.write('You selected ', q3_3_ans_radio)
+                q3_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_3_ans_radio")
                 
                 
                 ###QUESTION 4

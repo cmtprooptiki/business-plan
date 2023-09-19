@@ -619,6 +619,51 @@ def form2(id):
         st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
         st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
 
+        SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
+        SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
+
+        st.write("Το κόστος εκκίνησης, δηλαδή το κεφάλαιο που χρειάζεται για την έναρξης της επιχειρηματικής ιδέας σας, είναι:"+SUM_ek)
+        st.write("Το Λειτουργικό κόστος, δηλαδή κόστος για τη λειτουργία της επιχειρηματικής ιδέας σας, για ένα έτος είναι:"+SUM_leit)
+        st.markdown(""" <table>
+                            <tr>
+                                <th>Κατηγορία</th>
+                                <th>Ετήσια απόσβεση</th>
+                            </tr>
+                            <th>
+                                <td>Κτίρια & Υποδομές</td>
+                                <td>"""+q6_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Εξοπλισμός & Έπιπλα</td>
+                                <td>"""+q7_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Εργασίες διαμόρφωσης, εγκατάστασης κλπ</td>
+                                <td>"""+q8_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Μηχανήματα, εξοπλισμός εκτός Η/Υ και λογισμικού</td>
+                                <td>"""+q9_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Εξοπλισμός Η/Υ, κύριος και περιφερειακός & λογισμικό</td>
+                                <td>"""+q10_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Λοιπές υπηρεσίες</td>
+                                <td>"""+q11_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Αρχικό απόθεμα σε πρώτες και βοηθητικές ύλες</td>
+                                <td>"""+q12_1_calc+"""</td>
+                            </th>
+                            <th>
+                                <td>Λοιπά έξοδα εκκίνησης</td>
+                                <td>"""+q13_1_calc+"""</td>
+                            </th>
+                        </table>
+        """,unsafe_allow_html=True)
+        
         st.success("Form 2 submitted successfully!")
 
 def main():

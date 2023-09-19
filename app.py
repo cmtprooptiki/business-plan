@@ -797,7 +797,8 @@ def e_button9(id,kpdf):
                 option2=["ΟΧΙ","ΝΑΙ"]
 
                 
-                title=st.title("Τίτλος επιχειρηματικής ιδέας",key="title",value=row[3])
+                st.title("Τίτλος επιχειρηματικής ιδέας")
+                title=st.text_area("",key="title",value=row[3])
                 st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
 
                 st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>", unsafe_allow_html=True)

@@ -1423,15 +1423,13 @@ def e_button10(id,kpdf):
                         ]
                 # QUESTION 7
                 st.title(questions[0]["title"])
-                st.subheader(questions[0]["text"])
+                st.markdown("<h4>"+questions[0]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q7_text = st.text_area("Γράψε ελεύθερο κείμενο", value=row[7], key="q7text", height=300)
-
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
                 q7_1_ans_num = st.number_input('Kόστος:', key="q71ansnum",value=row[8])
-                st.write('To Κόστος είναι:', q7_1_ans_num)
                 q7_1_calc = q7_1_ans_num * questions[0]["calc_coefficient"]
 
-                st.write('Ετήσια απόσβεση:', q7_1_calc)
                 # QUESTION 8
                 st.title("")
                 st.title(questions[1]["title"])

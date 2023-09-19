@@ -283,7 +283,7 @@ def form1(id,kpdf):
         # Call the create_record function to insert the data into the database
         #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
         # Calculate and display the result
-        st.title("Result")
+        st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
         st.text("Ποσοστό Ετοιμότητας")
         #metraopi nai oxi apanstise se 10 kai 0 antistoixa
         if q1_2_ans_radio=='ΝΑΙ':
@@ -341,14 +341,14 @@ def form1(id,kpdf):
                                 q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
         # Display a success message
         st.success("Record Created Successfully!!!")
-        if int(result_val) >= 70:
-            st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Μπορείτε να προχωρήσετε παρακάτω.")
+        if int(result_val) >= 80:
+            st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")
             # return title
-        elif (int(result_val) >= 60) and (int(result_val)<=70):
-            st.write("Φαίνεται πως είστε σίγουρος/η για τις απαντήσεις σας. Θα ήταν βοηθητικό να επανεξετάσετε όσες δεν θεωρείτε επαρκείς, πριν προχωρήσετε παρακάτω.")
+        elif (int(result_val) >= 50) and (int(result_val)<80):
+            st.write("Φαίνεται πως είστε αρκετά ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Θα ήταν χρήσιμο να αναλύσετε περισσότερο την ιδέα σας στα πεδία που δεν νιώθετε σιγουριά, πριν προχωρήσετε στα οικονομικά στοιχεία.")
             # return title
         else:
-            st.write("Φαίνεται πως δεν είστε σίγουρος/η για τις απαντήσεις σας. Καλό είναι να τις επανεξετάσετε, πριν προχωρήσετε παρακάτω.")
+            st.write("Φαίνεται πως δεν είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Καλύτερα να αναλύσετε περισσότερο την ιδέα σας, πριν προχωρήσετε στα οικονομικά στοιχεία.")
             # return title
 
 

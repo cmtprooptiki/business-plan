@@ -1451,27 +1451,22 @@ def e_button10(id,kpdf):
 
                 # QUESTION 10
                 st.title(questions[3]["title"])
-                st.subheader(questions[3]["text"])
+                st.markdown("<h4>"+questions[3]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q10_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[16] ,key="q10text", height=300)
-
-                q10_1_ans_num = st.number_input('Kόστος:', key="q101ansnum",value=row[17])
-                st.write('To Κόστος είναι:', q10_1_ans_num)
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
+                q10_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q101ansnum",value=row[17])
                 q10_1_calc = q10_1_ans_num * questions[3]["calc_coefficient"]
 
-                st.write('Ετήσια απόσβεση:', q10_1_calc)
 
                 # QUESTION 11
                 st.title(questions[4]["title"])
-                st.subheader(questions[4]["text"])
+                st.subheader("<h4>"+questions[4]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q11_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[19], key="q11text", height=300)
-
-                q11_1_ans_num = st.number_input('Kόστος:', key="q111ansnum",value=row[20])
-                st.write('To Κόστος είναι:', q11_1_ans_num)
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
+                q11_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q111ansnum",value=row[20])
                 q11_1_calc = q11_1_ans_num * questions[4]["calc_coefficient"]
-
-                st.write('Ετήσια απόσβεση:', q11_1_calc)
 
                 # QUESTION 12
                 st.title(questions[5]["title"])

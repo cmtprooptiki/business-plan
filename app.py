@@ -1427,32 +1427,27 @@ def e_button10(id,kpdf):
 
                 q7_text = st.text_area("Γράψε ελεύθερο κείμενο", value=row[7], key="q7text", height=300)
                 st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
-                q7_1_ans_num = st.number_input('Kόστος:', key="q71ansnum",value=row[8])
+                q7_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q71ansnum",value=row[8])
                 q7_1_calc = q7_1_ans_num * questions[0]["calc_coefficient"]
 
                 # QUESTION 8
                 st.title("")
                 st.title(questions[1]["title"])
-                st.subheader(questions[1]["text"])
+                st.subheader("<h4>"+questions[1]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q8_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[10], key="q8text", height=300)
-
-                q8_1_ans_num = st.number_input('Kόστος:', key="q81ansnum",value=row[11])
-                st.write('To Κόστος είναι:', q8_1_ans_num)
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
+                q8_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q81ansnum",value=row[11])
                 q8_1_calc = q8_1_ans_num * questions[1]["calc_coefficient"]
-                st.write('Ετήσια απόσβεση:', q8_1_calc)
 
                 # QUESTION 9
                 st.title(questions[2]["title"])
-                st.subheader(questions[2]["text"])
+                st.subheader("<h4>"+questions[2]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q9_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[13] ,key="q9text", height=300)
-
-                q9_1_ans_num = st.number_input('Kόστος:', key="q91ansnum",value=row[14])
-                st.write('To Κόστος είναι:', q9_1_ans_num)
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
+                q9_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q91ansnum",value=row[14])
                 q9_1_calc = q9_1_ans_num * questions[2]["calc_coefficient"]
-
-                st.write('Ετήσια απόσβεση:', q9_1_calc)
 
                 # QUESTION 10
                 st.title(questions[3]["title"])

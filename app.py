@@ -1293,7 +1293,7 @@ def e_button9(id,kpdf):
                 # kpdf_selected = kpdf[columns2]
                 # Create the stacked bar plot using Plotly
                 fig2=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
-                st.plotly_chart(fig,use_container_width=True)
+                # st.plotly_chart(fig,use_container_width=True)
 
                 img_bytes = pio.to_image(fig2, format="png")
 
@@ -1310,7 +1310,7 @@ def e_button9(id,kpdf):
                 line_labels=kpdf['D29'].tolist()
                 fig3=pctChangeV2(categories,values,line_labels,'Κύκλοι Εργασιών','Κυκλ.Εργασιών')
                 # fig=pctChangeChart(values,categories,'Values','Ποσοστιαία μεταβολή','Percentage Change','Values')
-                st.plotly_chart(fig,use_container_width=True)
+                #st.plotly_chart(fig,use_container_width=True)
 
                 img_bytes = pio.to_image(fig3, format="png")
 

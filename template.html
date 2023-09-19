@@ -48,12 +48,24 @@
   <p style="position:absolute;top:167px;left:376px;white-space:nowrap" class="ft00"><b>&#160;</b></p>
   <h2 style="position: relative;display: flex;align-items: center;justify-content: center;text-align: center;bottom: 585px;" class="ft01">&#160;&#160; {{student}}</h2>
 </div> -->
+
 <div>
   
   <h1 style="text-align:center;">Τίτλος επιχειρηματικής ιδέας</h1>
   <h1 style="text-align:center;">{{title}}</h1>
+
+  <div style="text-align:center">
+    <h1 style="text-align:center;">Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ</h1>
+    <h3 style="text-align:center;">Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>
+    <img src="data:image/png;base64,{{image_base64}}" alt="Image">
+    <h3 style="text-align:center;">Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία</h3>
+    <img src="data:image/png;base64,{{image_base64}}" alt="Image">
+    <h3 style="text-align:center;">% Ετήσια Μεταβολή Κύκλου Εργασιών</h3>
+    <img src="data:image/png;base64,{{image_base64}}" alt="Image">
+  </div>
+
   <h1 style="text-align:center;">Τμήμα Α</h1>
-  <h1>Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)</h2>
+  <h1>Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)</h1>
   <h3>Περιγράψτε τους στόχους που ελπίζετε να επιτύχετε.</h3>
   <h3>Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. 
     Περιγράψτε:</h3>
@@ -63,74 +75,10 @@
     </ul>
   <p style="white-space: pre-line;">{{q1_text}}</p>
   <!-- <input name="stoxoi" value='{{q1_text}}' size="50" cols="50" rows="4"> -->
-  <h3>Η απάντησή σας εξηγεί επαρκώς το ιστορικό της ίδρυσης του ΚοιΣΠΕ;</h3>
-  <label>
-    <input type="radio" name="stars" value="0" {% if q1_1_ans_radio == "0" %}checked{% endif %}> 0
-
-    <input type="radio" name="stars" value="1" {% if q1_1_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars" value="2" {% if q1_1_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars" value="3" {% if q1_1_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars" value="4" {% if q1_1_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars" value="5" {% if q1_1_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars" value="6" {% if q1_1_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars" value="7" {% if q1_1_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars" value="8" {% if q1_1_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars" value="9" {% if q1_1_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars" value="10" {% if q1_1_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-  <h3>Έχει αναφερθεί ξεκάθαρα η νομική οντότητα του ΚοιΣΠΕ;</h3>
-  <label>
-    <input type="radio" name="stars2" value="0" {% if q1_2_ans_radio == "0" %}checked{% endif %}> ΟΧΙ
-
-    <input type="radio" name="stars2" value="10" {% if q1_2_ans_radio == "10" %}checked{% endif %}> ΝΑΙ
-
-  </label>
+  
 
 
-  <h3>Η απάντησή σας περιγράφει επαρκώς την αποστολή, τις αξίες και τους κοινωνικούς στόχους του ΚοιΣΠΕ;</h3>
-  <label>
-    <input type="radio" name="stars3" value="0" {% if q1_3_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars3" value="1" {% if q1_3_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars3" value="2" {% if q1_3_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars3" value="3" {% if q1_3_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars3" value="4" {% if q1_3_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars3" value="5" {% if q1_3_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars3" value="6" {% if q1_3_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars3" value="7" {% if q1_3_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars3" value="8" {% if q1_3_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars3" value="9" {% if q1_3_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars3" value="10" {% if q1_3_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-
-  <h3>Η απάντησή σας περιγράφει επαρκώς τις έως τώρα επιχειρηματικές δράσεις;</h3>
-  <label>
-    <input type="radio" name="stars4" value="0" {% if q1_4_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars4" value="1" {% if q1_4_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars4" value="2" {% if q1_4_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars4" value="3" {% if q1_4_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars4" value="4" {% if q1_4_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars4" value="5" {% if q1_4_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars4" value="6" {% if q1_4_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars4" value="7" {% if q1_4_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars4" value="8" {% if q1_4_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars4" value="9" {% if q1_4_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars4" value="10" {% if q1_4_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-
-  <h3>Παρατίθενται αριθμητικά στοιχεία εργαζομένων και κύκλοι εργασιών τριετίας;</h3>
-  <label>
-    <input type="radio" name="stars5" value="0" {% if q1_5_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars5" value="1" {% if q1_5_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars5" value="2" {% if q1_5_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars5" value="3" {% if q1_5_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars5" value="4" {% if q1_5_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars5" value="5" {% if q1_5_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars5" value="6" {% if q1_5_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars5" value="7" {% if q1_5_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars5" value="8" {% if q1_5_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars5" value="9" {% if q1_5_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars5" value="10" {% if q1_5_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
+  
 
 
 
@@ -141,57 +89,11 @@
   <h3>Αναλύστε την αγορά-στόχο και το μέγεθός της.Προσδιορίστε το κοινό-στόχο και τις ανάγκες του.Αναφερθείτε σε τυχόν αντίστοιχη εμπειρία άλλων Συνεταιρισμών στον ίδιο τομέα.Αξιολογήστε το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς.</h3>
   <p style="white-space: pre-line;">{{q2_text}}</p>
   <!-- <input name="desc" type="textarea" value='{{q2_text}}' size="50"> -->
-  <h3>Η απάντησή σας αναλύει επαρκώς την αγορά-στόχο και το μέγεθός της;</h3>
-  <label>
-    <input type="radio" name="stars6" value="0" {% if q2_1_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars6" value="1" {% if q2_1_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars6" value="2" {% if q2_1_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars6" value="3" {% if q2_1_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars6" value="4" {% if q2_1_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars6" value="5" {% if q2_1_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars6" value="6" {% if q2_1_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars6" value="7" {% if q2_1_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars6" value="8" {% if q2_1_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars6" value="9" {% if q2_1_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars6" value="10" {% if q2_1_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
+  
 
 
-  <h3>Η απάντησή σας προσδιορίζει επαρκώς το κοινό-στόχο και τις ανάγκες του;</h3>
-  <label>
-    <input type="radio" name="stars7" value="0" {% if q2_2_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars7" value="1" {% if q2_2_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars7" value="2" {% if q2_2_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars7" value="3" {% if q2_2_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars7" value="4" {% if q2_2_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars7" value="5" {% if q2_2_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars7" value="6" {% if q2_2_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars7" value="7" {% if q2_2_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars7" value="8" {% if q2_2_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars7" value="9" {% if q2_2_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars7" value="10" {% if q2_2_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-
-  <h3>Στην απάντησή σας αναφέρετε εάν υπάρχουν ή όχι άλλοι Συνεταιρισμοί με αντίστοιχη εμπειρία;</h3>
-  <label>
-    <input type="radio" name="stars8" value="0" {% if q2_3_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars8" value="1" {% if q2_3_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars8" value="2" {% if q2_3_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars8" value="3" {% if q2_3_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars8" value="4" {% if q2_3_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars8" value="5" {% if q2_3_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars8" value="6" {% if q2_3_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars8" value="7" {% if q2_3_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars8" value="8" {% if q2_3_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars8" value="9" {% if q2_3_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars8" value="10" {% if q2_3_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-
-  <h3>Έχετε αξιολογήσει το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς;</h3>
-  <label>
-    <input type="radio" name="stars9" value="0" {% if q2_4_ans_radio == "0" %}checked{% endif %}> ΟΧΙ
-    <input type="radio" name="stars9" value="10" {% if q2_4_ans_radio == "10" %}checked{% endif %}> ΝΑΙ
-  </label>
+  
+  
 
   <h1>Προϊόντα ή υπηρεσίες</h1>
 
@@ -199,41 +101,9 @@
 
   <p style="white-space: pre-line;">{{q3_text}}</p>
 
-  <h3>Έχετε αναφέρει τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο Συνεταιρισμός σας;</h3>
-  <label>
-    <input type="radio" name="stars10" value="0" {% if q3_1_ans_radio == "0" %}checked{% endif %}> ΟΧΙ
-    <input type="radio" name="stars10" value="10" {% if q3_1_ans_radio == "10" %}checked{% endif %}> ΝΑΙ
-  </label>
+  
 
-  <h3>Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;</h3>
-  <label>
-    <input type="radio" name="stars11" value="0" {% if q3_2_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars11" value="1" {% if q3_2_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars11" value="2" {% if q3_2_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars11" value="3" {% if q3_2_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars11" value="4" {% if q3_2_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars11" value="5" {% if q3_2_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars11" value="6" {% if q3_2_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars11" value="7" {% if q3_2_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars11" value="8" {% if q3_2_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars11" value="9" {% if q3_2_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars11" value="10" {% if q3_2_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-
-  <h3>Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;</h3>
-  <label>
-    <input type="radio" name="stars12" value="0" {% if q3_3_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars12" value="1" {% if q3_3_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars12" value="2" {% if q3_3_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars12" value="3" {% if q3_3_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars12" value="4" {% if q3_3_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars12" value="5" {% if q3_3_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars12" value="6" {% if q3_3_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars12" value="7" {% if q3_3_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars12" value="8" {% if q3_3_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars12" value="9" {% if q3_3_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars12" value="10" {% if q3_3_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
+  
 
   <h1>Ανάλυση επιχειρηματικής ιδέας</h1>
 
@@ -241,26 +111,7 @@
 
   <p style="white-space: pre-line;">{{q4_text}}</p>
 
-  <h3>Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;</h3>
-  <label>
-    <input type="radio" name="stars13" value="0" {% if q4_1_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars13" value="1" {% if q4_1_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars13" value="2" {% if q4_1_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars13" value="3" {% if q4_1_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars13" value="4" {% if q4_1_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars13" value="5" {% if q4_1_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars13" value="6" {% if q4_1_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars13" value="7" {% if q4_1_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars13" value="8" {% if q4_1_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars13" value="9" {% if q4_1_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars13" value="10" {% if q4_1_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-
-  <h3>Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας;</h3>
-  <label>
-    <input type="radio" name="stars14" value="0" {% if q4_2_ans_radio == "0" %}checked{% endif %}> ΟΧΙ
-    <input type="radio" name="stars14" value="10" {% if q4_2_ans_radio == "10" %}checked{% endif %}> ΝΑΙ
-  </label>
+  
 
 
   <h1>Διοίκηση και ομάδα</h1>
@@ -272,33 +123,7 @@
 
   <p style="white-space: pre-line;">{{q5_text}}</p>
 
-  <h3>Έχετε παρουσιάσει τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στην νέα επιχειρηματική ιδέα;</h3>
-  <label>
-    <input type="radio" name="stars15" value="0" {% if q5_1_ans_radio == "0" %}checked{% endif %}> ΟΧΙ
-    <input type="radio" name="stars15" value="10" {% if q5_1_ans_radio == "10" %}checked{% endif %}> ΝΑΙ
-  </label>
-
-  <h3>Έχετε επισημάνει  τη σχετική εμπειρία και τα προσόντα τους;</h3>
-  <label>
-    <input type="radio" name="stars16" value="0" {% if q5_2_ans_radio == "0" %}checked{% endif %}> ΟΧΙ
-    <input type="radio" name="stars16" value="10" {% if q5_2_ans_radio == "10" %}checked{% endif %}> ΝΑΙ
-  </label>
-
-  <h3>Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;</h3>
-  <label>
-    <input type="radio" name="stars17" value="0" {% if q5_3_ans_radio == "0" %}checked{% endif %}> 0
-    <input type="radio" name="stars17" value="1" {% if q5_3_ans_radio == "1" %}checked{% endif %}> 1
-    <input type="radio" name="stars17" value="2" {% if q5_3_ans_radio == "2" %}checked{% endif %}> 2
-    <input type="radio" name="stars17" value="3" {% if q5_3_ans_radio == "3" %}checked{% endif %}> 3
-    <input type="radio" name="stars17" value="4" {% if q5_3_ans_radio == "4" %}checked{% endif %}> 4
-    <input type="radio" name="stars17" value="5" {% if q5_3_ans_radio == "5" %}checked{% endif %}> 5
-    <input type="radio" name="stars17" value="6" {% if q5_3_ans_radio == "6" %}checked{% endif %}> 6
-    <input type="radio" name="stars17" value="7" {% if q5_3_ans_radio == "7" %}checked{% endif %}> 7
-    <input type="radio" name="stars17" value="8" {% if q5_3_ans_radio == "8" %}checked{% endif %}> 8
-    <input type="radio" name="stars17" value="9" {% if q5_3_ans_radio == "9" %}checked{% endif %}> 9
-    <input type="radio" name="stars17" value="10" {% if q5_3_ans_radio == "10" %}checked{% endif %}> 10
-  </label>
-<h1 style="text-align:center">Αποτελέσματα</h1>
+  <h1 style="text-align:center">Αποτελέσματα</h1>
 </div>
 <div style="text-align:center">
   <img src="data:image/png;base64,{{image_base64}}" alt="Image">

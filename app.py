@@ -1258,7 +1258,7 @@ def e_button9(id,kpdf):
                             + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
                             +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
                             +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100,2) 
-                
+                ##########################
                 # st.write(result_val)                #st.write(result_val)
                 fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
                 #st.plotly_chart(fig,use_container_width=True)
@@ -1269,7 +1269,23 @@ def e_button9(id,kpdf):
                 # Store the image binary data in a variable
                 image_variable = io.BytesIO(img_bytes)
                 image_base64 = base64.b64encode(image_variable.getvalue()).decode()
-                #####
+                ########################
+                colors = ['#618abb','#00235e','#F0894F']
+
+                columns = ['D9', 'D10', 'D11']
+                # kpdf_selected = kpdf[columns]
+                # Create the stacked bar plot using Plotly
+                legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
+                fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+
+                img_bytes = pio.to_image(fig, format="png")
+
+                # Store the image binary data in a variable
+                image_variable = io.BytesIO(img_bytes)
+
+                # Encode the image data as base64
+                image_base64_1 = base64.b64encode(image_variable.getvalue()).decode()
+                #######################
 
                 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
                 template = env.get_template("template.html")

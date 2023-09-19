@@ -1461,7 +1461,7 @@ def e_button10(id,kpdf):
 
                 # QUESTION 11
                 st.title(questions[4]["title"])
-                st.subheader("<h4>"+questions[4]["text"]+"</h4>",unsafe_allow_html=True)
+                st.markdown("<h4>"+questions[4]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q11_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[19], key="q11text", height=300)
                 st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
@@ -1470,34 +1470,30 @@ def e_button10(id,kpdf):
 
                 # QUESTION 12
                 st.title(questions[5]["title"])
-                st.subheader(questions[5]["text"])
+                st.markdown("<h4>"+questions[5]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q12_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[22], key="q12text", height=300)
-
-                q12_1_ans_num = st.number_input('Kόστος:', value=row[23],key="q121ansnum")
-                st.write('To Κόστος είναι:', q12_1_ans_num)
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
+                q12_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', value=row[23],key="q121ansnum")
                 q12_1_calc = q12_1_ans_num * questions[5]["calc_coefficient"]
 
-                st.write('Ετήσια απόσβεση:', q12_1_calc)
 
                 # QUESTION 13
                 st.title(questions[6]["title"])
-                st.subheader(questions[6]["text"])
+                st.markdown("<h4>"+questions[6]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q13_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[25], key="q13text", height=300)
-
-                q13_1_ans_num = st.number_input('Kόστος:', key="q131ansnum",value=row[26])
-                st.write('To Κόστος είναι:', q13_1_ans_num)
+                st.markdown("<h4>Κόστος</h4>",unsafe_allow_html=True)
+                q13_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q131ansnum",value=row[26])
                 q13_1_calc = q13_1_ans_num * questions[6]["calc_coefficient"]
 
-                st.write('Ετήσια απόσβεση:', q13_1_calc)
 
                 # QUESTION 14
                 st.title("Ενοικίαση χώρων")
                 st.subheader("""Σε αυτή την κατηγορία, καταγράψτε τους χώρους που θα χρειαστούν για τη στέγαση της επιχειρηματικής δραστηριότητας και τυχόν άλλων χώρων που θα εξυπηρετούν τις ανάγκες της επιχείρησης λ.χ αποθήκη.
-        Έπειτα υπολογίστε το ετήσιο κόστος για την ενοικίαση χώρου/ ων.
-        Αν το μηνιαίο κόστος ενοικίασης χώρου είναι π.χ. 100€, υπολογίστε το ετήσιο κόστος πολλαπλασιάζοντας επί 12 (100*12=1200€). Εάν υπάρχουν περισσότεροι του ενός χώροι, προσθέστε τα ποσά που προκύπτουν.
-        """)
+                Έπειτα υπολογίστε το ετήσιο κόστος για την ενοικίαση χώρου/ ων.
+                Αν το μηνιαίο κόστος ενοικίασης χώρου είναι π.χ. 100€, υπολογίστε το ετήσιο κόστος πολλαπλασιάζοντας επί 12 (100*12=1200€). Εάν υπάρχουν περισσότεροι του ενός χώροι, προσθέστε τα ποσά που προκύπτουν.
+                """)
                 q14_text = st.text_area("Γράψε ελεύθερο κείμενο", value=row[28], key="q14text", height=300)
                 st.text("Πόσο υπολογίζετε το συνολικό ετήσιο κόστος για την ενοικίαση χώρου/ων;")
                 q14_1_ans_num = st.number_input('Kόστος:', key="q141ansnum",value=row[29])

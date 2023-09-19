@@ -777,7 +777,7 @@ def e_button9(id,kpdf):
         # Display the selected date and its corresponding ID
         st.write(f"Selected Date: {selected_id}")
         st.write(f"Corresponding ID: {selected_id_value}")
-
+        st.subheader("EDIT FORM")
         #show form fields for editing
         with st.form(key="edit_form"):
 
@@ -796,8 +796,8 @@ def e_button9(id,kpdf):
                 options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
                 option2=["ΟΧΙ","ΝΑΙ"]
 
-                st.subheader("EDIT FORM")
-                title=st.text_area("Τίτλος επιχειρηματικής ιδέας",key="title",value=row[3])
+                
+                title=st.title("Τίτλος επιχειρηματικής ιδέας",key="title",value=row[3])
                 st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
 
                 st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>", unsafe_allow_html=True)

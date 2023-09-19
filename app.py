@@ -1553,7 +1553,7 @@ def e_button10(id,kpdf):
 
         if submit_button_edit:
 
-            st.write("Button click update")
+            # st.write("Button click update")
             sql = """
                 UPDATE forms2 
                 SET 

@@ -1325,9 +1325,9 @@ def e_button9(id,kpdf):
                         file_name="diploma.pdf",
                         mime="application/octet-stream",
                     )
-########!!!!!!!!!!!
+########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # FORM 2
-########!!!!!!!!!!!     
+########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     
 def e_button10(id,kpdf):
     st.title("Οικονομικά Στοιχεία")
     conn = init_connection()
@@ -1694,7 +1694,141 @@ def e_button10(id,kpdf):
 
             st.write("Συνεπώς, για να είναι βιώσιμη η επιχειρηματική ιδέα σας, κρίνεται απαραίτητο, το ελάχιστο των ετήσιων εσόδων να είναι: "+str(SUM_leit))
             st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
-        
+    if option =="export":
+        mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+        result = mycursor.fetchall()
+        # for row in result:
+        #     st.write(row)
+        # Extract values from the "return_id" column and store them in a list
+        return_ids = [row[0] for row in result]
+        return_creation_date=[row[2] for row in result]
+        return_year=[row[3] for row in result]
+        return_identifierform=["Title:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        # st.write(return_identifierform)
+         #getAllformsId
+        # st.write(str(return_ids))
+        # st.write(str(return_creation_date))
+        # Convert the list of datetime objects to a list of strings
+        date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
+
+        # st.write(date_str_list)
+        # st.write(str(return_year))
+
+        #option=st.selectbox("Select an Form",date_str_list)
+
+        #st.write("You choose",str(option))
+
+        selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+        selected_id_index = return_identifierform.index(selected_id)
+        selected_id_value = return_ids[selected_id_index]
+
+        # Display the selected date and its corresponding ID
+        # st.write(f"Selected Date: {selected_id}")
+        # st.write(f"Corresponding ID: {selected_id_value}")
+
+        if selected_id:
+            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+            result = mycursor.fetchall()
+            for row in result:
+                pass
+                # st.write(row)
+            
+            title=row[3]
+            q1_text=row[4]
+            q1_1_ans_radio=row[5]
+            q1_2_ans_radio=row[6]
+            q1_3_ans_radio=row[7]
+            q1_4_ans_radio=row[8]
+            q1_5_ans_radio=row[9]
+            q2_text=row[10]
+            q2_1_ans_radio=row[11]
+            q2_2_ans_radio=row[12]
+            q2_3_ans_radio=row[13]
+            q2_4_ans_radio=row[14]
+            q3_text=row[15]
+            q3_1_ans_radio=row[16]
+            q3_2_ans_radio=row[17]
+            q3_3_ans_radio=row[18]
+            q4_text=row[19]
+            q4_1_ans_radio=row[20]
+            q4_2_ans_radio=row[21]
+            q5_text=row[22]
+            q5_1_ans_radio=row[23]
+            q5_2_ans_radio=row[24]
+            q5_3_ans_radio=row[25]
+
+
+            result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
+                        + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
+                        +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
+                        +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100,2) 
+            
+            # st.write(result_val)                #st.write(result_val)
+            fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+            #st.plotly_chart(fig,use_container_width=True)
+
+            # Render the figure as an image (e.g., PNG)
+            img_bytes = pio.to_image(fig, format="png")
+
+            # Store the image binary data in a variable
+            image_variable = io.BytesIO(img_bytes)
+            image_base64 = base64.b64encode(image_variable.getvalue()).decode()
+            #####
+
+            env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+            template = env.get_template("template.html")
+
+            #desc=row[6]
+            #desc2=" sdas  dasf 22222"
+            # period=perds
+            # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
+
+            html = template.render(
+                title=row[3],
+                q1_text=row[4],
+                q1_1_ans_radio=row[5],
+                q1_2_ans_radio=row[6],
+                q1_3_ans_radio=row[7],
+                q1_4_ans_radio=row[8],
+                q1_5_ans_radio=row[9],
+                q2_text=row[10],
+                q2_1_ans_radio=row[11],
+                q2_2_ans_radio=row[12],
+                q2_3_ans_radio=row[13],
+                q2_4_ans_radio=row[14],
+                q3_text=row[15],
+                q3_1_ans_radio=row[16],
+                q3_2_ans_radio=row[17],
+                q3_3_ans_radio=row[18],
+                q4_text=row[19],
+                q4_1_ans_radio=row[20],
+                q4_2_ans_radio=row[21],
+                q5_text=row[22],
+                q5_1_ans_radio=row[23],
+                q5_2_ans_radio=row[24],
+                q5_3_ans_radio=row[25],
+
+
+
+
+                # title=row[3],
+                # q1_text=row[4],
+                # q1_ans_radio=row[5],
+                # q2_text=row[6],
+                # q2_1_ans_radio=row[7],
+                # q2_2_ans_radio=row[8],
+                # q3_text=row[9],
+                # q3_ans_radio=row[10],
+                image_base64=image_base64
+            )
+
+            pdf = pdfkit.from_string(html, False)
+            st.download_button(
+                    "⬇️ Λήψη Business Plan Report",
+                    data=pdf,
+                    file_name="diploma.pdf",
+                    mime="application/octet-stream",
+                )
 
 def get_url_params():
     query_params = st.experimental_get_query_params()

@@ -1696,15 +1696,45 @@ def e_button10(id,kpdf):
             st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
     if option =="export":
         st.write("hello")
-        mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+        # mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+        # result = mycursor.fetchall()
+        # # for row in result:
+        # #     st.write(row)
+        # # Extract values from the "return_id" column and store them in a list
+        # return_ids = [row[0] for row in result]
+        # return_creation_date=[row[2] for row in result]
+        # return_year=[row[3] for row in result]
+        # return_identifierform=["Title:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        # # st.write(return_identifierform)
+        #  #getAllformsId
+        # # st.write(str(return_ids))
+        # # st.write(str(return_creation_date))
+        # # Convert the list of datetime objects to a list of strings
+        # date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
+
+        # # st.write(date_str_list)
+        # # st.write(str(return_year))
+
+        # #option=st.selectbox("Select an Form",date_str_list)
+
+        # #st.write("You choose",str(option))
+
+        # selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+        # selected_id_index = return_identifierform.index(selected_id)
+        # selected_id_value = return_ids[selected_id_index]
+
+        # # Display the selected date and its corresponding ID
+        # # st.write(f"Selected Date: {selected_id}")
+        # # st.write(f"Corresponding ID: {selected_id_value}")
+        mycursor.execute("select * from forms2 where koispe_id="+str(id)+" ORDER BY creation_date DESC")
         result = mycursor.fetchall()
         # for row in result:
         #     st.write(row)
-        # Extract values from the "return_id" column and store them in a list
+            # Extract values from the "return_id" column and store them in a list
         return_ids = [row[0] for row in result]
         return_creation_date=[row[2] for row in result]
         return_year=[row[3] for row in result]
-        return_identifierform=["Title:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        return_identifierform=["Τίτλος:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
         # st.write(return_identifierform)
          #getAllformsId
         # st.write(str(return_ids))
@@ -1722,13 +1752,8 @@ def e_button10(id,kpdf):
         selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
         selected_id_index = return_identifierform.index(selected_id)
         selected_id_value = return_ids[selected_id_index]
-
-        # Display the selected date and its corresponding ID
-        # st.write(f"Selected Date: {selected_id}")
-        # st.write(f"Corresponding ID: {selected_id_value}")
-
         if selected_id:
-            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+            mycursor.execute("select * from forms2 where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
             result = mycursor.fetchall()
             for row in result:
                 pass

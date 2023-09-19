@@ -613,11 +613,11 @@ def form2(id):
                         q10_text, q10_1_ans_num, q10_1_calc, q11_text, q11_1_ans_num, q11_1_calc,
                         q12_text, q12_1_ans_num, q12_1_calc, q13_text, q13_1_ans_num, q13_1_calc,q14_text,q14_1_ans_num,q15_text,q15_1_ans_num,q16_text,q16_1_ans_num,q17_text,q17_1_ans_num)
         # mycursor=update_record(title,q6_text,q6_1_ans_num,q6_1_calc)
-        st.title("Αποτελέσματα")
-        st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
-        st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
-        st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
-        st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
+        # st.title("Αποτελέσματα")
+        # st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
+        # st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
+        # st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
+        # st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
 
         SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
         SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
@@ -667,7 +667,7 @@ def form2(id):
         st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
         
         
-        st.success("Form 2 submitted successfully!")
+        # st.success("Form 2 submitted successfully!")
 
 def main():
  
@@ -1041,7 +1041,8 @@ def e_button9(id,kpdf):
 
             submit_button_edit = st.form_submit_button("Update")
 
-
+        st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
+        st.text("Ποσοστό Ετοιμότητας")
 
         if submit_button_edit:
 
@@ -1322,7 +1323,9 @@ def e_button9(id,kpdf):
                         file_name="diploma.pdf",
                         mime="application/octet-stream",
                     )
-     
+########!!!!!!!!!!!
+# FORM 2
+########!!!!!!!!!!!     
 def e_button10(id,kpdf):
     st.title("Οικονομικά Στοιχεία")
     conn = init_connection()
@@ -1389,11 +1392,11 @@ def e_button10(id,kpdf):
 
                 # options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
                 # option2=["ΟΧΙ","ΝΑΙ"]
-                st.title("Eπεξεργασία Φόρμας Οικονομικών Στοιχείων")
+                st.title("Τίτλος επιχειρηματικής ιδέας")
                 title=st.text_area("",key="title",value=row[3])
 
                 #QUESTION 6
-                st.title("Κτίρια & Υποδομές")
+                st.subheader("Κτίρια & Υποδομές")
                 st.markdown("<h4>Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης</h4>",unsafe_allow_html=True)
 
                 q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",value=row[4], height=300)
@@ -1425,7 +1428,7 @@ def e_button10(id,kpdf):
                             {"number": 13, "title": "Λοιπά έξοδα εκκίνησης", "text": "Σε αυτή την κατηγορία συμπεριλαμβάνονται τα έξοδα που προκύπτουν κατά τη διαδικασία δημιουργίας μιας νέας επιχείρησης και δεν συμπεριλαμβάνονται στις ανωτέρω ενότητες", "calc_coefficient": 0}
                         ]
                 # QUESTION 7
-                st.title(questions[0]["title"])
+                st.subheader(questions[0]["title"])
                 st.markdown("<h4>"+questions[0]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q7_text = st.text_area("Γράψε ελεύθερο κείμενο", value=row[7], key="q7text", height=300)
@@ -1435,7 +1438,7 @@ def e_button10(id,kpdf):
 
                 # QUESTION 8
                 st.title("")
-                st.title(questions[1]["title"])
+                st.subheader(questions[1]["title"])
                 st.markdown("<h4>"+questions[1]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q8_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[10], key="q8text", height=300)
@@ -1444,7 +1447,7 @@ def e_button10(id,kpdf):
                 q8_1_calc = q8_1_ans_num * questions[1]["calc_coefficient"]
 
                 # QUESTION 9
-                st.title(questions[2]["title"])
+                st.subheader(questions[2]["title"])
                 st.markdown("<h4>"+questions[2]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q9_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[13] ,key="q9text", height=300)
@@ -1453,7 +1456,7 @@ def e_button10(id,kpdf):
                 q9_1_calc = q9_1_ans_num * questions[2]["calc_coefficient"]
 
                 # QUESTION 10
-                st.title(questions[3]["title"])
+                st.subheader(questions[3]["title"])
                 st.markdown("<h4>"+questions[3]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q10_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[16] ,key="q10text", height=300)
@@ -1463,7 +1466,7 @@ def e_button10(id,kpdf):
 
 
                 # QUESTION 11
-                st.title(questions[4]["title"])
+                st.subheader(questions[4]["title"])
                 st.markdown("<h4>"+questions[4]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q11_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[19], key="q11text", height=300)
@@ -1472,7 +1475,7 @@ def e_button10(id,kpdf):
                 q11_1_calc = q11_1_ans_num * questions[4]["calc_coefficient"]
 
                 # QUESTION 12
-                st.title(questions[5]["title"])
+                st.subheader(questions[5]["title"])
                 st.markdown("<h4>"+questions[5]["text"]+"</h4>",unsafe_allow_html=True)
 
                 q12_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[22], key="q12text", height=300)
@@ -1492,7 +1495,7 @@ def e_button10(id,kpdf):
 
 
                 # QUESTION 14
-                st.title("Ενοικίαση χώρων")
+                st.subheader("Ενοικίαση χώρων")
                 st.markdown("""<h4>Σε αυτή την κατηγορία, καταγράψτε τους χώρους που θα χρειαστούν για τη στέγαση της επιχειρηματικής δραστηριότητας και τυχόν άλλων χώρων που θα εξυπηρετούν τις ανάγκες της επιχείρησης λ.χ αποθήκη.
                 Έπειτα υπολογίστε το ετήσιο κόστος για την ενοικίαση χώρου/ ων.
                 Αν το μηνιαίο κόστος ενοικίασης χώρου είναι π.χ. 100€, υπολογίστε το ετήσιο κόστος πολλαπλασιάζοντας επί 12 (100*12=1200€). Εάν υπάρχουν περισσότεροι του ενός χώροι, προσθέστε τα ποσά που προκύπτουν.
@@ -1504,7 +1507,7 @@ def e_button10(id,kpdf):
 
                 
                 # QUESTION 15
-                st.title("Δαπάνες μισθοδοσίας")
+                st.subheader("Δαπάνες μισθοδοσίας")
                 st.markdown("""<h4>Καταγράψτε το σύνολο των εργαζομένων που θα απασχοληθούν στην επιχείρηση. Έπειτα υπολογίστε το ετήσιο κόστος μισθοδοσίας του συνόλου των εργαζομένων, λαμβάνοντας υπόψη το μισθολογικό κλιμάκιο που ανήκουν και τον χρόνο απασχόλησης. 
                 Το κόστος είναι το άθροισμα των μικτών αποδοχών και εργοδοτικών εισφορών κάθε μήνα, ενώ επιπλέον, για κάθε ημερολογιακό έτος, προστίθεται δώρο Πάσχα & Χριστουγέννων, οι αποδοχές άδειας και η αποζημίωση της άδειας, αν προκύπτει.
                 </h4>""",unsafe_allow_html=True)
@@ -1514,7 +1517,7 @@ def e_button10(id,kpdf):
                 q15_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q151ansnum",value=row[31])
 
                 # QUESTION 16
-                st.title("Παροχές υπηρεσιών τρίτων")
+                st.subheader("Παροχές υπηρεσιών τρίτων")
                 st.markdown("""<h4>Καταγράψτε τις παροχές υπηρεσιών από τρίτους, που θα χρειαστούν κατά το πρώτο έτος λειτουργίας της επιχειρηματικής δραστηριότητας. Σε αυτή την κατηγορία συμπεριλαμβάνονται οι λογαριασμοί ΔΕΚΟ, έξοδα επαγγελματιών (δικηγόρος, λογιστής, τεχνικός ασφαλείας), έξοδα διαφήμισης κλπ.
                 Έπειτα υπολογίστε το ετήσιο κόστος της κάθε υπηρεσίας, πολλαπλασιάζοντας επί 12 σε περιπτώσεις μηνιαίων χρεώσεων, π.χ. λογαριασμοί ΔΕΚΟ.
                 </h4>""",unsafe_allow_html=True)
@@ -1524,7 +1527,7 @@ def e_button10(id,kpdf):
                 q16_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q161ansnum",value=row[33])
 
                 # QUESTION 17
-                st.title("Λοιπά έκτακτα έξοδα")
+                st.subheader("Λοιπά έκτακτα έξοδα")
                 st.markdown("""<h4>Καταγράψτε τυχόν έκτακτα έξοδα που μπορεί να προκύψουν κατά τον πρώτο χρόνο λειτουργία της επιχειρηματικής δράσης (π.χ. βλάβη μηχανημάτων, οχημάτων, κλπ.).
                 Έπειτα υπολογίστε το συνολικό ετήσιο κόστος έκτακτων εξόδων.</h4>""",unsafe_allow_html=True)
 
@@ -1628,13 +1631,13 @@ def e_button10(id,kpdf):
 
             mycursor.execute(sql, val)
             conn.commit()
-            st.success("Record Updated Successfully!!!")
-            st.title("Αποτελέσματα")
-            st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
-            st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
-            st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
-            st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
-            # st.write("button click update")
+            # st.success("Record Updated Successfully!!!")
+            # st.title("Αποτελέσματα")
+            # st.write("Λειτουργικά έξοδα:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num))
+            # st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
+            # st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
+            # st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
+            # # st.write("button click update")
             # sql="update forms2 set title=%s,q6_text=%s,q6_1_ans_num=%s,q6_1_calc=%s,q7_text=%s,q7_1_ans_num=%s, q7_1_calc=%s where id=%s"
             # val=(title,q6_text,q6_1_ans_num,q6_1_calc,q7_text,q7_1_ans_num,q7_1_calc,str(selected_id_value))
             # mycursor.execute(sql,val)

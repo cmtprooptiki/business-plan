@@ -1391,15 +1391,13 @@ def e_button10(id,kpdf):
 
                 #QUESTION 6
                 st.title("Κτίρια & Υποδομές")
-                st.subheader("Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης")
+                st.markdown("<h4>Σε αυτή την κατηγορία συμπεριλαμβάνεται η πάγια αγορά χώρου για την εγκατάσταση της επιχείρησης</h4>",unsafe_allow_html=True)
 
                 q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",value=row[4], height=300)
                 
-                q6_1_ans_num=st.number_input('Kόστος:',key="q6_1_ans_num", value=row[5])
-                st.write('The current number is ', q6_1_ans_num)
+                q6_1_ans_num=st.number_input('Συμπληρώστε νούμερο:',key="q6_1_ans_num", value=row[5])
                 q6_1_calc=q6_1_ans_num*0.04
 
-                st.write('Ετήσια απόσβεση:',q6_1_calc)
 
                 #QUESTION 7
                 # st.title("Εξοπλισμός & Έπιπλα")

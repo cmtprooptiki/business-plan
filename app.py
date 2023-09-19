@@ -938,15 +938,14 @@ def e_button9(id,kpdf):
                 
                 ###QUESTION 4
                 st.title("Ανάλυση επιχειρηματικής ιδέας")
-                st.subheader("""Κείμενο Επεξήγησης	Περιγράψτε τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό.
-                Σχολιάστε την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας.
-                """)
+                st.markdown("""<h4>Περιγράψτε τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό.<br>
+                Σχολιάστε την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας.</h4>
+                """,unsafe_allow_html=True)
                 q4_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q4text",value=row[19],height=300)
                 st.subheader("Στην απάντησή σας έχετε περιγράψει επαρκώς  τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό;")
                 default_option_indexq4_1 = options.index(str(row[20]))
-                q4_1_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq4_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q4_1_ans_radio")
-                st.write('You selected ', q4_1_ans_radio)
-                st.subheader("Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας;")
+                q4_1_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq4_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q4_1_ans_radio")
+                st.subheader("Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας σας;")
 
                 if row[21]=='0':
                     default_option_indexq4_2 = option2.index('ΟΧΙ')
@@ -955,15 +954,14 @@ def e_button9(id,kpdf):
 
                 # default_option_indexq4_2 = option2.index(str(row[21]))
                 q4_2_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq4_2, horizontal=True,key="q4_2_ans_radio")
-                st.write('You selected ', q4_2_ans_radio)
                 ###QUESTION 5
                 st.title("Διοίκηση και ομάδα")
-                st.subheader("""Παρουσιάστε τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στην νέα επιχειρηματική ιδέα.
-                Επισημάνετε τη σχετική εμπειρία και τα προσόντα τους (επόπτες, επαγγελματίες, ΛΥΨΥ). 
-                Εξηγήστε την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες. 
-                """)
+                st.markdown("""<h4>Παρουσιάστε τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στη νέα επιχειρηματική ιδέα.<br>
+                Επισημάνετε τη σχετική εμπειρία και τα προσόντα τους (επόπτες, επαγγελματίες, ΛΥΨΥ). <br>
+                Εξηγήστε την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες.</h4> 
+                """,unsafe_allow_html=True)
                 q5_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q5text",value=row[22],height=300)
-                st.subheader("Έχετε παρουσιάσει τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στην νέα επιχειρηματική ιδέα;")
+                st.subheader("Έχετε παρουσιάσει τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στη νέα επιχειρηματική ιδέα;")
 
                 if row[23]=='0':
                     default_option_indexq5_1 = option2.index('ΟΧΙ')
@@ -972,7 +970,6 @@ def e_button9(id,kpdf):
 
                 # default_option_indexq5_1 = option2.index(str(row[23]))
                 q5_1_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq5_1, horizontal=True,key="q5_1_ans_radio")
-                st.write('You selected ', q5_1_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
 
                 if row[24]=='0':
@@ -982,11 +979,9 @@ def e_button9(id,kpdf):
 
                 # default_option_indexq5_2 = option2.index(str(row[24]))
                 q5_2_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq5_2, horizontal=True,key="q5_2_ans_radio")
-                st.write('You selected ', q5_2_ans_radio)
                 st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
                 default_option_indexq5_3 = options.index(str(row[25]))
-                q5_3_ans_radio = st.radio("0: Καθόλου 1 2 3 4 5 6 7 8 9 10: Πάρα πολύ",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq5_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
-                st.write('You selected ', q5_3_ans_radio)
+                q5_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq5_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
 
                 # Submit button inside the form
                 # submit_button = st.form_submit_button("Submit")

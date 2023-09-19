@@ -811,8 +811,8 @@ def e_button9(id,kpdf):
         selected_id_value = return_ids[selected_id_index]
 
         # Display the selected date and its corresponding ID
-        st.write(f"Selected Date: {selected_id}")
-        st.write(f"Corresponding ID: {selected_id_value}")
+        # st.write(f"Selected Date: {selected_id}")
+        # st.write(f"Corresponding ID: {selected_id_value}")
         st.subheader("EDIT FORM")
         #show form fields for editing
         with st.form(key="edit_form"):
@@ -821,10 +821,11 @@ def e_button9(id,kpdf):
                 mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                 result = mycursor.fetchall()
                 for row in result:
-                    st.write(row)
-                st.write("FIXING YES NO PROBLEM")
+                    # st.write(row)
+                    pass
+                # st.write("FIXING YES NO PROBLEM")
                 # st.write(default_option_indexq1_2)
-                st.write(row[6])
+                # st.write(row[6])
               
                 
                 

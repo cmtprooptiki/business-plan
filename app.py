@@ -1222,7 +1222,7 @@ def e_button9(id,kpdf):
 
             #st.write("You choose",str(option))
 
-            selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+            selected_id = st.selectbox("Επιλογή φόρμας", options=return_identifierform, index=0)
             selected_id_index = return_identifierform.index(selected_id)
             selected_id_value = return_ids[selected_id_index]
 
@@ -1380,7 +1380,7 @@ def e_button9(id,kpdf):
 
                     pdf = pdfkit.from_string(html, False)
                     st.download_button(
-                            "⬇️ Λήψη Business Plan Report",
+                            "⬇️ Λήψη φόρμας Επιχειρηματικής ιδέας",
                             data=pdf,
                             file_name="diploma.pdf",
                             mime="application/octet-stream",
@@ -1839,7 +1839,7 @@ def e_button10(id,kpdf):
             st.write("No records found to delete")    
     
     if option =="🖨️Εκτύπωση":
-        st.write("hello")
+        # st.write("hello")
         # mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         # result = mycursor.fetchall()
         # # for row in result:
@@ -1894,7 +1894,7 @@ def e_button10(id,kpdf):
 
             #st.write("You choose",str(option))
 
-            selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+            selected_id = st.selectbox("Επιλογή φόρμας", options=return_identifierform, index=0)
             selected_id_index = return_identifierform.index(selected_id)
             selected_id_value = return_ids[selected_id_index]
             if selected_id:
@@ -2011,7 +2011,7 @@ def e_button10(id,kpdf):
 
                 pdf = pdfkit.from_string(html, False)
                 st.download_button(
-                        "⬇️ Λήψη Business Plan Report",
+                        "⬇️ Λήψη Οικονομικών στοιχείων",
                         data=pdf,
                         file_name="diploma.pdf",
                         mime="application/octet-stream",

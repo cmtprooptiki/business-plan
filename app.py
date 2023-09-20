@@ -1946,7 +1946,12 @@ def e_button10(id,kpdf):
                 q17_1_ans_num=row[35]
 
                 SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
-                SUM_leit=float(q14_1_ans_num[0])+float(q15_1_ans_num[0])+float(q16_1_ans_num[0])+float(q17_1_ans_num[0])
+                q14_t=float(q14_1_ans_num[0])
+                q15_t=float(q14_1_ans_num[0])
+                q16_t=float(q14_1_ans_num[0])
+                q17_t=float(q14_1_ans_num[0])
+                #SUM_leit=float(q14_1_ans_num[0])+float(q15_1_ans_num[0])+float(q16_1_ans_num[0])+float(q17_1_ans_num[0])
+                SUM_leit=q14_t+q15_t+q16_t+q17_t
                 st.write(q14_1_ans_num)
                 # SUM_leit=10
                 round6=str(round(q6_1_calc,2))

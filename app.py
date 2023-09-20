@@ -786,333 +786,335 @@ def e_button9(id,kpdf):
         st.write("Επέλεξε το Business Plan που θέλεις να επεξεργαστείς:")
         mycursor.execute("select * from forms where koispe_id="+str(id)+" ORDER BY creation_date DESC")
         result = mycursor.fetchall()
-        # for row in result:
-        #     st.write(row)
-            # Extract values from the "return_id" column and store them in a list
-        return_ids = [row[0] for row in result]
-        return_creation_date=[row[2] for row in result]
-        return_year=[row[3] for row in result]
-        return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
-        # st.write(return_identifierform)
-         #getAllformsId
-        # st.write(str(return_ids))
-        # st.write(str(return_creation_date))
-        # Convert the list of datetime objects to a list of strings
-        date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
+        if mycursor.rowcount!=0:
+            # for row in result:
+            #     st.write(row)
+                # Extract values from the "return_id" column and store them in a list
+            return_ids = [row[0] for row in result]
+            return_creation_date=[row[2] for row in result]
+            return_year=[row[3] for row in result]
+            return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+            # st.write(return_identifierform)
+            #getAllformsId
+            # st.write(str(return_ids))
+            # st.write(str(return_creation_date))
+            # Convert the list of datetime objects to a list of strings
+            date_str_list = [return_creation_date.strftime("%Y-%m-%d %H:%M:%S") for return_creation_date in return_creation_date]
 
-        # st.write(date_str_list)
-        # st.write(str(return_year))
+            # st.write(date_str_list)
+            # st.write(str(return_year))
 
-        #option=st.selectbox("Select an Form",date_str_list)
+            #option=st.selectbox("Select an Form",date_str_list)
 
-        #st.write("You choose",str(option))
+            #st.write("You choose",str(option))
 
-        selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
-        selected_id_index = return_identifierform.index(selected_id)
-        selected_id_value = return_ids[selected_id_index]
+            selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+            selected_id_index = return_identifierform.index(selected_id)
+            selected_id_value = return_ids[selected_id_index]
 
-        # Display the selected date and its corresponding ID
-        # st.write(f"Selected Date: {selected_id}")
-        # st.write(f"Corresponding ID: {selected_id_value}")
-        st.subheader("EDIT FORM")
-        #show form fields for editing
-        with st.form(key="edit_form"):
+            # Display the selected date and its corresponding ID
+            # st.write(f"Selected Date: {selected_id}")
+            # st.write(f"Corresponding ID: {selected_id_value}")
+            st.subheader("EDIT FORM")
+            #show form fields for editing
+            with st.form(key="edit_form"):
 
-            if selected_id:
-                mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
-                result = mycursor.fetchall()
-                for row in result:
-                    # st.write(row)
-                    pass
-                # st.write("FIXING YES NO PROBLEM")
-                # st.write(default_option_indexq1_2)
-                # st.write(row[6])
-              
+                if selected_id:
+                    mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+                    result = mycursor.fetchall()
+                    for row in result:
+                        # st.write(row)
+                        pass
+                    # st.write("FIXING YES NO PROBLEM")
+                    # st.write(default_option_indexq1_2)
+                    # st.write(row[6])
                 
+                    
+                    
+        
+                    options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
+                    option2=["ΟΧΙ","ΝΑΙ"]
+
+                    
+                    st.title("Τίτλος επιχειρηματικής ιδέας")
+                    title=st.text_area("",key="title",value=row[3])
+                    st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
+
+                    st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>", unsafe_allow_html=True)
+
+            # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
+                    colors = ['#618abb','#00235e','#F0894F']
+
+                    columns = ['D9', 'D10', 'D11']
+                    # kpdf_selected = kpdf[columns]
+                    # Create the stacked bar plot using Plotly
+                    legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
+                    fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
+                    # Show the plot
+                    st.plotly_chart(fig, use_container_width=True)
+
+                    st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία</h3>", unsafe_allow_html=True)
+
+                    colors2 = ['#00235e','#F0894F','#618abb']
+
+                    columns2 = ['D26', 'D27', 'D28']
+                    legend_labels = ['Κτηρια & Εξ.Χώροι ','Εστίαση','Λοιπές Δραστηριότητες']
+                    # kpdf_selected = kpdf[columns2]
+                    # Create the stacked bar plot using Plotly
+                    fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
+                    st.plotly_chart(fig,use_container_width=True)
+
+                    st.markdown("<h3 style='text-align: center; color: grey;'>% Ετήσια Μεταβολή Κύκλου Εργασιών</h3>", unsafe_allow_html=True)
+
+                    categories=kpdf['year'].tolist()
+                    # Sample data
+                    # categories = ['Category A', 'Category B', 'Category C', 'Category D']
+                    values =kpdf['D24'].astype(float).tolist()
+                    line_labels=kpdf['D29'].tolist()
+                    fig=pctChangeV2(categories,values,line_labels,'Κύκλοι Εργασιών','Κυκλ.Εργασιών')
+                    # fig=pctChangeChart(values,categories,'Values','Ποσοστιαία μεταβολή','Percentage Change','Values')
+                    st.plotly_chart(fig,use_container_width=True)
+
+
+                    st.title("Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)")
+                    st.markdown("""<h4>Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. <br>
+                    Περιγράψτε: <br>
+                    •	την αποστολή, τις αξίες και τους κοινωνικούς στόχους σας. <br>
+                    •	τις έως τώρα επιχειρηματικές δράσεις, σχολιάζοντας τα διαχρονικά στοιχεία απασχόλησης και κύκλου εργασιών που προκύπτουν από τα παραπάνω διαγράμματα.  
+                    </h4>""",unsafe_allow_html=True)
+                    q1_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q1text",height=300,value=row[4])
+                    st.subheader("Η απάντησή σας εξηγεί επαρκώς το ιστορικό της ίδρυσης του ΚοιΣΠΕ;")
+                    default_option_indexq1_1 = options.index(str(row[5]))
+                    q1_1_ans_radio = st.radio("", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_1 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_1_ans_radio")
+                    
+                    st.subheader("Έχει αναφερθεί ξεκάθαρα η νομική οντότητα του ΚοιΣΠΕ;")
+
+                    if row[6]=='0':
+                        default_option_indexq1_2 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq1_2 = option2.index('ΝΑΙ')
+
+
+                    # default_option_indexq1_2 = option2.index(str(row[6]))
+                    #st.write("FIXING YES NO PROBLEM")
+                    #st.write(default_option_indexq1_2)
+                    #st.write(row[6])
+                    q1_2_ans_radio = st.radio("",["ΟΧΙ","ΝΑΙ"],default_option_indexq1_2,horizontal=True,key="q1_2_ans_radio")
+                    st.subheader("Η απάντησή σας περιγράφει επαρκώς την αποστολή, τις αξίες και τους κοινωνικούς στόχους του ΚοιΣΠΕ;")
+                    default_option_indexq1_3 = options.index(str(row[7]))
+                    q1_3_ans_radio = st.radio("", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_3 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_3_ans_radio")
+                    st.subheader("Η απάντησή σας περιγράφει επαρκώς τις έως τώρα επιχειρηματικές δράσεις;")
+                    default_option_indexq1_4 = options.index(str(row[8]))
+                    q1_4_ans_radio = st.radio("", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_4 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_4_ans_radio")
+                    st.subheader("Παρατίθενται διαχρονικά στοιχεία απασχόλησης και κύκλου εργασιών;")
+                    
+                    if row[9]=='0':
+                        default_option_indexq1_5 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq1_5 = option2.index('ΝΑΙ')
+
+                    
+                    
+                    # default_option_indexq1_5 = option2.index(str(row[9]))
+                    q1_5_ans_radio = st.radio("",["ΟΧΙ","ΝΑΙ"],default_option_indexq1_5,horizontal=True,key="q1_5_ans_radio")
+                    ###QUESTION 2
+                    st.title("Ανάλυση της αγοράς (εξωτερικό περιβάλλον & οικοσύστημα των ΚοιΣΠΕ)")
+
+                    st.markdown("""<h4>Αναλύστε την αγορά-στόχο και το μέγεθός της.<br>
+                    Προσδιορίστε το κοινό-στόχο και τις ανάγκες του. <br>
+                    Αναφερθείτε σε τυχόν αντίστοιχη εμπειρία άλλων Συνεταιρισμών στον ίδιο τομέα.<br>
+                    Αξιολογήστε το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς.
+                    </h4>""",unsafe_allow_html=True)
+                    q2_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q2text",value=row[10],height=300)
+
+                    st.subheader("Η απάντησή σας αναλύει επαρκώς την αγορά-στόχο και το μέγεθός της;")
+                    default_option_indexq2_1 = options.index(str(row[11]))
+                    q2_1_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_1_ans_radio")
+
+                    st.subheader("Η απάντησή σας προσδιορίζει επαρκώς το κοινό-στόχο και τις ανάγκες του;")
+                    default_option_indexq2_2 = options.index(str(row[12]))
+                    q2_2_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_2_ans_radio")
+
+                    st.subheader("Στην απάντησή σας αναφέρετε εάν υπάρχουν ή όχι άλλοι Συνεταιρισμοί με αντίστοιχη εμπειρία;")
+                    default_option_indexq2_3 = options.index(str(row[13]))
+                    q2_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q2_3_ans_radio")
+
+                    st.subheader("Έχετε αξιολογήσει το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς;")
+
+                    if row[14]=='0':
+                        default_option_indexq2_4 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq2_4 = option2.index('ΝΑΙ')
+
+                    # default_option_indexq2_4 = option2.index(str(row[14]))
+                    q2_4_ans_radio = st.radio("",  ["ΟΧΙ","ΝΑΙ"],default_option_indexq2_4, horizontal=True,key="q2_4_ans_radio")
+
+                    ###QUESTION 3
+                    st.title("Προϊόντα ή υπηρεσίες")
+                    st.markdown("""<h4>Αναφέρατε τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο συνεταιρισμός.<br>
+                    Εξηγήστε πώς οι προσφορές αυτές (προϊόντα ή υπηρεσίες) ανταποκρίνονται στις ανάγκες της αγοράς.<br>
+                    Επισημάνετε τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε.
+                    </h4>""",unsafe_allow_html=True)
+                    q3_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q3text",value=row[15],height=300)
+                    st.subheader("Έχετε αναφέρει τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο Συνεταιρισμός σας;")
+                    
+                    
+                    if row[16]=='0':
+                        default_option_indexq3_1 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq3_1 = option2.index('ΝΑΙ')
+                    
+                    
+                    # default_option_indexq3_1 = option2.index(str(row[16]))
+                    q3_1_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq3_1, horizontal=True,key="q3_1_ans_radio")
+                    st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;")
+                    default_option_indexq3_2 = options.index(str(row[17]))
+                    q3_2_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_2_ans_radio")
+                    st.subheader("Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;")
+                    default_option_indexq3_3 = options.index(str(row[18]))
+                    q3_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_3_ans_radio")
+                    
+                    
+                    ###QUESTION 4
+                    st.title("Ανάλυση επιχειρηματικής ιδέας")
+                    st.markdown("""<h4>Περιγράψτε τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό.<br>
+                    Σχολιάστε την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας.</h4>
+                    """,unsafe_allow_html=True)
+                    q4_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q4text",value=row[19],height=300)
+                    st.subheader("Στην απάντησή σας έχετε περιγράψει επαρκώς  τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό;")
+                    default_option_indexq4_1 = options.index(str(row[20]))
+                    q4_1_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq4_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q4_1_ans_radio")
+                    st.subheader("Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας σας;")
+
+                    if row[21]=='0':
+                        default_option_indexq4_2 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq4_2 = option2.index('ΝΑΙ')
+
+                    # default_option_indexq4_2 = option2.index(str(row[21]))
+                    q4_2_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq4_2, horizontal=True,key="q4_2_ans_radio")
+                    ###QUESTION 5
+                    st.title("Διοίκηση και ομάδα")
+                    st.markdown("""<h4>Παρουσιάστε τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στη νέα επιχειρηματική ιδέα.<br>
+                    Επισημάνετε τη σχετική εμπειρία και τα προσόντα τους (επόπτες, επαγγελματίες, ΛΥΨΥ). <br>
+                    Εξηγήστε την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες.</h4> 
+                    """,unsafe_allow_html=True)
+                    q5_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q5text",value=row[22],height=300)
+                    st.subheader("Έχετε παρουσιάσει τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στη νέα επιχειρηματική ιδέα;")
+
+                    if row[23]=='0':
+                        default_option_indexq5_1 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq5_1 = option2.index('ΝΑΙ')
+
+                    # default_option_indexq5_1 = option2.index(str(row[23]))
+                    q5_1_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq5_1, horizontal=True,key="q5_1_ans_radio")
+                    st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
+
+                    if row[24]=='0':
+                        default_option_indexq5_2 = option2.index('ΟΧΙ')
+                    else:
+                        default_option_indexq5_2 = option2.index('ΝΑΙ')
+
+                    # default_option_indexq5_2 = option2.index(str(row[24]))
+                    q5_2_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq5_2, horizontal=True,key="q5_2_ans_radio")
+                    st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
+                    default_option_indexq5_3 = options.index(str(row[25]))
+                    q5_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq5_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
+
+                    # Submit button inside the form
+                    # submit_button = st.form_submit_button("Submit")
+                    # Check if the submit button is clicked
+                    # if submit_button:
+                    #     # Call the create_record function to insert the data into the database
+                    #     #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
+                    #     create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
+                    #     # Display a success message
+                    #     st.success("Record Created Successfully!!!")
+                        
+                    #     # Calculate and display the result
+                    #     st.title("Result")
+                    #     st.text("Ποσοστό Ετοιμότητας")
+                    #     result_val = ((int(q1_ans_radio) + int(q2_1_ans_radio) + int(q2_2_ans_radio) + int(q3_ans_radio)) / 4) * 10
+                    #     st.write(result_val)
+                    #     fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
+                    #     st.plotly_chart(fig, use_container_width=True)
+                else:
+                    st.write("Choose Form for editing")
+
+                submit_button_edit = st.form_submit_button("Update")
+
+        
+
+            if submit_button_edit:
+                st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
+                st.text("Ποσοστό Ετοιμότητας")
+                if q1_2_ans_radio=='ΝΑΙ':
+                    q1_2_ans_radio='10'
+                else:
+                    q1_2_ans_radio='0'
+
+                if q1_5_ans_radio=='ΝΑΙ':
+                    q1_5_ans_radio='10'
+                else:
+                    q1_5_ans_radio='0'
+
+                if q2_4_ans_radio=='ΝΑΙ':
+                    q2_4_ans_radio='10'
+                else:
+                    q2_4_ans_radio='0'
+
+                if q3_1_ans_radio=='ΝΑΙ':
+                    q3_1_ans_radio='10'
+                else:
+                    q3_1_ans_radio='0'
+
+                if q4_2_ans_radio=='ΝΑΙ':
+                    q4_2_ans_radio='10'
+                else:
+                    q4_2_ans_radio='0'
                 
-    
-                options = ["0","1", "2", "3", "4", "5","6","7","8","9","10"]
-                option2=["ΟΧΙ","ΝΑΙ"]
-
+                if q5_1_ans_radio=='ΝΑΙ':
+                    q5_1_ans_radio='10'
+                else:
+                    q5_1_ans_radio='0'
                 
-                st.title("Τίτλος επιχειρηματικής ιδέας")
-                title=st.text_area("",key="title",value=row[3])
-                st.title("Διαχρονική αποτύπωση λειτουργίας ΚοιΣΠΕ")
+                if q5_2_ans_radio=='ΝΑΙ':
+                    q5_2_ans_radio='10'
+                else:
+                    q5_2_ans_radio='0'
 
-                st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Εργαζομένων ΚοιΣΠΕ</h3>", unsafe_allow_html=True)
+                result_val = ( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
+                            + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
+                            +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
+                            +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
+                st.write(result_val)
 
-        # year = st.selectbox("Select year", ["2021", "2022", "2023", "2024"])
-                colors = ['#618abb','#00235e','#F0894F']
-
-                columns = ['D9', 'D10', 'D11']
-                # kpdf_selected = kpdf[columns]
-                # Create the stacked bar plot using Plotly
-                legend_labels = ['Γενικού Πληθυσμού', 'ΛΥΨΥ', 'ΕΚΟ']
-                fig=stackedChart(columns,kpdf,legend_labels,'Έτος','% επί του Συνόλου',colors)
-                # Show the plot
+                fig = donut_pct_Chart(round(result_val,2), '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
                 st.plotly_chart(fig, use_container_width=True)
 
-                st.markdown("<h3 style='text-align: center; color: grey;'>Διαχρονική Κατανομή Κύκλου Εργασιών ανά Κατηγορία</h3>", unsafe_allow_html=True)
-
-                colors2 = ['#00235e','#F0894F','#618abb']
-
-                columns2 = ['D26', 'D27', 'D28']
-                legend_labels = ['Κτηρια & Εξ.Χώροι ','Εστίαση','Λοιπές Δραστηριότητες']
-                # kpdf_selected = kpdf[columns2]
-                # Create the stacked bar plot using Plotly
-                fig=stackedChart2(columns2,kpdf,legend_labels,'Έτος','Συχνότητα',colors2)
-                st.plotly_chart(fig,use_container_width=True)
-
-                st.markdown("<h3 style='text-align: center; color: grey;'>% Ετήσια Μεταβολή Κύκλου Εργασιών</h3>", unsafe_allow_html=True)
-
-                categories=kpdf['year'].tolist()
-                # Sample data
-                # categories = ['Category A', 'Category B', 'Category C', 'Category D']
-                values =kpdf['D24'].astype(float).tolist()
-                line_labels=kpdf['D29'].tolist()
-                fig=pctChangeV2(categories,values,line_labels,'Κύκλοι Εργασιών','Κυκλ.Εργασιών')
-                # fig=pctChangeChart(values,categories,'Values','Ποσοστιαία μεταβολή','Percentage Change','Values')
-                st.plotly_chart(fig,use_container_width=True)
-
-
-                st.title("Παρουσίαση του ΚοιΣΠΕ (εσωτερικό περιβάλλον)")
-                st.markdown("""<h4>Εξηγήστε το ιστορικό ίδρυσης του ΚοιΣΠΕ και την νομική οντότητα του Συνεταιρισμού. <br>
-                Περιγράψτε: <br>
-                •	την αποστολή, τις αξίες και τους κοινωνικούς στόχους σας. <br>
-                •	τις έως τώρα επιχειρηματικές δράσεις, σχολιάζοντας τα διαχρονικά στοιχεία απασχόλησης και κύκλου εργασιών που προκύπτουν από τα παραπάνω διαγράμματα.  
-                </h4>""",unsafe_allow_html=True)
-                q1_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q1text",height=300,value=row[4])
-                st.subheader("Η απάντησή σας εξηγεί επαρκώς το ιστορικό της ίδρυσης του ΚοιΣΠΕ;")
-                default_option_indexq1_1 = options.index(str(row[5]))
-                q1_1_ans_radio = st.radio("", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_1 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_1_ans_radio")
+                sql="update forms set title=%s,q1_text=%s,q1_1_ans_radio=%s,q1_2_ans_radio=%s,q1_3_ans_radio=%s,q1_4_ans_radio=%s,q1_5_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q2_3_ans_radio=%s,q2_4_ans_radio=%s,q3_text=%s,q3_1_ans_radio=%s,q3_2_ans_radio=%s,q3_3_ans_radio=%s,q4_text=%s,q4_1_ans_radio=%s,q4_2_ans_radio=%s,q5_text=%s,q5_1_ans_radio=%s,q5_2_ans_radio=%s,q5_3_ans_radio=%s where id=%s"
+                val=(title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,str(selected_id_value))
+                mycursor.execute(sql,val)
+                conn.commit()
+                # Display a success message
                 
-                st.subheader("Έχει αναφερθεί ξεκάθαρα η νομική οντότητα του ΚοιΣΠΕ;")
-
-                if row[6]=='0':
-                    default_option_indexq1_2 = option2.index('ΟΧΙ')
+                st.success("Η φόρμα σας ενημερώθηκε με τις τελευταίες αλλαγές!")
+                if int(result_val) >= 80:
+                    st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")
+                    # return title
+                elif (int(result_val) >= 50) and (int(result_val)<80):
+                    st.write("Φαίνεται πως είστε αρκετά ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Θα ήταν χρήσιμο να αναλύσετε περισσότερο την ιδέα σας στα πεδία που δεν νιώθετε σιγουριά, πριν προχωρήσετε στα οικονομικά στοιχεία.")
+                    # return title
                 else:
-                    default_option_indexq1_2 = option2.index('ΝΑΙ')
-
-
-                # default_option_indexq1_2 = option2.index(str(row[6]))
-                #st.write("FIXING YES NO PROBLEM")
-                #st.write(default_option_indexq1_2)
-                #st.write(row[6])
-                q1_2_ans_radio = st.radio("",["ΟΧΙ","ΝΑΙ"],default_option_indexq1_2,horizontal=True,key="q1_2_ans_radio")
-                st.subheader("Η απάντησή σας περιγράφει επαρκώς την αποστολή, τις αξίες και τους κοινωνικούς στόχους του ΚοιΣΠΕ;")
-                default_option_indexq1_3 = options.index(str(row[7]))
-                q1_3_ans_radio = st.radio("", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_3 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_3_ans_radio")
-                st.subheader("Η απάντησή σας περιγράφει επαρκώς τις έως τώρα επιχειρηματικές δράσεις;")
-                default_option_indexq1_4 = options.index(str(row[8]))
-                q1_4_ans_radio = st.radio("", ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq1_4 ,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q1_4_ans_radio")
-                st.subheader("Παρατίθενται διαχρονικά στοιχεία απασχόλησης και κύκλου εργασιών;")
-                
-                if row[9]=='0':
-                    default_option_indexq1_5 = option2.index('ΟΧΙ')
-                else:
-                    default_option_indexq1_5 = option2.index('ΝΑΙ')
-
-                
-                
-                # default_option_indexq1_5 = option2.index(str(row[9]))
-                q1_5_ans_radio = st.radio("",["ΟΧΙ","ΝΑΙ"],default_option_indexq1_5,horizontal=True,key="q1_5_ans_radio")
-                ###QUESTION 2
-                st.title("Ανάλυση της αγοράς (εξωτερικό περιβάλλον & οικοσύστημα των ΚοιΣΠΕ)")
-
-                st.markdown("""<h4>Αναλύστε την αγορά-στόχο και το μέγεθός της.<br>
-                Προσδιορίστε το κοινό-στόχο και τις ανάγκες του. <br>
-                Αναφερθείτε σε τυχόν αντίστοιχη εμπειρία άλλων Συνεταιρισμών στον ίδιο τομέα.<br>
-                Αξιολογήστε το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς.
-                </h4>""",unsafe_allow_html=True)
-                q2_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q2text",value=row[10],height=300)
-
-                st.subheader("Η απάντησή σας αναλύει επαρκώς την αγορά-στόχο και το μέγεθός της;")
-                default_option_indexq2_1 = options.index(str(row[11]))
-                q2_1_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_1_ans_radio")
-
-                st.subheader("Η απάντησή σας προσδιορίζει επαρκώς το κοινό-στόχο και τις ανάγκες του;")
-                default_option_indexq2_2 = options.index(str(row[12]))
-                q2_2_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q2_2_ans_radio")
-
-                st.subheader("Στην απάντησή σας αναφέρετε εάν υπάρχουν ή όχι άλλοι Συνεταιρισμοί με αντίστοιχη εμπειρία;")
-                default_option_indexq2_3 = options.index(str(row[13]))
-                q2_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq2_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q2_3_ans_radio")
-
-                st.subheader("Έχετε αξιολογήσει το ανταγωνιστικό τοπίο και τις τάσεις της τοπικής αγοράς;")
-
-                if row[14]=='0':
-                    default_option_indexq2_4 = option2.index('ΟΧΙ')
-                else:
-                    default_option_indexq2_4 = option2.index('ΝΑΙ')
-
-                # default_option_indexq2_4 = option2.index(str(row[14]))
-                q2_4_ans_radio = st.radio("",  ["ΟΧΙ","ΝΑΙ"],default_option_indexq2_4, horizontal=True,key="q2_4_ans_radio")
-
-                ###QUESTION 3
-                st.title("Προϊόντα ή υπηρεσίες")
-                st.markdown("""<h4>Αναφέρατε τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο συνεταιρισμός.<br>
-                Εξηγήστε πώς οι προσφορές αυτές (προϊόντα ή υπηρεσίες) ανταποκρίνονται στις ανάγκες της αγοράς.<br>
-                Επισημάνετε τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε.
-                </h4>""",unsafe_allow_html=True)
-                q3_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q3text",value=row[15],height=300)
-                st.subheader("Έχετε αναφέρει τα νέα προϊόντα ή τις νέες υπηρεσίες που θα προσφέρει ο Συνεταιρισμός σας;")
-                
-                
-                if row[16]=='0':
-                    default_option_indexq3_1 = option2.index('ΟΧΙ')
-                else:
-                    default_option_indexq3_1 = option2.index('ΝΑΙ')
-                
-                
-                # default_option_indexq3_1 = option2.index(str(row[16]))
-                q3_1_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq3_1, horizontal=True,key="q3_1_ans_radio")
-                st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς πώς οι προσφορές αυτές ανταποκρίνονται στις ανάγκες της αγοράς;")
-                default_option_indexq3_2 = options.index(str(row[17]))
-                q3_2_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_2,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_2_ans_radio")
-                st.subheader("Στην απάντησή σας επισημαίνονται επαρκώς τυχόν μοναδικά σημεία πώλησης ή ανταγωνιστικά πλεονεκτήματα που διαθέτετε;")
-                default_option_indexq3_3 = options.index(str(row[18]))
-                q3_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq3_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"],horizontal=True,key="q3_3_ans_radio")
-                
-                
-                ###QUESTION 4
-                st.title("Ανάλυση επιχειρηματικής ιδέας")
-                st.markdown("""<h4>Περιγράψτε τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό.<br>
-                Σχολιάστε την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας.</h4>
-                """,unsafe_allow_html=True)
-                q4_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q4text",value=row[19],height=300)
-                st.subheader("Στην απάντησή σας έχετε περιγράψει επαρκώς  τη διαδικασία παραγωγής και τις τυχόν αναγκαίες εγκαταστάσεις ή εξοπλισμό;")
-                default_option_indexq4_1 = options.index(str(row[20]))
-                q4_1_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq4_1,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q4_1_ans_radio")
-                st.subheader("Έχετε σχολιάσει την αλυσίδα εφοδιασμού και τα logistics της επιχειρηματικής ιδέας σας;")
-
-                if row[21]=='0':
-                    default_option_indexq4_2 = option2.index('ΟΧΙ')
-                else:
-                    default_option_indexq4_2 = option2.index('ΝΑΙ')
-
-                # default_option_indexq4_2 = option2.index(str(row[21]))
-                q4_2_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq4_2, horizontal=True,key="q4_2_ans_radio")
-                ###QUESTION 5
-                st.title("Διοίκηση και ομάδα")
-                st.markdown("""<h4>Παρουσιάστε τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στη νέα επιχειρηματική ιδέα.<br>
-                Επισημάνετε τη σχετική εμπειρία και τα προσόντα τους (επόπτες, επαγγελματίες, ΛΥΨΥ). <br>
-                Εξηγήστε την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες.</h4> 
-                """,unsafe_allow_html=True)
-                q5_text=st.text_area("Γράψε ελεύθερο κείμενο", key="q5text",value=row[22],height=300)
-                st.subheader("Έχετε παρουσιάσει τα βασικά μέλη του συνεταιρισμού και τους ρόλους τους στη νέα επιχειρηματική ιδέα;")
-
-                if row[23]=='0':
-                    default_option_indexq5_1 = option2.index('ΟΧΙ')
-                else:
-                    default_option_indexq5_1 = option2.index('ΝΑΙ')
-
-                # default_option_indexq5_1 = option2.index(str(row[23]))
-                q5_1_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq5_1, horizontal=True,key="q5_1_ans_radio")
-                st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
-
-                if row[24]=='0':
-                    default_option_indexq5_2 = option2.index('ΟΧΙ')
-                else:
-                    default_option_indexq5_2 = option2.index('ΝΑΙ')
-
-                # default_option_indexq5_2 = option2.index(str(row[24]))
-                q5_2_ans_radio = st.radio("", ["ΟΧΙ","ΝΑΙ"],default_option_indexq5_2, horizontal=True,key="q5_2_ans_radio")
-                st.subheader("Στην απάντησή σας έχετε εξηγήσει επαρκώς την οργανωτική δομή και τυχόν συμβουλευτικές επιτροπές ή συνεργασίες ;")
-                default_option_indexq5_3 = options.index(str(row[25]))
-                q5_3_ans_radio = st.radio("",  ["0","1", "2", "3", "4", "5","6","7","8","9","10"],default_option_indexq5_3,captions = ["καθολου","","","","","","","","","", "Πάρα πολύ"], horizontal=True,key="q5_3_ans_radio")
-
-                # Submit button inside the form
-                # submit_button = st.form_submit_button("Submit")
-                # Check if the submit button is clicked
-                # if submit_button:
-                #     # Call the create_record function to insert the data into the database
-                #     #create_record(id, year, q1_text, q1_ans_radio, q2_text, q2_1_ans_radio, q2_2_ans_radio, q3_text, q3_ans_radio)
-                #     create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio)
-                #     # Display a success message
-                #     st.success("Record Created Successfully!!!")
-                    
-                #     # Calculate and display the result
-                #     st.title("Result")
-                #     st.text("Ποσοστό Ετοιμότητας")
-                #     result_val = ((int(q1_ans_radio) + int(q2_1_ans_radio) + int(q2_2_ans_radio) + int(q3_ans_radio)) / 4) * 10
-                #     st.write(result_val)
-                #     fig = donut_pct_Chart(result_val, '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
-                #     st.plotly_chart(fig, use_container_width=True)
-            else:
-                st.write("Choose Form for editing")
-
-            submit_button_edit = st.form_submit_button("Update")
-
-       
-
-        if submit_button_edit:
-            st.title("Βαθμός ικανοποίησης από την επάρκεια των απαντήσεων")
-            st.text("Ποσοστό Ετοιμότητας")
-            if q1_2_ans_radio=='ΝΑΙ':
-                q1_2_ans_radio='10'
-            else:
-                q1_2_ans_radio='0'
-
-            if q1_5_ans_radio=='ΝΑΙ':
-                q1_5_ans_radio='10'
-            else:
-                q1_5_ans_radio='0'
-
-            if q2_4_ans_radio=='ΝΑΙ':
-                q2_4_ans_radio='10'
-            else:
-                q2_4_ans_radio='0'
-
-            if q3_1_ans_radio=='ΝΑΙ':
-                q3_1_ans_radio='10'
-            else:
-                q3_1_ans_radio='0'
-
-            if q4_2_ans_radio=='ΝΑΙ':
-                q4_2_ans_radio='10'
-            else:
-                q4_2_ans_radio='0'
-            
-            if q5_1_ans_radio=='ΝΑΙ':
-                q5_1_ans_radio='10'
-            else:
-                q5_1_ans_radio='0'
-            
-            if q5_2_ans_radio=='ΝΑΙ':
-                q5_2_ans_radio='10'
-            else:
-                q5_2_ans_radio='0'
-
-            result_val = ( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
-                        + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
-                        +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
-                        +int(q5_2_ans_radio)+int(q5_3_ans_radio)  ) / (17*10)) * 100
-            st.write(result_val)
-
-            fig = donut_pct_Chart(round(result_val,2), '#618abb', 'rgb(240,240,240)', ['% Ποσοστό Ετοιμότητας', ' '])
-            st.plotly_chart(fig, use_container_width=True)
-
-            sql="update forms set title=%s,q1_text=%s,q1_1_ans_radio=%s,q1_2_ans_radio=%s,q1_3_ans_radio=%s,q1_4_ans_radio=%s,q1_5_ans_radio=%s,q2_text=%s,q2_1_ans_radio=%s,q2_2_ans_radio=%s,q2_3_ans_radio=%s,q2_4_ans_radio=%s,q3_text=%s,q3_1_ans_radio=%s,q3_2_ans_radio=%s,q3_3_ans_radio=%s,q4_text=%s,q4_1_ans_radio=%s,q4_2_ans_radio=%s,q5_text=%s,q5_1_ans_radio=%s,q5_2_ans_radio=%s,q5_3_ans_radio=%s where id=%s"
-            val=(title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio,str(selected_id_value))
-            mycursor.execute(sql,val)
-            conn.commit()
-            # Display a success message
-            
-            st.success("Η φόρμα σας ενημερώθηκε με τις τελευταίες αλλαγές!")
-            if int(result_val) >= 80:
-                st.write("Φαίνεται πως είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Διερευνήστε τυχόν σημεία βελτίωσης και προχωρήστε στην συμπλήρωση των οικονομικών στοιχείων.")
+                    st.write("Φαίνεται πως δεν είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Καλύτερα να αναλύσετε περισσότερο την ιδέα σας, πριν προχωρήσετε στα οικονομικά στοιχεία.")
                 # return title
-            elif (int(result_val) >= 50) and (int(result_val)<80):
-                st.write("Φαίνεται πως είστε αρκετά ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Θα ήταν χρήσιμο να αναλύσετε περισσότερο την ιδέα σας στα πεδία που δεν νιώθετε σιγουριά, πριν προχωρήσετε στα οικονομικά στοιχεία.")
-                # return title
-            else:
-                st.write("Φαίνεται πως δεν είστε ικανοποιημένος/η από την περιγραφή της επιχειρηματικής ιδέας σας. Καλύτερα να αναλύσετε περισσότερο την ιδέα σας, πριν προχωρήσετε στα οικονομικά στοιχεία.")
-            # return title
-            # result_val=((int(q1_1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
-            # st.write(result_val)
-            # fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
-            # st.plotly_chart(fig,use_container_width=True)
-
+                # result_val=((int(q1_1_ans_radio)+int(q2_1_ans_radio)+int(q2_2_ans_radio)+int(q3_ans_radio))/4)*10
+                # st.write(result_val)
+                # fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
+                # st.plotly_chart(fig,use_container_width=True)
+        else:
+            st.write("NO RECORDS FOUND")
 
 
     if(option=="Delete"):

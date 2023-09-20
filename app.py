@@ -1945,6 +1945,8 @@ def e_button10(id,kpdf):
                 q17_text=row[34],
                 q17_1_ans_num=row[35]
 
+                SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
+                SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
 
                 # result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
                 #             + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
@@ -1970,6 +1972,9 @@ def e_button10(id,kpdf):
                 #desc2=" sdas  dasf 22222"
                 # period=perds
                 # submit = form.form_submit_button("Δημιουργία πιστοποιητικού")
+
+
+
 
                 html = template.render(
                     title=row[3],
@@ -2004,7 +2009,7 @@ def e_button10(id,kpdf):
                     q16_text=row[32],
                     q16_1_ans_num=row[33],
                     q17_text=row[34],
-                    q17_1_ans_num=row[35]
+                    q17_1_ans_num=row[35],
                     # title=row[3],
                     # q1_text=row[4],
                     # q1_ans_radio=row[5],
@@ -2014,7 +2019,26 @@ def e_button10(id,kpdf):
                     # q3_text=row[9],
                     # q3_ans_radio=row[10],
                     #image_base64=image_base64
+                    SUM_ek=SUM_ek,
+                    SUM_leit=SUM_leit,
+                    round6=str(round(q6_1_calc,2)),
+                    round7=str(round(q7_1_calc,2)),
+                    round8=str(round(q8_1_calc,2)),
+                    round9=str(round(q9_1_calc,2)),
+                    round10=str(round(q10_1_calc,2)),
+                    round11=str(round(q11_1_calc,2)),
+                    round12=str(round(q12_1_calc,2)),
+                    round13=str(round(q13_1_calc,2))
                 )
+                
+
+                # st.write("Το κόστος εκκίνησης, δηλαδή το κεφάλαιο που χρειάζεται για την έναρξης της επιχειρηματικής ιδέας σας, είναι:"+str(SUM_ek))
+                # st.write("Το Λειτουργικό κόστος, δηλαδή κόστος για τη λειτουργία της επιχειρηματικής ιδέας σας, για ένα έτος είναι:"+str(SUM_leit))
+                
+
+                # st.write("Συνεπώς, για να είναι βιώσιμη η επιχειρηματική ιδέα σας, κρίνεται απαραίτητο, το ελάχιστο των ετήσιων εσόδων να είναι: "+str(SUM_leit))
+                # st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
+
 
                 pdf = pdfkit.from_string(html, False)
                 st.download_button(

@@ -1394,7 +1394,7 @@ def e_button10(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("➕Δημιουργία", "Επεξεργασία", "Διαγραφή","Εκτύπωση"))
+    option = st.sidebar.selectbox("Select an Operation", ("➕Δημιουργία", "🖊️Επεξεργασία", "➖Διαγραφή","🖨️Εκτύπωση"))
     mycursor = conn.cursor()
     
     if option == "➕Δημιουργία":
@@ -1412,7 +1412,7 @@ def e_button10(id,kpdf):
     #     st.write(return_ids)
     #     st.write(str(return_ids))
 
-    if option =="Επεξεργασία":
+    if option =="🖊️Επεξεργασία":
         st.subheader("Επεξεργασία καταχωρημένων Οικονομικών Στοιχείων")
         st.write("Επέλεξε την φόρμα Οικονομικών Στοιχείων που θέλεις να επεξεργαστείς:")
         mycursor.execute("select * from forms2 where koispe_id="+str(id)+" ORDER BY creation_date DESC")
@@ -1758,7 +1758,7 @@ def e_button10(id,kpdf):
                 st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
         else:
             st.write("NO RECORDS FOUND")
-    if option=="Διαγραφή":
+    if option=="➖Διαγραφή":
         mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
         if mycursor.rowcount!=0:
@@ -1837,7 +1837,7 @@ def e_button10(id,kpdf):
         else:
             st.write("No records found to delete")    
     
-    if option =="Εκτύπωση":
+    if option =="🖨️Εκτύπωση":
         st.write("hello")
         # mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         # result = mycursor.fetchall()

@@ -1394,10 +1394,10 @@ def e_button10(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Δημιουργία", "Επεξεργασία", "Διαγραφή","Εκτύπωση"))
+    option = st.sidebar.selectbox("Select an Operation", ("➕Δημιουργία", "Επεξεργασία", "Διαγραφή","Εκτύπωση"))
     mycursor = conn.cursor()
     
-    if option == "Δημιουργία":
+    if option == "➕Δημιουργία":
         form2(id)
     # if option == "Read":
     #     st.subheader("Read all Submitted Forms")

@@ -1954,14 +1954,14 @@ def e_button10(id,kpdf):
                 SUM_leit=q14_t+q15_t+q16_t+q17_t
                 st.write(q14_1_ans_num)
                 # SUM_leit=10
-                round6=str(round(q6_1_calc,2))
-                round7=str(round(q7_1_calc,2))
-                round8=str(round(q8_1_calc,2))
-                round9=str(round(q9_1_calc,2))
-                round10=str(round(q10_1_calc,2))
-                round11=str(round(q11_1_calc,2))
-                round12=str(round(q12_1_calc,2))
-                round13=str(round(q13_1_calc,2))
+                round6=str(round(q6_1_calc[0],2))
+                round7=str(round(q7_1_calc[0],2))
+                round8=str(round(q8_1_calc[0],2))
+                round9=str(round(q9_1_calc[0],2))
+                round10=str(round(q10_1_calc[0],2))
+                round11=str(round(q11_1_calc[0],2))
+                round12=str(round(q12_1_calc[0],2))
+                round13=str(round(q13_1_calc[0],2))
 
 
                 # result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 

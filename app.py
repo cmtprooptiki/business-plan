@@ -1948,6 +1948,17 @@ def e_button10(id,kpdf):
                 SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
                 #SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
                 SUM_leit=10
+
+                round6=str(round(q6_1_calc,2)),
+                round7=str(round(q7_1_calc,2)),
+                round8=str(round(q8_1_calc,2)),
+                round9=str(round(q9_1_calc,2)),
+                round10=str(round(q10_1_calc,2)),
+                round11=str(round(q11_1_calc,2)),
+                round12=str(round(q12_1_calc,2)),
+                round13=str(round(q13_1_calc,2))
+
+
                 # result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
                 #             + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
                 #             +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)
@@ -2021,14 +2032,14 @@ def e_button10(id,kpdf):
                     #image_base64=image_base64
                     SUM_ek=SUM_ek,
                     SUM_leit=SUM_leit,
-                    round6=str(round(q6_1_calc,2)),
-                    round7=str(round(q7_1_calc,2)),
-                    round8=str(round(q8_1_calc,2)),
-                    round9=str(round(q9_1_calc,2)),
-                    round10=str(round(q10_1_calc,2)),
-                    round11=str(round(q11_1_calc,2)),
-                    round12=str(round(q12_1_calc,2)),
-                    round13=str(round(q13_1_calc,2))
+                    round6=round6,
+                    round7=round7,
+                    round8=round8,
+                    round9=round9,
+                    round10=round10,
+                    round11=round11,
+                    round12=round12,
+                    round13=round13
                 )
                 
 

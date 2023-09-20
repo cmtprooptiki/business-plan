@@ -1946,8 +1946,8 @@ def e_button10(id,kpdf):
                 q17_1_ans_num=row[35]
 
                 SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
-                SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
-
+                #SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
+                SUM_leit=10
                 # result_val =round(( ( int(q1_1_ans_radio) + int(q1_2_ans_radio) + int(q1_3_ans_radio) + int(q1_4_ans_radio) 
                 #             + int(q1_5_ans_radio) +int(q2_1_ans_radio)  +int(q2_2_ans_radio) +int(q2_3_ans_radio)+int(q2_4_ans_radio)+int(q3_1_ans_radio)
                 #             +int(q3_2_ans_radio)+int(q3_3_ans_radio) +int(q4_1_ans_radio)+int(q4_2_ans_radio) +int(q5_1_ans_radio)

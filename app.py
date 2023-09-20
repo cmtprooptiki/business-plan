@@ -755,33 +755,35 @@ def main():
         e_button9(id,kpdf)
     elif selected_option1=="Οικονομικά Στοιχεία":
         e_button10(id,kpdf)
-
+########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# FORM 1
+########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 def e_button9(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
+    option = st.sidebar.selectbox("Select an Operation", ("Δημιουργία", "Επεξεργασία", "Διαγραφή","Εκτύπωση"))
     mycursor = conn.cursor()
 
-    if option == "Create":
+    if option == "Δημιουργία":
         form1(id,kpdf)
 
 
            
-    if option=="Read":
-        st.subheader("Read all Submitted Forms")
-        mycursor.execute("select * from forms where koispe_id="+str(id)+"")
-        result = mycursor.fetchall()
-        for row in result:
-            st.write(row)
-            # Extract values from the "return_id" column and store them in a list
-        return_ids = [row[0] for row in result]
+    # if option=="Read":
+    #     st.subheader("Read all Submitted Forms")
+    #     mycursor.execute("select * from forms where koispe_id="+str(id)+"")
+    #     result = mycursor.fetchall()
+    #     for row in result:
+    #         st.write(row)
+    #         # Extract values from the "return_id" column and store them in a list
+    #     return_ids = [row[0] for row in result]
 
-        # Display the list of return_ids
-        st.write(return_ids)
-        st.write(str(return_ids))
+    #     # Display the list of return_ids
+    #     st.write(return_ids)
+    #     st.write(str(return_ids))
 
-    if option=="Update":
+    if option=="Επεξεργασία":
         st.subheader("Επεξεργασία καταχωρημένων Business Plan")
         st.write("Επέλεξε το Business Plan που θέλεις να επεξεργαστείς:")
         mycursor.execute("select * from forms where koispe_id="+str(id)+" ORDER BY creation_date DESC")
@@ -1117,7 +1119,7 @@ def e_button9(id,kpdf):
             st.write("NO RECORDS FOUND")
 
 
-    if(option=="Delete"):
+    if(option=="Διαγραφή"):
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
         if mycursor.rowcount!=0:
@@ -1193,7 +1195,7 @@ def e_button9(id,kpdf):
                     #     pass
         else:
             st.write("No records found to delete")
-    if(option=="export"):
+    if(option=="Εκτύπωση"):
 
         mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
@@ -1392,25 +1394,25 @@ def e_button10(id,kpdf):
     conn = init_connection()
     # id = st.number_input("Enter ID", userid)
     # total_days = st.number_input("Enter total days off", min_value=0, value=total_daysoff)
-    option = st.sidebar.selectbox("Select an Operation", ("Create", "Read", "Update", "Delete","export"))
+    option = st.sidebar.selectbox("Select an Operation", ("Δημιουργία", "Επεξεργασία", "Διαγραφή","Εκτύπωση"))
     mycursor = conn.cursor()
     
-    if option == "Create":
+    if option == "Δημιουργία":
         form2(id)
-    if option == "Read":
-        st.subheader("Read all Submitted Forms")
-        mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
-        result = mycursor.fetchall()
-        for row in result:
-            st.write(row)
-            # Extract values from the "return_id" column and store them in a list
-        return_ids = [row[0] for row in result]
+    # if option == "Read":
+    #     st.subheader("Read all Submitted Forms")
+    #     mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
+    #     result = mycursor.fetchall()
+    #     for row in result:
+    #         st.write(row)
+    #         # Extract values from the "return_id" column and store them in a list
+    #     return_ids = [row[0] for row in result]
 
-        # Display the list of return_ids
-        st.write(return_ids)
-        st.write(str(return_ids))
+    #     # Display the list of return_ids
+    #     st.write(return_ids)
+    #     st.write(str(return_ids))
 
-    if option =="Update":
+    if option =="Επεξεργασία":
         st.subheader("Επεξεργασία καταχωρημένων Οικονομικών Στοιχείων")
         st.write("Επέλεξε την φόρμα Οικονομικών Στοιχείων που θέλεις να επεξεργαστείς:")
         mycursor.execute("select * from forms2 where koispe_id="+str(id)+" ORDER BY creation_date DESC")
@@ -1756,7 +1758,7 @@ def e_button10(id,kpdf):
                 st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
         else:
             st.write("NO RECORDS FOUND")
-    if option=="Delete":
+    if option=="Διαγραφή":
         mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
         if mycursor.rowcount!=0:
@@ -1835,7 +1837,7 @@ def e_button10(id,kpdf):
         else:
             st.write("No records found to delete")    
     
-    if option =="export":
+    if option =="Εκτύπωση":
         st.write("hello")
         # mycursor.execute("select * from forms where koispe_id="+str(id)+"")
         # result = mycursor.fetchall()

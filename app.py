@@ -1756,7 +1756,7 @@ def e_button10(id,kpdf):
         return_ids = [row[0] for row in result]
         return_creation_date=[row[2] for row in result]
         return_year=[row[3] for row in result]
-        return_identifierform=["Year:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
+        return_identifierform=["Title:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
         # st.write(return_identifierform)
          #getAllformsId
         # st.write(str(return_ids))
@@ -1790,7 +1790,7 @@ def e_button10(id,kpdf):
 
             if st.button("Remove"):
                 try:
-                    sql = "DELETE FROM forms WHERE id=%s AND koispe_id=%s"
+                    sql = "DELETE FROM forms2 WHERE id=%s AND koispe_id=%s"
                     val = (selected_id_value, id)
                     mycursor.execute(sql, val)
 

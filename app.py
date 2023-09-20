@@ -1781,7 +1781,7 @@ def e_button10(id,kpdf):
 
 
         if selected_id:
-            mycursor.execute("select * from forms where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
+            mycursor.execute("select * from forms2 where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
             result = mycursor.fetchall()
             for row in result:
                 st.write(row)

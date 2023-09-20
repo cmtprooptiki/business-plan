@@ -1116,7 +1116,7 @@ def e_button9(id,kpdf):
                 # fig=donut_pct_Chart(result_val,'#618abb', 'rgb(240,240,240)',['% Ποσοστό Ετοιμότητας', ' '])
                 # st.plotly_chart(fig,use_container_width=True)
         else:
-            st.write("NO RECORDS FOUND")
+            st.write("Δεν βρέθηκαν στοιχεία")
 
 
     if(option=="➖Διαγραφή"):
@@ -1386,7 +1386,7 @@ def e_button9(id,kpdf):
                             mime="application/octet-stream",
                         )
         else:
-            st.write("NO RECORDS FOUND")
+            st.write("Δεν βρέθηκαν στοιχεία")
 ########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # FORM 2
 ########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     
@@ -1758,7 +1758,7 @@ def e_button10(id,kpdf):
                 st.write("Συνεπώς, για να είναι βιώσιμη η επιχειρηματική ιδέα σας, κρίνεται απαραίτητο, το ελάχιστο των ετήσιων εσόδων να είναι: "+str(SUM_leit))
                 st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
         else:
-            st.write("NO RECORDS FOUND")
+            st.write("Δεν βρέθηκαν στοιχεία")
     if option=="➖Διαγραφή":
         mycursor.execute("select * from forms2 where koispe_id="+str(id)+"")
         result = mycursor.fetchall()
@@ -2017,7 +2017,7 @@ def e_button10(id,kpdf):
                         mime="application/octet-stream",
                     )
         else:
-            st.write("NO RECORDS FOUND")
+            st.write("Δεν βρέθηκαν στοιχεία")
 
 def get_url_params():
     query_params = st.experimental_get_query_params()

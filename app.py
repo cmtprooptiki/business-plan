@@ -1945,7 +1945,17 @@ def e_button10(id,kpdf):
                 q17_text=row[34],
                 q17_1_ans_num=row[35]
 
-                SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
+
+                q6_t=float(q6_1_ans_num[0])
+                q7_t=float(q7_1_ans_num[0])
+                q8_t=float(q8_1_ans_num[0])
+                q9_t=float(q9_1_ans_num[0])
+                q10_t=float(q10_1_ans_num[0])
+                q11_t=float(q11_1_ans_num[0])
+                q12_t=float(q12_1_ans_num[0])
+                q123_t=float(q13_1_ans_num[0])
+
+                SUM_ek=q6_t+q7_t+q8_t+q9_t+q10_t+q11_t+q12_t+q123_t
                 q14_t=float(q14_1_ans_num[0])
                 q15_t=float(q14_1_ans_num[0])
                 q16_t=float(q14_1_ans_num[0])

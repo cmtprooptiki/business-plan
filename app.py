@@ -810,14 +810,14 @@ def e_button9(id,kpdf):
 
             #st.write("You choose",str(option))
 
-            selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+            selected_id = st.selectbox("Επιλογή φόρμας", options=return_identifierform, index=0)
             selected_id_index = return_identifierform.index(selected_id)
             selected_id_value = return_ids[selected_id_index]
 
             # Display the selected date and its corresponding ID
             # st.write(f"Selected Date: {selected_id}")
             # st.write(f"Corresponding ID: {selected_id_value}")
-            st.subheader("EDIT FORM")
+            st.subheader("Επεξεργασία Φόρμας")
             #show form fields for editing
             with st.form(key="edit_form"):
 
@@ -1440,7 +1440,7 @@ def e_button10(id,kpdf):
 
             #st.write("You choose",str(option))
 
-            selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+            selected_id = st.selectbox("Επιλογή φόρμας", options=return_identifierform, index=0)
             selected_id_index = return_identifierform.index(selected_id)
             selected_id_value = return_ids[selected_id_index]
 

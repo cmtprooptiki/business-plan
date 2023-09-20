@@ -277,7 +277,7 @@ def form1(id,kpdf):
         # q=""
         # age=""
         # Submit button inside the form
-        submit_button = st.form_submit_button("Submit")
+        submit_button = st.form_submit_button("Submit",disabled=not title)
     # Check if the submit button is clicked
     if submit_button:
         # Call the create_record function to insert the data into the database

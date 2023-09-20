@@ -1785,7 +1785,7 @@ def e_button10(id,kpdf):
 
             #st.write("You choose",str(option))
 
-            selected_id = st.selectbox("Select a Form", options=return_identifierform, index=0)
+            selected_id = st.selectbox("Επιλογή φόρμας", options=return_identifierform, index=0)
             selected_id_index = return_identifierform.index(selected_id)
             selected_id_value = return_ids[selected_id_index]
 
@@ -1803,7 +1803,7 @@ def e_button10(id,kpdf):
 
                 # st.write(row[1],row[2],row[3])
 
-                if st.button("Remove"):
+                if st.button("Διαγραφή"):
                     try:
                         sql = "DELETE FROM forms2 WHERE id=%s AND koispe_id=%s"
                         val = (selected_id_value, id)
@@ -1836,7 +1836,7 @@ def e_button10(id,kpdf):
                     # elif(st.button("No")):
                     #     pass
         else:
-            st.write("No records found to delete")    
+            st.write("Δεν βρέθηκαν στοιχεία για διαγραφή")    
     
     if option =="🖨️Εκτύπωση":
         # st.write("hello")

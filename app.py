@@ -622,8 +622,9 @@ def form2(id):
         # st.write("Αποσβέσεις:",(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc))
         # st.write("Άθροισμα εξόδων:",(q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)  )
         # st.write("Μinumum εσόδων επιχειρηματικής δραστηριότητας",((q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num)+(q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc)))
+        SUM_ek=q6_1_ans_num+q7_1_ans_num+q8_1_ans_num+q9_1_ans_num+q10_1_ans_num+q11_1_ans_num+q12_1_ans_num+q13_1_ans_num
 
-        SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
+        # SUM_ek=q6_1_calc+q7_1_calc+q8_1_calc+q9_1_calc+q10_1_calc+q11_1_calc+q12_1_calc+q13_1_calc
         SUM_leit=q14_1_ans_num+q15_1_ans_num+q16_1_ans_num+q17_1_ans_num
 
         st.write("Το κόστος εκκίνησης, δηλαδή το κεφάλαιο που χρειάζεται για την έναρξης της επιχειρηματικής ιδέας σας, είναι:"+str(SUM_ek))

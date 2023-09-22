@@ -277,7 +277,7 @@ def form1(id,kpdf):
         # q=""
         # age=""
         # Submit button inside the form
-        submit_button = st.form_submit_button("Submit")
+        submit_button = st.form_submit_button("Αποθήκευση")
         # if title:
         #     submit_button = st.form_submit_button("Submit",disabled=False)
         # else:
@@ -526,8 +526,7 @@ def form2(id):
         # QUESTION 17
         st.subheader("Λοιπά έκτακτα έξοδα")
         st.markdown("""<h4>Καταγράψτε τυχόν έκτακτα έξοδα που μπορεί να προκύψουν σε ένα έτος λειτουργίας της επιχειρηματικής δράσης (π.χ. βλάβη μηχανημάτων, οχημάτων, κλπ.).
-        Έπειτα υπολογίστε το συνολικό ετήσιο κόστος έκτακτων εξόδων.
-        .</h4>""",unsafe_allow_html=True)
+        Έπειτα υπολογίστε το συνολικό ετήσιο κόστος έκτακτων εξόδων.</h4>""",unsafe_allow_html=True)
 
         q17_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q17text", height=300)
         st.markdown("<h4>Πόσο υπολογίζετε το συνολικό ετήσιο κόστος έκτακτων εξόδων;</h4>",unsafe_allow_html=True)
@@ -548,7 +547,7 @@ def form2(id):
         # q = st.text_input("Enter your address")
         # age = st.text_input("Enter your phone number")
         st.write(id)
-        submit_button2 = st.form_submit_button("Submit Form 2")
+        submit_button2 = st.form_submit_button("Αποθήκευση")
 
     if submit_button2:
         # Process Form 2 data here and save it to the same database table
@@ -1050,7 +1049,7 @@ def e_button9(id,kpdf):
                 else:
                     st.write("Choose Form for editing")
 
-                submit_button_edit = st.form_submit_button("Update")
+                submit_button_edit = st.form_submit_button("Αποθήκευση")
 
         
 
@@ -1388,7 +1387,7 @@ def e_button9(id,kpdf):
                     st.download_button(
                             "⬇️ Λήψη φόρμας Επιχειρηματικής ιδέας",
                             data=pdf,
-                            file_name="diploma.pdf",
+                            file_name="form.pdf",
                             mime="application/octet-stream",
                         )
         else:
@@ -1467,6 +1466,10 @@ def e_button10(id,kpdf):
                     # option2=["ΟΧΙ","ΝΑΙ"]
                     st.title("Τίτλος επιχειρηματικής ιδέας")
                     title=st.text_area("",key="title",value=row[3])
+                    st.title("Κόστος Εκκίνησης")
+
+                    st.markdown("""<h4>Σε κάθε μία από τις παρακάτω κατηγορίες, καταγράψτε τον εξοπλισμό και τις υπηρεσίες που κρίνονται απαραίτητες για την έναρξη λειτουργίας της επιχείρησης.
+                            Έπειτα προσδιορίστε το κόστος για την κάθε κατηγορία (τάξη μεγέθους).</h4>""", unsafe_allow_html= True)
 
                     #QUESTION 6
                     st.subheader("Κτίρια & Υποδομές")
@@ -1566,7 +1569,8 @@ def e_button10(id,kpdf):
                     q13_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q131ansnum",value=row[26])
                     q13_1_calc = q13_1_ans_num * questions[6]["calc_coefficient"]
 
-
+                    st.title("Λειτουργικό Κόστος")
+                    st.markdown("<p>*για ένα έτος λειτουργίας</p>",unsafe_allow_html=True)
                     # QUESTION 14
                     st.subheader("Ενοικίαση χώρων")
                     st.markdown("""<h4>Σε αυτή την κατηγορία, καταγράψτε τους χώρους που θα χρειαστούν για τη στέγαση της επιχειρηματικής δραστηριότητας και τυχόν άλλων χώρων που θα εξυπηρετούν τις ανάγκες της επιχείρησης λ.χ αποθήκη.
@@ -1619,7 +1623,7 @@ def e_button10(id,kpdf):
 
 
 
-                    submit_button_edit = st.form_submit_button("Update")
+                    submit_button_edit = st.form_submit_button("Αποθήκευση")
 
 
 
@@ -2068,9 +2072,9 @@ def e_button10(id,kpdf):
 
                 pdf = pdfkit.from_string(html, False)
                 st.download_button(
-                        "⬇️ Λήψη Οικονομικών στοιχείων",
+                        "⬇️ Λήψη φόρμας Οικονομικών Στοιχείων",
                         data=pdf,
-                        file_name="diploma.pdf",
+                        file_name="form.pdf",
                         mime="application/octet-stream",
                     )
         else:

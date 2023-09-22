@@ -1431,7 +1431,7 @@ def e_button10(id,kpdf):
             return_creation_date=[row[2] for row in result]
             return_year=[row[3] for row in result]
             #return_identifierform=["Τίτλος:"+row[3]+" Creation Date:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" ID FORM:"+str(row[0]) for row in result]
-            return_identifierform=["Τίτλος: "+row[3]+" Ημ/νια Δημιουργίας::"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" Κωδικός φόρμας:"+str(row[0]) for row in result]
+            return_identifierform=["Τίτλος: "+row[3]+" Ημ/νια Δημιουργίας:"+row[2].strftime("%Y-%m-%d %H:%M:%S")+" Κωδικός φόρμας:"+str(row[0]) for row in result]
             # st.write(return_identifierform)
             #getAllformsId
             # st.write(str(return_ids))

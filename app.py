@@ -34,8 +34,8 @@ def run_query(conn,query):
 def create_record1(id,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio):
     conn = init_connection()
     mycursor = conn.cursor()
-    st.write("inside record1")
-    st.write(id)
+    # st.write("inside record1")
+    # st.write(id)
     # q="test"
     # age="testage"
     sql = "INSERT INTO forms (koispe_id, creation_date,title,q1_text,q1_1_ans_radio,q1_2_ans_radio,q1_3_ans_radio,q1_4_ans_radio,q1_5_ans_radio,q2_text,q2_1_ans_radio,q2_2_ans_radio,q2_3_ans_radio,q2_4_ans_radio,q3_text,q3_1_ans_radio,q3_2_ans_radio,q3_3_ans_radio,q4_text,q4_1_ans_radio,q4_2_ans_radio,q5_text,q5_1_ans_radio,q5_2_ans_radio,q5_3_ans_radio) VALUES (%s, NOW(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
@@ -52,8 +52,8 @@ def create_record_form2(id, title, q6_text, q6_1_ans_num, q6_1_calc, q7_text, q7
                         q14_text,q14_1_ans_num,q15_text,q15_1_ans_num,q16_text,q16_1_ans_num,q17_text,q17_1_ans_num):
     conn = init_connection()
     mycursor = conn.cursor()
-    st.write("inside record1 φορμ2")
-    st.write(id)
+    # st.write("inside record1 φορμ2")
+    # st.write(id)
     # q="test"
     # age="testage"
     sql = """

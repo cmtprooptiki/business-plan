@@ -1616,16 +1616,8 @@ def e_button10(id,kpdf):
                     q17_text = st.text_area("Γράψε ελεύθερο κείμενο",value=row[34], key="q17text", height=300)
                     st.markdown("<h4>Πόσο υπολογίζετε το συνολικό ετήσιο κόστος έκτακτων εξόδων;<h4>",unsafe_allow_html=True)
                     q17_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q171ansnum",value=row[35])
-
-
     
-
-
-
-
-
-
-
+                    
 
 
                     submit_button_edit = st.form_submit_button("Αποθήκευση")

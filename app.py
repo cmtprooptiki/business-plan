@@ -684,7 +684,7 @@ def main():
         page_icon="✅",
         layout="wide",
     )    
-    response = requests.get('https://api.streamlit.io/')
+    response = requests.get('https://api.streamlit.io')
     response.headers['Access-Control-Allow-Origin'] = 'https://business-plan.streamlit.app'
     
  

@@ -684,7 +684,8 @@ def main():
         page_icon="✅",
         layout="wide",
     )    
-
+    response = requests.get('https://api.streamlit.io/v1/user')
+    response.headers['Access-Control-Allow-Origin'] = 'https://business-plan.streamlit.app'
     
  
   
@@ -1887,7 +1888,7 @@ def e_button10(id,kpdf):
         if mycursor.rowcount!=0:
             # for row in result:
             #     st.write(row)
-                # Extract values from the "return_id" column and store them in a list
+            # Extract values from the "return_id" column and store them in a list
             return_ids = [row[0] for row in result]
             return_creation_date=[row[2] for row in result]
             return_year=[row[3] for row in result]

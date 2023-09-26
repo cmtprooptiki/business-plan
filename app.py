@@ -420,7 +420,7 @@ def form2(id):
         """,unsafe_allow_html=True)
         q7_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q7text", height=300)
 
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q7_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q71ansnum")
         q7_1_calc = q7_1_ans_num * questions[0]["calc_coefficient"]
 
@@ -432,7 +432,7 @@ def form2(id):
         """,unsafe_allow_html=True)
         q8_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q8text", height=300)
         
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q8_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q81ansnum")
         q8_1_calc = q8_1_ans_num * questions[1]["calc_coefficient"]
 
@@ -442,7 +442,7 @@ def form2(id):
         """,unsafe_allow_html=True)
 
         q9_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q9text", height=300)
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q9_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q91ansnum")
         q9_1_calc = q9_1_ans_num * questions[2]["calc_coefficient"]
 
@@ -452,7 +452,7 @@ def form2(id):
         """,unsafe_allow_html=True)
 
         q10_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q10text", height=300)
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q10_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q101ansnum")
         q10_1_calc = q10_1_ans_num * questions[3]["calc_coefficient"]
 
@@ -462,7 +462,7 @@ def form2(id):
         """,unsafe_allow_html=True)
 
         q11_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q11text", height=300)
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q11_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q111ansnum")
         q11_1_calc = q11_1_ans_num * questions[4]["calc_coefficient"]
 
@@ -472,7 +472,7 @@ def form2(id):
         """,unsafe_allow_html=True)
 
         q12_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q12text", height=300)
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q12_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q121ansnum")
         q12_1_calc = q12_1_ans_num * questions[5]["calc_coefficient"]
 
@@ -482,7 +482,7 @@ def form2(id):
         """,unsafe_allow_html=True)
 
         q13_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q13text", height=300)
-        st.markdown("<h4>Kόστος</h4>",unsafe_allow_html=True)
+        st.markdown("<h4>Kόστος(€)</h4>",unsafe_allow_html=True)
         q13_1_ans_num = st.number_input('Συμπληρώστε νούμερο:', key="q131ansnum")
         q13_1_calc = q13_1_ans_num * questions[6]["calc_coefficient"]
 

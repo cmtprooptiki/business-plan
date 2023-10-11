@@ -1460,7 +1460,7 @@ def e_button10(id,kpdf):
             # st.write(f"Corresponding ID: {selected_id_value}")
 
             with st.form(key="edit_form"):
-                decimal_separator = "."
+                # decimal_separator = "."
 
                 if selected_id:
                     mycursor.execute("select * from forms2 where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")

@@ -1966,7 +1966,7 @@ def e_button10(id,kpdf):
                 q17_text=row[34],
                 q17_1_ans_num=row[35]
 
-
+    
                 q6_t=float(q6_1_ans_num[0])
                 q7_t=float(q7_1_ans_num[0])
                 q8_t=float(q8_1_ans_num[0])
@@ -1977,6 +1977,7 @@ def e_button10(id,kpdf):
                 q123_t=float(q13_1_ans_num[0])
 
                 SUM_ek=q6_t+q7_t+q8_t+q9_t+q10_t+q11_t+q12_t+q123_t
+                #edw itan ola q14_1_ans_num[0]
                 q14_t=float(q14_1_ans_num[0])
                 q15_t=float(q15_1_ans_num[0])
                 q16_t=float(q16_1_ans_num[0])
@@ -2077,6 +2078,8 @@ def e_button10(id,kpdf):
                     round12=round12,
                     round13=round13
                 )
+
+                
                 
 
                 # st.write("Το κόστος εκκίνησης, δηλαδή το κεφάλαιο που χρειάζεται για την έναρξης της επιχειρηματικής ιδέας σας, είναι:"+str(SUM_ek))

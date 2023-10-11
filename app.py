@@ -549,7 +549,7 @@ def form2(id):
         # For example:
         # q = st.text_input("Enter your address")
         # age = st.text_input("Enter your phone number")
-        st.write(id)
+        # st.write(id)
         submit_button2 = st.form_submit_button("Αποθήκευση")
 
     if submit_button2:

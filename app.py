@@ -1503,6 +1503,7 @@ def e_button10(id,kpdf):
                     except ValueError:
                         st.write("Please enter a valid float number")
 
+                    q6_1_calc=q6_1_ans_num*0.04
 
 
 

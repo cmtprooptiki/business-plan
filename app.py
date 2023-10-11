@@ -1977,11 +1977,10 @@ def e_button10(id,kpdf):
                 q123_t=float(q13_1_ans_num[0])
 
                 SUM_ek=q6_t+q7_t+q8_t+q9_t+q10_t+q11_t+q12_t+q123_t
-                #fix
                 q14_t=float(q14_1_ans_num[0])
-                q15_t=float(q15_1_ans_num[0])
-                q16_t=float(q16_1_ans_num[0])
-                q17_t=float(q17_1_ans_num[0])
+                q15_t=float(q14_1_ans_num[0])
+                q16_t=float(q14_1_ans_num[0])
+                q17_t=float(q14_1_ans_num[0])
                 #SUM_leit=float(q14_1_ans_num[0])+float(q15_1_ans_num[0])+float(q16_1_ans_num[0])+float(q17_1_ans_num[0])
                 SUM_leit=q14_t+q15_t+q16_t+q17_t
                 # st.write(q14_1_ans_num)

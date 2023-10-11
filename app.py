@@ -1460,6 +1460,8 @@ def e_button10(id,kpdf):
             # st.write(f"Corresponding ID: {selected_id_value}")
 
             with st.form(key="edit_form"):
+                decimal_separator = "."
+
                 if selected_id:
                     mycursor.execute("select * from forms2 where koispe_id="+str(id)+" and id="+str(selected_id_value)+"")
                     result = mycursor.fetchall()
@@ -1482,8 +1484,26 @@ def e_button10(id,kpdf):
 
                     q6_text = st.text_area("Γράψε ελεύθερο κείμενο", key="q6text",value=row[4], height=300)
                     st.markdown("<h4>Κόστος(€)</h4>",unsafe_allow_html=True)
-                    q6_1_ans_num=st.number_input('Συμπληρώστε νούμερο:',key="q6_1_ans_num", step=1,value=row[5])
-                    q6_1_calc=q6_1_ans_num*0.04
+
+                    # q6_1_ans_num=st.number_input('Συμπληρώστε νούμερο:',key="q6_1_ans_num", value=row[5])
+                    # q6_1_calc=q6_1_ans_num*0.04
+                    
+                    #dokimi float text
+                    q6_1_ans_num=st.text_input('Συμπληρώστε νούμερο:',key="q6_1_ans_num", value=row[5])
+                    try:
+                        # Replace any potential "," with "." to standardize the input
+                        q6_1_ans_num = q6_1_ans_num.replace(",", decimal_separator)
+                        
+                        # Check if the input can be converted to a float
+                        q6_1_ans_num = float(q6_1_ans_num)
+
+                        st.write("You entered:", q6_1_ans_num)
+                        q6_1_calc=q6_1_ans_num*0.04
+
+                    except ValueError:
+                        st.write("Please enter a valid float number")
+
+
 
 
                     #QUESTION 7

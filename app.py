@@ -2101,10 +2101,25 @@ def e_button10(id,kpdf):
             st.write("Δεν βρέθηκαν στοιχεία")
 
 def get_url_params():
-    query_params = st.experimental_get_query_params()
-    id_received = query_params.get("id", [""])[0]
-    
-    return id_received
+    """
+    Reads ?id=... from the URL.
+    Uses st.query_params (new API), with a safe fallback for older Streamlit.
+    """
+    try:
+        # New Streamlit API (preferred)
+        qp = st.query_params
+        id_received = qp.get("id", "")
+    except Exception:
+        # Fallback for older Streamlit versions
+        qp = st.experimental_get_query_params()
+        id_received = qp.get("id", [""])[0]
+
+    # If multiple id params exist (?id=1&id=2), Streamlit may return a list
+    if isinstance(id_received, (list, tuple)):
+        id_received = id_received[0] if id_received else ""
+
+    return str(id_received)
+
     # id_input = st.text_input("Enter ID", value=id_received)
     # if id_input:
     #     display_contents(id_input)

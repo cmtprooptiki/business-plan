@@ -146,223 +146,125 @@ def convert_df(df):
 # @st.experimental_memo
 # @st.cache_data(experimental_allow_widgets=True)
 def get_data_from_json(id):
-    response = json.loads(requests.get("https://app.koispesupport.gr/koispe/api/getkoispe?id="+str(id)).text)
-    response2 = json.loads(requests.get("https://app.koispesupport.gr/koispe/api/getemployment?id="+str(id)).text)
-    response3 = json.loads(requests.get("https://app.koispesupport.gr/koispe/api/getfinancial?id="+str(id)).text)
+    def _fetch_json(url: str):
+        r = requests.get(url, timeout=30)
+        r.raise_for_status()
+        # Your API returns JSON text, so this is fine:
+        payload = json.loads(r.text)
 
+        # Sometimes APIs return a JSON string inside JSON
+        if isinstance(payload, str):
+            payload = json.loads(payload)
 
+        # Unwrap common wrappers
+        if isinstance(payload, dict):
+            for key in ("data", "result", "results", "payload"):
+                if key in payload and isinstance(payload[key], (list, dict)):
+                    payload = payload[key]
+                    break
 
+        return payload
 
-    #VIDAVO API CALL GENERAL
-    # response = json.loads(requests.get("https://app.koispesupport.gr/koispe/api/getkoispe").text)
-    # response2 = json.loads(requests.get("https://app.koispesupport.gr/koispe/api/getemployment").text)
-    # response3 = json.loads(requests.get("https://app.koispesupport.gr/koispe/api/getfinancial").text)
+    def _to_df(payload):
+        """
+        Make a DataFrame from various JSON shapes safely.
+        Avoid max_level (can raise NotImplementedError depending on pandas/version/shape).
+        """
+        if isinstance(payload, list):
+            if len(payload) == 0:
+                return pd.DataFrame()
+            # list of dicts -> json_normalize
+            if all(isinstance(x, dict) for x in payload):
+                return pd.json_normalize(payload, sep=".")
+            # list of lists/tuples/values -> DataFrame
+            return pd.DataFrame(payload)
 
-    #MYAPP ON MY API
-    # response = json.loads(requests.get("https://cmtprooptiki.gr/api/getkoisenew.json").text)
-    # response2 = json.loads(requests.get("https://cmtprooptiki.gr/api/getemploymentcmt.json").text)
-    # response3 = json.loads(requests.get("https://cmtprooptiki.gr/api/getfinancial.json").text)
+        if isinstance(payload, dict):
+            return pd.json_normalize(payload, sep=".")
 
-    df=pd.json_normalize(response, max_level=2)
-    # st.write(df.dtypes)
+        # fallback
+        return pd.DataFrame([payload])
 
-    # st.write(df)
+    response  = _fetch_json(f"https://app.koispesupport.gr/koispe/api/getkoispe?id={id}")
+    response2 = _fetch_json(f"https://app.koispesupport.gr/koispe/api/getemployment?id={id}")
+    response3 = _fetch_json(f"https://app.koispesupport.gr/koispe/api/getfinancial?id={id}")
 
+    df  = _to_df(response)
+    df2 = _to_df(response2)
+    df3 = _to_df(response3)
+
+    # ---- your existing logic stays the same from here ----
     df['year'] = df['year'].map(lambda x: str(x) if pd.notnull(x) else None)
     df['year'] = df['year'].str.split('.').str[0]
     df['year'] = df['year'].astype(str)
     df['year'] = df['year'].str.replace(',', '')
-    # st.write(df.dtypes)
 
-    # st.write("GET KOIPSE")
-    # st.write(df)
-
-    #this command is need on our api
-    # df['year'] = df['year'].apply(format_year)
-    # st.write(df)
-
-    df2=pd.json_normalize(response2, max_level=2)
     df2['year'] = df2['year'].map(lambda x: str(x) if pd.notnull(x) else None)
     df2['year'] = df2['year'].str.split('.').str[0]
-    
-    # st.write("GET employement")
 
-    # st.write(df2)
-
-    #this command is need on our api
-
-    # df2['year'] = df2['year'].apply(format_year)
-
-    df3=pd.json_normalize(response3, max_level=2)
     df3['year'] = df3['year'].map(lambda x: str(x) if pd.notnull(x) else None)
     df3['year'] = df3['year'].str.split('.').str[0]
-    # st.write("GET financial")
 
-    # st.write(df3)
-    
-    #this command is need on our api
+    merged = pd.merge(df, df2, left_on=['id', 'year'], right_on=['koispe_id', 'year'], how='inner')
+    merged = pd.merge(merged, df3, left_on=['id', 'year'], right_on=['koispe_id', 'year'], how='inner')
 
-    # df3['year'] = df3['year'].apply(format_year)
-
-    # st.write(df)
-    # st.write(df2)
-    # st.write(df3)
-
-    merged=pd.merge(df,df2, left_on=['id', 'year'],right_on=['koispe_id','year'],how='inner')
-    # st.write(merged)
-    merged=pd.merge(merged,df3, left_on=['id', 'year'],right_on=['koispe_id','year'],how='inner')
-
-    # merged= pd.merge(pd.merge(df, df2, on=['koispe_id', 'year']), df3, on=['koispe_id', 'year'])
-
-
-
-    # st.write(merged)
     merged.rename(columns={'id': 'koispe_id'}, inplace=True)
+    kdata = merged.copy()
 
-    ##NOT NEED WHEN ID ON URL EXIST
-    # kdata=merged[merged['koispe_id']==int(id)]
+    # if these columns sometimes don't exist, this avoids crashes:
+    kdata.drop(columns=['uid_x', 'uid_y', 'uid'], inplace=True, errors='ignore')
 
-    kdata=merged.copy()
+    kdata = kdata.sort_values(by=['year'], ascending=True).reset_index(drop=True)
 
-    #Our code
-    # kdata.drop(columns=['id_x', 'id_y','id'],inplace=True)
+    kpdf = kdata[['koispe_id', 'year']].sort_values(by=['year'], ascending=True)
 
-    kdata.drop(columns=['uid_x', 'uid_y','uid'],inplace=True)
-    # st.write(kdata)
-    # st.write(kdata)
-
-##########################################################################################
-
-    ###Start Creating DiktesDataframe
-    # matching_columns = kdata.columns[kdata.columns.str.startswith("report.kad.81.")]
-    # # print(matching_columns)
-    # kdata[matching_columns] = kdata[matching_columns].fillna(0)
-
-    # matching_columns2 = kdata.columns[kdata.columns.str.startswith("report.kad.56.")]
-    # kdata[matching_columns2] = kdata[matching_columns2].fillna(0)
-
-    # matching_columns3 = kdata.columns[kdata.columns.str.startswith("report.kad.")]
-    # kdata[matching_columns3] = kdata[matching_columns3].fillna(0)
-
-###########################################################################################
-
-    # kdata['report.kad.81.21.00.00']=kdata['report.kad.81.21.00.00'].fillna(0)
-    # kdata['report.kad.81.30.00.00']= kdata['report.kad.81.30.00.00'].fillna(0)
-    # kdata['report.kad.81.29.19.02']=kdata['report.kad.81.29.19.02'].fillna(0)
-    # kdata['report.kad.81.29.19.03']=kdata['report.kad.81.29.19.03'].fillna(0)
-
-    # kdata['report.kad.56.10.12.01']=kdata['report.kad.56.10.12.01'].fillna(0)
-    # kdata['report.kad.56.10.11.02']= kdata['report.kad.56.10.11.02'].fillna(0)
-    # kdata['report.kad.56.10.11.09']= kdata['report.kad.56.10.11.09'].fillna(0)
-
-
-    # st.write(kdata)
-    
-    kdata=kdata.sort_values(by=['year'], ascending=True)
-    kdata=kdata.reset_index(drop=True)
-
-
-
-    #Try
-    kpdf=kdata[['koispe_id','year']]
-    kpdf=kpdf.sort_values(by=['year'], ascending=True)
-    
-    # print("Test kpdf")
-    # print(kpdf)
-
-    # kpdf['year']=kpdf['year'].astype(str)
     kpdf['D1'] = kdata['profile.meli_a']
     kpdf['D3'] = kdata['profile.employee_general.sum']
     kpdf['D5'] = kdata['profile.employee.sum']
     kpdf['D7'] = kdata['profile.eko.sum']
-    #Calculation from function
-    kpdf['D9']=kpdf.apply(calculate_d9, axis=1)
-    kpdf['D10']=kpdf.apply(calculate_d10, axis=1)
-    kpdf['D11']=kpdf.apply(calculate_d11, axis=1)
-    #ores apasxolisis
-    kpdf['D12']=(kdata['profile.eme.sum'].astype(float))*2080
-    kpdf['D13']=(kdata['profile.eme_eko.sum'].astype(float))*2080
-    kpdf['D14']=kpdf.apply(calculate_d14, axis=1)
-    kpdf['D15']=kpdf.apply(calculate_d15, axis=1)
-    kpdf['D16']=round((kpdf['D12'].pct_change() * 100),1)
-    kpdf['D17']=round((kpdf['D13'].pct_change() * 100),1)
-    #etisies monades ergasias
-    kpdf['D18']=round((kdata['profile.sum_eme_kispe'].astype(float)),2)
-    # kpdf['D19']=kpdf.apply(calculate_d19, axis=1)
-    kpdf['D20']=round((kdata['profile.eme.sum'].astype(float).pct_change()*100),1)
-    kpdf['D21']=round((kdata['profile.eme_eko.sum'].astype(float).pct_change()*100),1)
-    kpdf['D22']=round(((kdata['profile.eme.sum'].astype(float))/(kdata['profile.sum_eme_kispe'].astype(float))*100),1)
-    kpdf['D23']=round(((kdata['profile.eme_eko.sum'].astype(float))/(kdata['profile.sum_eme_kispe'].astype(float))*100),1)
 
+    kpdf['D9'] = kpdf.apply(calculate_d9, axis=1)
+    kpdf['D10'] = kpdf.apply(calculate_d10, axis=1)
+    kpdf['D11'] = kpdf.apply(calculate_d11, axis=1)
 
-    #Σύνολο κύκλου εργασιών ανά τομέα & κατανομή ανά δραστηριότητα ανά έτος
-    kpdf['D24']=kdata['report.turnover_total'].astype(float)
-    #search for kad starts from .81
+    kpdf['D12'] = (kdata['profile.eme.sum'].astype(float)) * 2080
+    kpdf['D13'] = (kdata['profile.eme_eko.sum'].astype(float)) * 2080
+    kpdf['D14'] = kpdf.apply(calculate_d14, axis=1)
+    kpdf['D15'] = kpdf.apply(calculate_d15, axis=1)
+    kpdf['D16'] = round((kpdf['D12'].pct_change() * 100), 1)
+    kpdf['D17'] = round((kpdf['D13'].pct_change() * 100), 1)
 
-    # matching_columns = kdata.columns[kdata.columns.str.startswith("report.kad.81.")]
-    # print(matching_columns)
+    kpdf['D18'] = round((kdata['profile.sum_eme_kispe'].astype(float)), 2)
+    kpdf['D20'] = round((kdata['profile.eme.sum'].astype(float).pct_change() * 100), 1)
+    kpdf['D21'] = round((kdata['profile.eme_eko.sum'].astype(float).pct_change() * 100), 1)
+    kpdf['D22'] = round(((kdata['profile.eme.sum'].astype(float)) / (kdata['profile.sum_eme_kispe'].astype(float)) * 100), 1)
+    kpdf['D23'] = round(((kdata['profile.eme_eko.sum'].astype(float)) / (kdata['profile.sum_eme_kispe'].astype(float)) * 100), 1)
 
-    # kdata[matching_columns] = kdata[matching_columns].astype(float)
-
-    kpdf['D26']=kdata['report.outside'].astype(float)
-    # kpdf['D26'] = kdata.apply(lambda row: calculate_d26_d27(row, matching_columns), axis=1)
-    #search for kad starts from .56
-    # matching_columns2 = kdata.columns[kdata.columns.str.startswith("report.kad.56.")]
-    # kdata[matching_columns2] = kdata[matching_columns2].astype(float)
-    
-    kpdf['D27']=kdata['report.inside'].astype(float)
-    # kpdf['D27'] = kdata.apply(lambda row: calculate_d26_d27(row, matching_columns2), axis=1)
-
-
+    kpdf['D24'] = kdata['report.turnover_total'].astype(float)
+    kpdf['D26'] = kdata['report.outside'].astype(float)
+    kpdf['D27'] = kdata['report.inside'].astype(float)
     kpdf['D28'] = kdata['report.turnover_other'].astype(float)
 
-    #% μεταβολής κύκλου εργασιών ανά δραστηριότητα ανά έτος
-    kpdf['D29'] = round((kdata['report.turnover_total'].astype(float).pct_change()*100),1)
+    kpdf['D29'] = round((kdata['report.turnover_total'].astype(float).pct_change() * 100), 1)
+    kpdf['D30'] = round((kpdf['D26'].astype(float).pct_change() * 100), 1)
+    kpdf['D31'] = round((kpdf['D27'].astype(float).pct_change() * 100), 1)
+    kpdf['D32'] = round((kpdf['D28'].astype(float).pct_change() * 100), 1)
 
-    kpdf['D30'] = round((kpdf['D26'].astype(float).pct_change()*100),1)
-    kpdf['D31'] = round((kpdf['D27'].astype(float).pct_change()*100),1)
-    kpdf['D32'] = round((kpdf['D28'].astype(float).pct_change()*100),1)
-    kpdf['D36_overal']=kdata['report.overall'].astype(float)
+    kpdf['D36_overal'] = kdata['report.overall'].astype(float)
+    kpdf['D36'] = kpdf.apply(
+        lambda row: calculate_percentage_change(kpdf.loc[row.name - 1, 'D36_overal'], row['D36_overal'])
+        if row.name != 0 else np.nan,
+        axis=1
+    )
 
-    #D36 fixing code
-    # kpdf['D36'] = round((kdata['report.overall'].astype(float).pct_change()*100),1)
-    # st.write(kdata)
+    kpdf['D38'] = round(((kdata['report.overall'].astype(float)) / (kdata['report.turnover_total'].astype(float))), 2)
+    kpdf['D39'] = round(((kdata['report.grants'].astype(float)) / (kdata['report.turnover_total'].astype(float)) * 100), 2)
+    kpdf['D40'] = round(((kdata['report.turnover_total'].astype(float)) / (kdata['profile.sum_eme_kispe'].astype(float))), 2)
 
-    # st.write(kdata['report.overall'])
-    # kdata=kdata.sort_values(by=['year'], ascending=True)
-    # kpdf['D36'] = kpdf.apply(lambda row: calculate_percentage_change_d36(row['D36_overal'], kpdf.loc[row.name + 1, 'D36_overal']), axis=1)
-# Calculate the percentage change for each row using the custom function
-    kpdf['D36'] = kpdf.apply(lambda row: calculate_percentage_change( kpdf.loc[row.name - 1, 'D36_overal'],row['D36_overal'])
-                            if row.name != 0 else np.nan, axis=1)
-    # for i in range(len(kpdf['D36_overal'])):
-    #     if kpdf['D36_overal'][i] > 0 and kpdf['D36_overal'][i+1] > 0:
-    #         percentage_change = (kpdf['D36_overal'][i+1] - kpdf['D36_overal'][i]) / kpdf['D36_overal'][i]
-    #         # st.write("result")
-    #         # st.write(percentage_change)
-    #     elif kpdf['D36_overal'][i] < 0 and kpdf['D36_overal'][i+1] < 0:
-    #         percentage_change = (kpdf['D36_overal'][i] - kpdf['D36_overal'][i+1]) / abs(kpdf['D36_overal'][i])
-    #     elif kpdf['D36_overal'][i] > 0 and kpdf['D36_overal'][i+1] < 0:
-    #         percentage_change = (kpdf['D36_overal'][i+1] - kpdf['D36_overal'][i]) / kpdf['D36_overal'][i]
-    #     elif kpdf['D36_overal'][i] < 0 and kpdf['D36_overal'][i+1] > 0:
-    #         percentage_change = (kpdf['D36_overal'][i+1] - kpdf['D36_overal'][i]) / abs(kpdf['D36_overal'][i])
-    #     else:
-    #         # Handle the case when both old_value and new_value are zero
-    #         percentage_change = 0.0
-    #     st.write("mesa sto for")
-    #     st.write(percentage_change)
-    # st.write(percentage_change)
+    kpdf['D18_lipsi'] = kdata['profile.eme.sum'].astype(float)
+    kpdf['D18_eko'] = kdata['profile.eme_eko.sum'].astype(float)
+    kpdf['D18_general'] = kdata['profile.eme_general.sum'].astype(float)
+    kpdf['D22_23_g'] = round(((kdata['profile.eme_general.sum'].astype(float)) / (kdata['profile.sum_eme_kispe'].astype(float)) * 100), 1)
+    kpdf['D40_metaboli'] = round((kpdf['D40'].astype(float).pct_change() * 100), 1)
 
-    # kpdf['D36'] = kdata.apply(lambda row: calculate_percentage_change_d36(row['report.overall'], kdata.loc[row.name - 1, 'report.overall']), axis=1)
-    # x=calculate_percentage_change_d36( float(kdata['report.overall'][0]),float(kdata['report.overall'][1]))
-
-
-    kpdf['D38'] = round(((kdata['report.overall'].astype(float))/(kdata['report.turnover_total'].astype(float))),2)
-    kpdf['D39'] = round(((kdata['report.grants'].astype(float))/(kdata['report.turnover_total'].astype(float))*100),2)
-    kpdf['D40'] = round(((kdata['report.turnover_total'].astype(float))/(kdata['profile.sum_eme_kispe'].astype(float))),2)
-    #Extra diktes
-    kpdf['D18_lipsi']=kdata['profile.eme.sum'].astype(float)
-    kpdf['D18_eko']=kdata['profile.eme_eko.sum'].astype(float)
-    kpdf['D18_general']=kdata['profile.eme_general.sum'].astype(float)
-    kpdf['D22_23_g']=round(((kdata['profile.eme_general.sum'].astype(float))/(kdata['profile.sum_eme_kispe'].astype(float))*100),1)
-    kpdf['D40_metaboli']=round((kpdf['D40'].astype(float).pct_change()*100),1)
     return kpdf

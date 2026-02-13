@@ -706,9 +706,17 @@ def main():
             css_code = file.read()
     st.sidebar.image("https://koispesupport.gr/wp-content/uploads/2023/06/Logo-Koispe-203x90.png", width=100)
 
+    id = get_url_params()
+
+    # If URL doesn't include ?id=..., stop before calling the API
+    if not id:
+       st.error("Λείπει το ID από το URL. Πρόσθεσε ?id=XXXX στο τέλος του link.")
+       st.stop()
+
+    kpdf = get_data_from_json(id)
 
     # st.sidebar.title("KPI's Dashboard")
-    id=get_url_params()
+    #id=get_url_params()
     # st.write("URL ID FROM VIDAVO:",id)
     # st.write("ID from Flask application: ",id)
 
@@ -727,7 +735,7 @@ def main():
     #VIDAVO API CALL SPEICIFIC KOISPE WITH ID
 
 
-    kpdf=get_data_from_json(id)
+    #kpdf=get_data_from_json(id)
     # kpdf=kpdf.fillna(0)
  
 

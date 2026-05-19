@@ -14,7 +14,7 @@ from packageKPS import *
 from packageCharts import *
 from html_shortcuts import *
 from PIL import Image
-import pdfkit
+import weasyprint
 import mysql.connector
 import tempfile
 # Define the HTML template for the PDF report
@@ -1396,7 +1396,7 @@ def e_button9(id,kpdf):
                         image_base64_3=image_base64_3
                     )
 
-                    pdf = pdfkit.from_string(html, False)
+                    pdf = weasyprint.HTML(string=html).write_pdf()
                     st.download_button(
                             "⬇️ Λήψη φόρμας Επιχειρηματικής ιδέας",
                             data=pdf,
@@ -2098,7 +2098,7 @@ def e_button10(id,kpdf):
                 # st.warning("Για κάθε επόμενο έτος λειτουργίας της επιχειρηματικής ιδέας σας, θα πρέπει να λάβετε υπόψιν τυχόν αύξηση του λειτουργικού κόστους (π.χ αυξήσεις μισθών, ανατιμήσεις αγαθών, κλπ.) και τις αποσβέσεις.")
 
 
-                pdf = pdfkit.from_string(html, False)
+                pdf = weasyprint.HTML(string=html).write_pdf()
                 st.download_button(
                         "⬇️ Λήψη φόρμας Οικονομικών Στοιχείων",
                         data=pdf,
